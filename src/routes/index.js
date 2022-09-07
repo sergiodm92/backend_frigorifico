@@ -1,11 +1,8 @@
 const { Router } = require('express');
-// Importar todos los routers;
-const getCountries = require('./getCountries');
-const postActivity = require('./postActivity')
+const ventas = require('./ventas');
 
 const router = Router();
 
-router.use('/countries', getCountries);
-router.use('/activity', postActivity);
+router.use('/ventas', ventas);
 
 module.exports = router;

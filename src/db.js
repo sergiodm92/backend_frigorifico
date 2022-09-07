@@ -52,15 +52,25 @@ let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].s
 sequelize.models = Object.fromEntries(capsEntries);
 
 const { 
-  Country, 
-  Activity 
+  Cliente, 
+  Compra,
+  Faena,
+  PagoCompra, 
+  PagoFaena, 
+  PagoVenta,
+  Proveedor,
+  Venta,
+  Stock
 } = sequelize.models;
 
 // Aca vendrian las relaciones
-// Product.hasMany(Reviews);
-
-/* Country.belongsToMany(Activity, { through: 'countryActivity' })
-Activity.belongsToMany(Country, { through: 'countryActivity' }) */
+Compra.belongsToMany(Proveedor, { through: 'compra_proveedor'});
+Compra.belongsTo(Faena);
+Venta.belongsToMany(Cliente, { through: 'cliente_venta'});
+Faena.belongsTo(Compra);
+Faena.belongsTo(Venta);
+Proveedor.belongsTo(Compra);
+Venta.belongsTo(Faena);
 
 module.exports = {
   ...sequelize.models,

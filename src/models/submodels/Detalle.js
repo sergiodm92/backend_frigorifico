@@ -19,8 +19,15 @@ class DetalleVenta {
     margen;
 }
 
+class DetalleStock {
+    correlativo;
+    categoria;
+    kg;
+}
+
 module.exports = {
     DetalleFaena,
     DetalleVenta,
-    DetallePagos
+    DetallePagos,
+    DetalleStock
 }
