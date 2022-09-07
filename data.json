@@ -1,0 +1,134 @@
+{
+    "faena": [
+        {
+            "id_faena": "1",
+            "fecha": "24-08-22",
+            "tropa": "245430",
+            "frigorífico": "Natilla",
+            "proveedor": "Costello Pedro Rafael",
+            "detalle": [
+                {
+                    "correlativo": "1729101",
+                    "categoria": "vaquillona",
+                    "kg": 81
+                }
+            ],
+            "total_kg": 745,
+            "total_medias": 8,
+            "costo_total": 21605
+        },
+        {
+            "id_faena": "2",
+            "fecha": "03-09-22",
+            "tropa": "245455",
+            "frigorífico": "Natilla",
+            "proveedor": "Costello Pedro Rafael",
+            "detalle": [
+                {
+                    "correlativo": "829101",
+                    "categoria": "vaca",
+                    "kg": 110
+                }
+            ],
+            "total_kg": 881,
+            "total_medias": 8,
+            "costo_total": 25549
+        }
+    ],
+    "venta": [
+        {
+            "id_venta": "1",
+            "fecha": "25-08-22",
+            "cliente": "Sergio",
+            "detalle": [
+                {
+                    "correlativo": "1045453",
+                    "categoria": "novillito",
+                    "total_media": "1/4 trasero",
+                    "kg": 38,
+                    "$_kg": 675,
+                    "margen": ""
+                }
+            ]
+        },
+        {
+            "id_venta": "2",
+            "fecha": "13-08-22",
+            "cliente": "Franchela",
+            "detalle": [
+                {
+                    "correlativo": "45459",
+                    "categoria": "vaca",
+                    "total_media": "1/4 delantero",
+                    "kg": 101,
+                    "$_kg": 620,
+                    "margen": ""
+                }
+            ]
+        }
+    ],
+    "pago_venta": [
+        {
+            "pagos": [
+                {
+                    "id_pago": 1,
+                    "fecha": "18-08-22",
+                    "monto": 100000
+                }
+            ],
+            "id_venta": "2"
+        },
+        {
+            "pagos": [
+                {
+                    "id_pago": 1,
+                    "fecha": "18-09-22",
+                    "monto": 100000
+                }
+            ],
+            "id_venta": "3"
+        }
+    ],
+    "pago_compra": [
+        {
+            "pagos": [
+                {
+                    "id_pago": 2,
+                    "fecha": "18-11-22",
+                    "monto": 100000
+                }
+            ],
+            "id_compra": "1"
+        }
+    ],
+    "pago_faena": [
+        {
+            "pagos": [
+                {
+                    "id_pago": 1,
+                    "fecha": "18-08-22",
+                    "monto": 100000
+                }
+            ],
+            "id_faena": "1"
+        }
+    ],
+    "cliente": [
+        {
+            "id_cliente": "2",
+            "nombre": "Jorge La Vanguardia",
+            "telefono": "3835726532",
+            "email": "jorge@gmail.com",
+            "direccion": "La Vanguardia 243"
+        }
+    ],
+    "proveedor": [
+        {
+            "id_proveedor": "2",
+            "nombre": "Puchulu",
+            "telefono": "3836922001",
+            "email": "puchulu@gmail.com",
+            "direccion": "Caseros 98"
+        }
+    ]
+}
