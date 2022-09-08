@@ -11,6 +11,10 @@ module.exports = (sequelize) => {
       type: DataTypes.DATE,
       allowNull: false,
     },
+    id_cliente: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
     cliente: {
       type: DataTypes.STRING,
       allowNull: false,
