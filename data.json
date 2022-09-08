@@ -1,134 +1,731 @@
 {
-    "faena": [
+    "venta":[
         {
-            "id_faena": "1",
-            "fecha": "24-08-22",
-            "tropa": "245430",
-            "frigorífico": "Natilla",
-            "proveedor": "Costello Pedro Rafael",
-            "detalle": [
+            "ID_Venta":"1",
+            "Fecha":"25-08-22",
+            "Cliente":"Sergio",
+            "Detalle":[
                 {
-                    "correlativo": "1729101",
-                    "categoria": "vaquillona",
-                    "kg": 81
+                    "Correlativo":"1045451",
+                    "Categoria":"vaquillona",
+                    "Total_Media":"total",
+                    "kg":79,
+                    "$_kg":675,
+                    "Margen":""
+                },
+                {
+                    "Correlativo":"1045452",
+                    "Categoria":"novillito",
+                    "Total_Media":"total",
+                    "kg":94,
+                    "$_kg":675,
+                    "Margen":""
+                },
+                {
+                    "Correlativo":"1045453",
+                    "Categoria":"novillito",
+                    "Total_Media":"1/4T",
+                    "kg":38,
+                    "$_kg":675,
+                    "Margen":""
                 }
             ],
-            "total_kg": 745,
-            "total_medias": 8,
-            "costo_total": 21605
+            "Cant": 2.5,
+            "kg_Total":211,
+            "$_kg_Prom":675,
+            "Total":142425,
+            "Margen/kg":11.47,
+            "Margen/Venta":27849.16,
+            "Margen(%)":7.88
         },
         {
-            "id_faena": "2",
-            "fecha": "03-09-22",
-            "tropa": "245455",
-            "frigorífico": "Natilla",
-            "proveedor": "Costello Pedro Rafael",
-            "detalle": [
+            "ID_Venta":"2",
+            "Fecha":"13-08-22",
+            "Cliente":"Franchela",
+            "Detalle":[
                 {
-                    "correlativo": "829101",
-                    "categoria": "vaca",
-                    "kg": 110
+                    "Correlativo":"45458",
+                    "Categoria":"novillo pesado",
+                    "Total_Media":"total",
+                    "kg":155,
+                    "$_kg":640,
+                    "Margen":""
+                },
+                {
+                    "Correlativo":"45459",
+                    "Categoria":"vaca",
+                    "Total_Media":"1/4D",
+                    "kg":101,
+                    "$_kg":620,
+                    "Margen":""
                 }
             ],
-            "total_kg": 881,
-            "total_medias": 8,
-            "costo_total": 25549
-        }
-    ],
-    "venta": [
-        {
-            "id_venta": "1",
-            "fecha": "25-08-22",
-            "cliente": "Sergio",
-            "detalle": [
-                {
-                    "correlativo": "1045453",
-                    "categoria": "novillito",
-                    "total_media": "1/4 trasero",
-                    "kg": 38,
-                    "$_kg": 675,
-                    "margen": ""
-                }
-            ]
+            "Cant": 1.5,
+            "kg_Total":211,
+            "$_kg_Prom":675,
+            "Total":142425,
+            "Margen/kg":11.47,
+            "Margen/Venta":27849.16,
+            "Margen(%)":7.88
         },
         {
-            "id_venta": "2",
-            "fecha": "13-08-22",
-            "cliente": "Franchela",
-            "detalle": [
+            "ID_Venta":"1",
+            "Fecha":"25-08-22",
+            "Cliente":"Sergio",
+            "Detalle":[
                 {
-                    "correlativo": "45459",
-                    "categoria": "vaca",
-                    "total_media": "1/4 delantero",
-                    "kg": 101,
-                    "$_kg": 620,
-                    "margen": ""
-                }
-            ]
-        }
-    ],
-    "pago_venta": [
-        {
-            "pagos": [
+                    "Correlativo":"1045451",
+                    "Categoria":"vaquillona",
+                    "Total_Media":"total",
+                    "kg":79,
+                    "$_kg":675,
+                    "Margen":""
+                },
                 {
-                    "id_pago": 1,
-                    "fecha": "18-08-22",
-                    "monto": 100000
+                    "Correlativo":"1045452",
+                    "Categoria":"novillito",
+                    "Total_Media":"total",
+                    "kg":94,
+                    "$_kg":675,
+                    "Margen":""
+                },
+                {
+                    "Correlativo":"1045453",
+                    "Categoria":"novillito",
+                    "Total_Media":"1/4T",
+                    "kg":38,
+                    "$_kg":675,
+                    "Margen":""
                 }
             ],
-            "id_venta": "2"
+            "Cant": 2.5,
+            "kg_Total":211,
+            "$_kg_Prom":675,
+            "Total":142425,
+            "Margen/kg":11.47,
+            "Margen/Venta":27849.16,
+            "Margen(%)":7.88
         },
         {
-            "pagos": [
+            "ID_Venta":"2",
+            "Fecha":"13-08-22",
+            "Cliente":"Franchela",
+            "Detalle":[
                 {
-                    "id_pago": 1,
-                    "fecha": "18-09-22",
-                    "monto": 100000
+                    "Correlativo":"45458",
+                    "Categoria":"novillo pesado",
+                    "Total_Media":"total",
+                    "kg":155,
+                    "$_kg":640,
+                    "Margen":""
+                },
+                {
+                    "Correlativo":"45459",
+                    "Categoria":"vaca",
+                    "Total_Media":"1/4D",
+                    "kg":101,
+                    "$_kg":620,
+                    "Margen":""
                 }
             ],
-            "id_venta": "3"
-        }
-    ],
-    "pago_compra": [
+            "Cant": 1.5,
+            "kg_Total":211,
+            "$_kg_Prom":675,
+            "Total":142425,
+            "Margen/kg":11.47,
+            "Margen/Venta":27849.16,
+            "Margen(%)":7.88
+        },
         {
-            "pagos": [
+            "ID_Venta":"1",
+            "Fecha":"25-08-22",
+            "Cliente":"Sergio",
+            "Detalle":[
                 {
-                    "id_pago": 2,
-                    "fecha": "18-11-22",
-                    "monto": 100000
+                    "Correlativo":"1045451",
+                    "Categoria":"vaquillona",
+                    "Total_Media":"total",
+                    "kg":79,
+                    "$_kg":675,
+                    "Margen":""
+                },
+                {
+                    "Correlativo":"1045452",
+                    "Categoria":"novillito",
+                    "Total_Media":"total",
+                    "kg":94,
+                    "$_kg":675,
+                    "Margen":""
+                },
+                {
+                    "Correlativo":"1045453",
+                    "Categoria":"novillito",
+                    "Total_Media":"1/4T",
+                    "kg":38,
+                    "$_kg":675,
+                    "Margen":""
                 }
             ],
-            "id_compra": "1"
-        }
-    ],
-    "pago_faena": [
+            "Cant": 2.5,
+            "kg_Total":211,
+            "$_kg_Prom":675,
+            "Total":142425,
+            "Margen/kg":11.47,
+            "Margen/Venta":27849.16,
+            "Margen(%)":7.88
+        },
         {
-            "pagos": [
+            "ID_Venta":"2",
+            "Fecha":"13-08-22",
+            "Cliente":"Franchela",
+            "Detalle":[
                 {
-                    "id_pago": 1,
-                    "fecha": "18-08-22",
-                    "monto": 100000
+                    "Correlativo":"45458",
+                    "Categoria":"novillo pesado",
+                    "Total_Media":"total",
+                    "kg":155,
+                    "$_kg":640,
+                    "Margen":""
+                },
+                {
+                    "Correlativo":"45459",
+                    "Categoria":"vaca",
+                    "Total_Media":"1/4D",
+                    "kg":101,
+                    "$_kg":620,
+                    "Margen":""
                 }
             ],
-            "id_faena": "1"
+            "Cant": 1.5,
+            "kg_Total":211,
+            "$_kg_Prom":675,
+            "Total":142425,
+            "Margen/kg":11.47,
+            "Margen/Venta":27849.16,
+            "Margen(%)":7.88
+        },
+        {
+            "ID_Venta":"1",
+            "Fecha":"25-08-22",
+            "Cliente":"Sergio",
+            "Detalle":[
+                {
+                    "Correlativo":"1045451",
+                    "Categoria":"vaquillona",
+                    "Total_Media":"total",
+                    "kg":79,
+                    "$_kg":675,
+                    "Margen":""
+                },
+                {
+                    "Correlativo":"1045452",
+                    "Categoria":"novillito",
+                    "Total_Media":"total",
+                    "kg":94,
+                    "$_kg":675,
+                    "Margen":""
+                },
+                {
+                    "Correlativo":"1045453",
+                    "Categoria":"novillito",
+                    "Total_Media":"1/4T",
+                    "kg":38,
+                    "$_kg":675,
+                    "Margen":""
+                }
+            ],
+            "Cant": 2.5,
+            "kg_Total":211,
+            "$_kg_Prom":675,
+            "Total":142425,
+            "Margen/kg":11.47,
+            "Margen/Venta":27849.16,
+            "Margen(%)":7.88
+        },
+        {
+            "ID_Venta":"2",
+            "Fecha":"13-08-22",
+            "Cliente":"Franchela",
+            "Detalle":[
+                {
+                    "Correlativo":"45458",
+                    "Categoria":"novillo pesado",
+                    "Total_Media":"total",
+                    "kg":155,
+                    "$_kg":640,
+                    "Margen":""
+                },
+                {
+                    "Correlativo":"45459",
+                    "Categoria":"vaca",
+                    "Total_Media":"1/4D",
+                    "kg":101,
+                    "$_kg":620,
+                    "Margen":""
+                }
+            ],
+            "Cant": 1.5,
+            "kg_Total":211,
+            "$_kg_Prom":675,
+            "Total":142425,
+            "Margen/kg":11.47,
+            "Margen/Venta":27849.16,
+            "Margen(%)":7.88
+        },
+        {
+            "ID_Venta":"1",
+            "Fecha":"25-08-22",
+            "Cliente":"Sergio",
+            "Detalle":[
+                {
+                    "Correlativo":"1045451",
+                    "Categoria":"vaquillona",
+                    "Total_Media":"total",
+                    "kg":79,
+                    "$_kg":675,
+                    "Margen":""
+                },
+                {
+                    "Correlativo":"1045452",
+                    "Categoria":"novillito",
+                    "Total_Media":"total",
+                    "kg":94,
+                    "$_kg":675,
+                    "Margen":""
+                },
+                {
+                    "Correlativo":"1045453",
+                    "Categoria":"novillito",
+                    "Total_Media":"1/4T",
+                    "kg":38,
+                    "$_kg":675,
+                    "Margen":""
+                }
+            ],
+            "Cant": 2.5,
+            "kg_Total":211,
+            "$_kg_Prom":675,
+            "Total":142425,
+            "Margen/kg":11.47,
+            "Margen/Venta":27849.16,
+            "Margen(%)":7.88
+        },
+        {
+            "ID_Venta":"2",
+            "Fecha":"13-08-22",
+            "Cliente":"Franchela",
+            "Detalle":[
+                {
+                    "Correlativo":"45458",
+                    "Categoria":"novillo pesado",
+                    "Total_Media":"total",
+                    "kg":155,
+                    "$_kg":640,
+                    "Margen":""
+                },
+                {
+                    "Correlativo":"45459",
+                    "Categoria":"vaca",
+                    "Total_Media":"1/4D",
+                    "kg":101,
+                    "$_kg":620,
+                    "Margen":""
+                }
+            ],
+            "Cant": 1.5,
+            "kg_Total":211,
+            "$_kg_Prom":675,
+            "Total":142425,
+            "Margen/kg":11.47,
+            "Margen/Venta":27849.16,
+            "Margen(%)":7.88
+        },
+        {
+            "ID_Venta":"1",
+            "Fecha":"25-08-22",
+            "Cliente":"Sergio",
+            "Detalle":[
+                {
+                    "Correlativo":"1045451",
+                    "Categoria":"vaquillona",
+                    "Total_Media":"total",
+                    "kg":79,
+                    "$_kg":675,
+                    "Margen":""
+                },
+                {
+                    "Correlativo":"1045452",
+                    "Categoria":"novillito",
+                    "Total_Media":"total",
+                    "kg":94,
+                    "$_kg":675,
+                    "Margen":""
+                },
+                {
+                    "Correlativo":"1045453",
+                    "Categoria":"novillito",
+                    "Total_Media":"1/4T",
+                    "kg":38,
+                    "$_kg":675,
+                    "Margen":""
+                }
+            ],
+            "Cant": 2.5,
+            "kg_Total":211,
+            "$_kg_Prom":675,
+            "Total":142425,
+            "Margen/kg":11.47,
+            "Margen/Venta":27849.16,
+            "Margen(%)":7.88
+        },
+        {
+            "ID_Venta":"2",
+            "Fecha":"13-08-22",
+            "Cliente":"Franchela",
+            "Detalle":[
+                {
+                    "Correlativo":"45458",
+                    "Categoria":"novillo pesado",
+                    "Total_Media":"total",
+                    "kg":155,
+                    "$_kg":640,
+                    "Margen":""
+                },
+                {
+                    "Correlativo":"45459",
+                    "Categoria":"vaca",
+                    "Total_Media":"1/4D",
+                    "kg":101,
+                    "$_kg":620,
+                    "Margen":""
+                }
+            ],
+            "Cant": 1.5,
+            "kg_Total":211,
+            "$_kg_Prom":675,
+            "Total":142425,
+            "Margen/kg":11.47,
+            "Margen/Venta":27849.16,
+            "Margen(%)":7.88
         }
     ],
-    "cliente": [
+    "Pago_Venta":[
         {
-            "id_cliente": "2",
-            "nombre": "Jorge La Vanguardia",
-            "telefono": "3835726532",
-            "email": "jorge@gmail.com",
-            "direccion": "La Vanguardia 243"
+            "pagos":[{"id_pago":1,"fecha":"18-08-22","monto":100000},{"id_pago":2,"fecha":"18-11-22","monto":100000}],
+            "id_venta":"2"
+        },
+        {
+            "pagos":[{"id_pago":1,"fecha":"18-09-22","monto":100000},{"id_pago":2,"fecha":"18-10-22","monto":100000}],
+            "id_venta":"3"
         }
     ],
-    "proveedor": [
+    "Pago_Compra":[
         {
-            "id_proveedor": "2",
-            "nombre": "Puchulu",
-            "telefono": "3836922001",
-            "email": "puchulu@gmail.com",
-            "direccion": "Caseros 98"
+            "pagos":[{"id_pago":1,"fecha":"18-08-22","monto":100000},{"id_pago":2,"fecha":"18-11-22","monto":100000}],
+            "id_compra":"1"
+
+        },
+        {
+            "pagos":[{"id_pago":1,"fecha":"18-08-22","monto":100000},{"id_pago":2,"fecha":"18-11-22","monto":100000}],
+            "id_compra":"2"
+        }
+    ],
+    "Pago_Faena":[
+        {
+            "pagos":[{"id_pago":1,"fecha":"18-08-22","monto":100000},{"id_pago":2,"fecha":"18-11-22","monto":100000}],
+            "id_faena":"1"
+
+        },
+        {
+            "id_pago_f":[{"id_pago":1,"fecha":"18-08-22","monto":100000},{"id_pago":2,"fecha":"18-11-22","monto":100000}],
+            "id_faena":"2"          
+        }
+    ],
+
+    "Proveedor":[
+        {
+            "ID_Proveedor":"1",
+            "Nombre":"Castillo",
+            "Telefono":"3835628739",
+            "Email":"castillo@gmail.com",
+            "Direccion":"La Madrid 2976",
+            "Ultima_Compra":"10/08/22",
+            "Saldo":50300
+        },
+        {
+            "ID_Proveedor":"2",
+            "Nombre":"Puchulu",
+            "Telefono":"3836922001",
+            "Email":"puchulu@gmail.com",
+            "Direccion":"Caseros 98",
+            "Ultima_Compra":"06/09/22",
+            "Saldo":135300
+        }
+    ],
+    "stock":[
+        {
+            "Tropa":45459,
+            "Fecha":"12/03/22",
+            "Frigorifico": "Natilla",
+            "Proveedor": "Puchulo",
+            "Detalle":[
+                {
+                    "Correlativo":"123456",
+                    "Categoria": "Vaquillon",
+                    "kg":83,
+                    "Costo/kg":675
+                },
+                {
+                    "Correlativo":"123457T",
+                    "Categoria": "Vaca",
+                    "kg":54,
+                    "Costo/kg":675
+                },
+                {
+                    "Correlativo":"123458",
+                    "Categoria": "Vaquillon",
+                    "kg":89,
+                    "Costo/kg":675
+                },
+                {
+                    "Correlativo":"123459D",
+                    "Categoria": "Vaca",
+                    "kg":60,
+                    "Costo/kg":675
+                }
+            ],
+            "Total_kg":286
+        },
+        {
+            "Tropa":45460,
+            "Fecha":"12/03/22",
+            "Frigorifico": "Natilla",
+            "Proveedor": "Puchulo",
+            "Detalle":[
+                {
+                    "Correlativo":"123456",
+                    "Categoria": "Vaquillon",
+                    "kg":83,
+                    "Costo/kg":675
+                },
+                {
+                    "Correlativo":"123457T",
+                    "Categoria": "Vaca",
+                    "kg":54,
+                    "Costo/kg":675
+                },
+                {
+                    "Correlativo":"123458",
+                    "Categoria": "Vaquillon",
+                    "kg":89,
+                    "Costo/kg":675
+                },
+                {
+                    "Correlativo":"123459D",
+                    "Categoria": "Vaca",
+                    "kg":60,
+                    "Costo/kg":675
+                }
+            ],
+            "Total_kg":286
+        },
+        {
+            "Tropa":45461,
+            "Fecha":"12/03/22",
+            "Frigorifico": "Natilla",
+            "Proveedor": "Puchulo",
+            "Detalle":[
+                {
+                    "Correlativo":"123456",
+                    "Categoria": "Vaquillon",
+                    "kg":83,
+                    "Costo/kg":675
+                },
+                {
+                    "Correlativo":"123457T",
+                    "Categoria": "Vaca",
+                    "kg":54,
+                    "Costo/kg":675
+                },
+                {
+                    "Correlativo":"123458",
+                    "Categoria": "Vaquillon",
+                    "kg":89,
+                    "Costo/kg":675
+                },
+                {
+                    "Correlativo":"123459D",
+                    "Categoria": "Vaca",
+                    "kg":60,
+                    "Costo/kg":675
+                }
+            ],
+            "Total_kg":286
+        },
+        {
+            "Tropa":45462,
+            "Fecha":"12/03/22",
+            "Frigorifico": "Natilla",
+            "Proveedor": "Puchulo",
+            "Detalle":[
+                {
+                    "Correlativo":"123456",
+                    "Categoria": "Vaquillon",
+                    "kg":83,
+                    "Costo/kg":675
+                },
+                {
+                    "Correlativo":"123457T",
+                    "Categoria": "Vaca",
+                    "kg":54,
+                    "Costo/kg":675
+                },
+                {
+                    "Correlativo":"123458",
+                    "Categoria": "Vaquillon",
+                    "kg":89,
+                    "Costo/kg":675
+                },
+                {
+                    "Correlativo":"123459D",
+                    "Categoria": "Vaca",
+                    "kg":60,
+                    "Costo/kg":675
+                }
+            ],
+            "Total_kg":286
+        },
+        {
+            "Tropa":45459,
+            "Fecha":"12/03/22",
+            "Frigorifico": "Natilla",
+            "Proveedor": "Puchulo",
+            "Detalle":[
+                {
+                    "Correlativo":"123456",
+                    "Categoria": "Vaquillon",
+                    "kg":83,
+                    "Costo/kg":675
+                },
+                {
+                    "Correlativo":"123457T",
+                    "Categoria": "Vaca",
+                    "kg":54,
+                    "Costo/kg":675
+                },
+                {
+                    "Correlativo":"123458",
+                    "Categoria": "Vaquillon",
+                    "kg":89,
+                    "Costo/kg":675
+                },
+                {
+                    "Correlativo":"123459D",
+                    "Categoria": "Vaca",
+                    "kg":60,
+                    "Costo/kg":675
+                }
+            ],
+            "Total_kg":286
+        },
+        {
+            "Tropa":45460,
+            "Fecha":"12/03/22",
+            "Frigorifico": "Natilla",
+            "Proveedor": "Puchulo",
+            "Detalle":[
+                {
+                    "Correlativo":"123456",
+                    "Categoria": "Vaquillon",
+                    "kg":83,
+                    "Costo/kg":675
+                },
+                {
+                    "Correlativo":"123457T",
+                    "Categoria": "Vaca",
+                    "kg":54,
+                    "Costo/kg":675
+                },
+                {
+                    "Correlativo":"123458",
+                    "Categoria": "Vaquillon",
+                    "kg":89,
+                    "Costo/kg":675
+                },
+                {
+                    "Correlativo":"123459D",
+                    "Categoria": "Vaca",
+                    "kg":60,
+                    "Costo/kg":675
+                }
+            ],
+            "Total_kg":286
+        },
+        {
+            "Tropa":45461,
+            "Fecha":"12/03/22",
+            "Frigorifico": "Natilla",
+            "Proveedor": "Puchulo",
+            "Detalle":[
+                {
+                    "Correlativo":"123456",
+                    "Categoria": "Vaquillon",
+                    "kg":83,
+                    "Costo/kg":675
+                },
+                {
+                    "Correlativo":"123457T",
+                    "Categoria": "Vaca",
+                    "kg":54,
+                    "Costo/kg":675
+                },
+                {
+                    "Correlativo":"123458",
+                    "Categoria": "Vaquillon",
+                    "kg":89,
+                    "Costo/kg":675
+                },
+                {
+                    "Correlativo":"123459D",
+                    "Categoria": "Vaca",
+                    "kg":60,
+                    "Costo/kg":675
+                }
+            ],
+            "Total_kg":286
+        },
+        {
+            "Tropa":45462,
+            "Fecha":"12/03/22",
+            "Frigorifico": "Natilla",
+            "Proveedor": "Puchulo",
+            "Detalle":[
+                {
+                    "Correlativo":"123456",
+                    "Categoria": "Vaquillon",
+                    "kg":83,
+                    "Costo/kg":675
+                },
+                {
+                    "Correlativo":"123457T",
+                    "Categoria": "Vaca",
+                    "kg":54,
+                    "Costo/kg":675
+                },
+                {
+                    "Correlativo":"123458",
+                    "Categoria": "Vaquillon",
+                    "kg":89,
+                    "Costo/kg":675
+                },
+                {
+                    "Correlativo":"123459D",
+                    "Categoria": "Vaca",
+                    "kg":60,
+                    "Costo/kg":675
+                }
+            ],
+            "Total_kg":286
         }
     ]
 }

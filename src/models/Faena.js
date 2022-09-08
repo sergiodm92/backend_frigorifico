@@ -38,6 +38,10 @@ module.exports = (sequelize) => {
     costo_total: {
       type: DataTypes.FLOAT,
       allowNull: false,
+    },
+    saldo: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
     }
   });
 };

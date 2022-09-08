@@ -7,6 +7,10 @@ module.exports = (sequelize) => {
         autoIncrement: true,
         primaryKey: true,
     },
+    tropa: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     fecha: {
       type: DataTypes.DATE,
       allowNull: false,

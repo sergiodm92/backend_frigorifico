@@ -40,7 +40,7 @@ module.exports = (sequelize) => {
     },
     kg_desbaste: {
       type: DataTypes.FLOAT,
-      allowNull: false,
+      allowNull: true,
     },
     kgv_netos: {
       type: DataTypes.FLOAT,
@@ -66,6 +66,14 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    recupero_$kg: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    costo_hac: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+    },
     costo_faena_kg: {
       type: DataTypes.FLOAT,
       allowNull: false,
@@ -79,6 +87,18 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     costo_veps: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+    },
+    costo_faena: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+    },
+    costo_total: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+    },
+    costo_kg: {
       type: DataTypes.FLOAT,
       allowNull: false,
     },

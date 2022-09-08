@@ -23,5 +23,13 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    ultima_venta: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+    saldo: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+    },
   });
 };
