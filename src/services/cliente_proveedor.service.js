@@ -1,10 +1,32 @@
-const Cliente = require("../models/Cliente");
-const Proveedor = require("../models/Proveedor");
+const { Cliente, Proveedor } = require("../db");
 
-const test = () => {
 
+const getAllClientes = async () => {
+    let allClientes = await Cliente.findAll();
+    return allClientes;
 };
 
+const getCliente = async (id) => {
+    let venta = await Cliente.findByPk(id);
+    return venta;
+};
+
+
+const getAllProveedores = async () => {
+    let allProveedores = await Proveedor.findAll();
+    return allProveedores;
+};
+
+const getProveedor = async (id) => {
+    let proveedor = await Proveedor.findByPk(id);
+    return proveedor;
+};
+
+
 module.exports = {
-    test
+    getAllClientes,
+    getCliente,
+
+    getAllProveedores,
+    getProveedor
 }
