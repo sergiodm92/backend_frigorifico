@@ -9,19 +9,19 @@ module.exports = (sequelize) => {
     },
     fecha: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
     },
     tropa: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     frigorifico: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     proveedor: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     detalle: {
       type: DataTypes.ARRAY(DataTypes.JSON),
@@ -29,19 +29,19 @@ module.exports = (sequelize) => {
     },
     total_kg: {
       type: DataTypes.FLOAT,
-      allowNull: false,
+      allowNull: true,
     },
     total_medias: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     costo_total: {
       type: DataTypes.FLOAT,
-      allowNull: false,
+      allowNull: true,
     },
     saldo: {
       type: DataTypes.FLOAT,
-      allowNull: false,
+      allowNull: true,
     }
   });
 };

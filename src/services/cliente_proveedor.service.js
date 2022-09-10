@@ -11,6 +11,20 @@ const getCliente = async (id) => {
     return venta;
 };
 
+const crearCliente = async ({ nombre, telefono, email, direccion }) => {
+    try {
+        await Cliente.create({
+            nombre,
+            telefono,
+            email,
+            direccion
+        })
+        return true;
+    } catch (e) {
+        console.log(e);
+        return false;
+    }
+};
 
 const getAllProveedores = async () => {
     let allProveedores = await Proveedor.findAll();
@@ -22,11 +36,27 @@ const getProveedor = async (id) => {
     return proveedor;
 };
 
+const crearProveedor = async ({ nombre, telefono, email, direccion }) => {
+    try {
+        await Proveedor.create({
+            nombre,
+            telefono,
+            email,
+            direccion
+        })
+        return true;
+    } catch (e) {
+        console.log(e);
+        return false;
+    }
+};
 
 module.exports = {
     getAllClientes,
     getCliente,
+    crearCliente,
 
     getAllProveedores,
-    getProveedor
+    getProveedor,
+    crearProveedor
 }

@@ -9,15 +9,11 @@ module.exports = (sequelize) => {
     },
     fecha: {
       type: DataTypes.DATE,
-      allowNull: false,
-    },
-    id_cliente: {
-      type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true,
     },
     cliente: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     detalle: {
       type: DataTypes.ARRAY(DataTypes.JSON),
@@ -25,31 +21,31 @@ module.exports = (sequelize) => {
     },
     cant: {
       type: DataTypes.FLOAT,
-      allowNull: false,
+      allowNull: true,
     },
     kg_total: {
       type: DataTypes.FLOAT,
-      allowNull: false,
+      allowNull: true,
     },
     $_kg_prom: {
       type: DataTypes.FLOAT,
-      allowNull: false,
+      allowNull: true,
     },
     total: {
       type: DataTypes.FLOAT,
-      allowNull: false,
+      allowNull: true,
     },
     margen_kg: {
       type: DataTypes.FLOAT,
-      allowNull: false,
+      allowNull: true,
     },
     margen_venta: {
       type: DataTypes.FLOAT,
-      allowNull: false,
+      allowNull: true,
     },
     margen_porciento: {
       type: DataTypes.FLOAT,
-      allowNull: false,
+      allowNull: true,
     },
   });
 };

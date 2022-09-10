@@ -8,7 +8,9 @@ const {
 const {
     getVenta,
     getAllVentas,
-    getAllVentasPorIDCliente
+    getAllVentasPorIDCliente,
+    crearVenta,
+    actualizarSaldoVenta
 } = require("../services/compra_venta_pagos.service");
 
 const route = Router();
@@ -53,6 +55,38 @@ route.get('/all/:id', async (req, res) => {
         return res.status(400).send(customResponseError("No se han encontrado ventas", 404));
     } catch (error) {
         return res.status(400).send(customResponseError("Error, compruebe que el id que desea buscar es correcto.", 400));
+    }
+})
+
+route.post('/', (req, res) => {
+    if(!req.body){
+        return res.status(400).send(customResponseError("Se necesita información para crear la venta", 400));
+    }
+
+    if(crearVenta(req.body)){
+        return res.status(201).send(customResponseExito("Venta creada con éxito"));
+    }
+    return res.status(400).send(customResponseError("Error al crear la venta", 400));
+})
+
+route.put('/', (req, res) => {
+    const { client_id, saldo } = req.body
+
+    try {
+        if(!saldo || !client_id){
+            return res.status(400).send(customResponseError("Se necesita información para procesar la solicitud", 400));
+        }
+
+        if (!Number.isInteger(parseInt(client_id))) {
+            return res.status(400).send(customResponseError("El id del cliente debe ser un número entero", 400));
+        }
+
+        if(actualizarSaldoVenta(client_id, saldo)){
+            return res.status(201).send(customResponseExito("Saldo de venta actualizado con éxito"));
+        }
+        return res.status(400).send(customResponseError("Error al crear la venta", 400));
+    } catch (error) {
+        return res.status(400).send(customResponseError("Error, compruebe que el id que desea buscar es correcto o verifique que el saldo.", 400));
     }
 })
 

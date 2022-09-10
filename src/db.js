@@ -64,15 +64,16 @@ const {
 } = sequelize.models;
 
 // Aca vendrian las relaciones
-Compra.belongsToMany(Proveedor, { through: 'compra_proveedor'});
-Compra.belongsTo(Faena);
-Venta.belongsToMany(Cliente, { through: 'cliente_venta'});
+
+Cliente.hasMany(Venta);
 Faena.belongsTo(Compra);
-Faena.belongsTo(Venta);
+Faena.hasMany(Venta);
 Proveedor.belongsTo(Compra);
-Venta.belongsTo(Faena);
+Proveedor.hasOne(Compra);
+Proveedor.belongsTo(Stock);
 
 module.exports = {
   ...sequelize.models,
   conn: sequelize,
 };
+

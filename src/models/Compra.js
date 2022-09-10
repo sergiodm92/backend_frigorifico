@@ -2,41 +2,37 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
   sequelize.define('compra', {
-    id_compra:{
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     fecha: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
     },
     proveedor: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     lugar: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     n_dte: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     categoria: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     cant: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     kgv_brutos: {
       type: DataTypes.FLOAT,
-      allowNull: false,
+      allowNull: true,
     },
     desbaste: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     kg_desbaste: {
       type: DataTypes.FLOAT,
@@ -44,15 +40,15 @@ module.exports = (sequelize) => {
     },
     kgv_netos: {
       type: DataTypes.FLOAT,
-      allowNull: false,
+      allowNull: true,
     },
     $_kgv_netos: {
       type: DataTypes.FLOAT,
-      allowNull: false,
+      allowNull: true,
     },
     n_tropa: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     kg_carne: {
       type: DataTypes.FLOAT,
@@ -64,19 +60,19 @@ module.exports = (sequelize) => {
     },
     $_venta: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     recupero_$kg: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     costo_hac: {
       type: DataTypes.FLOAT,
-      allowNull: false,
+      allowNull: true,
     },
     costo_faena_kg: {
       type: DataTypes.FLOAT,
-      allowNull: false,
+      allowNull: true,
     },
     comision: {
       type: DataTypes.FLOAT,
@@ -84,23 +80,23 @@ module.exports = (sequelize) => {
     },
     costo_flete: {
       type: DataTypes.FLOAT,
-      allowNull: false,
+      allowNull: true,
     },
     costo_veps: {
       type: DataTypes.FLOAT,
-      allowNull: false,
+      allowNull: true,
     },
     costo_faena: {
       type: DataTypes.FLOAT,
-      allowNull: false,
+      allowNull: true,
     },
     costo_total: {
       type: DataTypes.FLOAT,
-      allowNull: false,
+      allowNull: true,
     },
     costo_kg: {
       type: DataTypes.FLOAT,
-      allowNull: false,
+      allowNull: true,
     },
   });
 };

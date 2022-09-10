@@ -3,6 +3,7 @@ const { Router } = require('express');
 const {
     getProveedor,
     getAllProveedores,
+    crearProveedor,
 } = require("../services/cliente_proveedor.service");
 
 const {
@@ -34,6 +35,17 @@ route.get('/:id', async (req, res) => {
         console.log(error)
         return res.status(400).json(customResponseError("Error, compruebe que el id que desea buscar es correcto.", 400));
     }
+})
+
+route.post('/', (req, res) => {
+    if(!req.body){
+        return res.status(400).send(customResponseError("Se necesita información para crear el proveedor", 400));
+    }
+
+    if(crearProveedor(req.body)){
+        return res.status(201).send(customResponseExito("Proveedor creado con éxito"));
+    }
+    return res.status(400).send(customResponseError("Error al crear el proveedor", 400));
 })
 
 module.exports = route;

@@ -17,6 +17,7 @@ class DetalleVenta {
     kg;
     $_kg;
     margen;
+    saldo;
 }
 
 class DetalleStock {

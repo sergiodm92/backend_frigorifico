@@ -9,27 +9,27 @@ module.exports = (sequelize) => {
     },
     nombre: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     telefono: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     email: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     direccion: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     ultima_compra: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
     },
     saldo: {
       type: DataTypes.FLOAT,
-      allowNull: false,
+      allowNull: true,
     },
   });
 };

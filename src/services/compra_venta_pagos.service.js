@@ -1,4 +1,4 @@
-const { Compra, Venta, PagoCompra, PagoFaena, PagoVenta } = require("../db");
+const { Compra, Venta, Cliente, PagoCompra, PagoFaena, PagoVenta } = require("../db");
 
 
 const getAllVentas = async () => {
@@ -11,13 +11,59 @@ const getVenta = async (id) => {
     return venta;
 };
 
-const getAllVentasPorIDCliente = async (clientID) => {
+const getAllVentasPorIDCliente = async (client_id) => {
     let ventas = await Venta.findAll({
-        where:{
-            id_cliente: clientID
+        where: {
+            id_cliente: client_id
         }
     });
     return ventas;
+};
+
+const crearVenta = async ({ fecha, cliente, detalle, cant, kg_total, $_kg_prom, total, margen_kg, margen_venta, margen_porciento }) => {
+    try {
+        const venta = await Venta.create({
+            fecha,
+            cliente,
+            detalle,
+            cant,
+            kg_total,
+            $_kg_prom,
+            total,
+            margen_kg,
+            margen_venta,
+            margen_porciento
+        })
+
+        cliente_db = await Cliente.find({
+            where: {
+                nombre: cliente
+            }
+        })
+
+        await venta.addCliente(cliente_db);
+        return true;
+    } catch (e) {
+        console.log(e);
+        return false;
+    }
+};
+
+const actualizarSaldoVenta = async (client_id, saldo) => {
+    try{
+        const venta = await Venta.findOne({
+            where:{
+                clienteID: client_id
+            }
+        });
+        venta.saldo = saldo;
+        await venta.save();
+        return true
+    }
+    catch (e) {
+        console.log(e);
+        return false;
+    }
 };
 
 const getAllCompras = async () => {
@@ -32,7 +78,7 @@ const getCompra = async (id) => {
 
 const getComprasPorProveedor = async (proveedor) => {
     let compras = await Compra.findAll({
-        where:{
+        where: {
             proveedor: proveedor
         }
     });
@@ -67,46 +113,18 @@ const crearCompra = async (data) => {
             costo_total: data.costo_total,
             costo_kg: data.costo_kg,
         })
-        proveedor = await Proveedor.find({
-            where:{
+        proveedor_db = await Proveedor.find({
+            where: {
                 nombre: proveedor
             }
         })
-        await compra.addProveedors(proveedor.ID);
-        //await compra.addFaena(proveedor.ID);
+        await compra.addProveedors(proveedor_db);
+        return true;
     } catch (e) {
         console.log(e);
+        return false;
     }
-}
-
-/*
-
-    fecha,
-    proveedor,
-    lugar,
-    n_dte,
-    categoria,
-    cant,
-    kgv_brutos,
-    desbaste,
-    kg_desbaste,
-    kgv_netos,
-    $_kgv_netos,
-    n_tropa,
-    kg_carne,
-    kg_achuras,
-    $_venta,
-    recupero_$kg,
-    costo_hac:,
-    costo_faena_kg,
-    comision,
-    costo_flete,
-    costo_veps,
-    costo_faena,
-    costo_total,
-    costo_kg,
-
-*/
+};
 
 module.exports = {
     getCompra,
@@ -116,5 +134,7 @@ module.exports = {
 
     getVenta,
     getAllVentas,
-    getAllVentasPorIDCliente
-}
+    getAllVentasPorIDCliente,
+    crearVenta,
+    actualizarSaldoVenta,
+};
