@@ -40,10 +40,28 @@ const crearFaena = async ({ fecha, tropa, frigorifico, proveedor, detalle, total
     }
 };
 
+const actualizarSaldoFaena = async (faena_id, saldo) => {
+    try{
+        const faena = await Faena.findOne({
+            where:{
+                faena_id: faena_id
+            }
+        });
+        faena.saldo = saldo;
+        await faena.save();
+        return true
+    }
+    catch (e) {
+        console.log(e);
+        return false;
+    }
+};
+
 module.exports = {
     getAllStock,
 
     getAllFaenas,
     getAllFaenasPorNTropa,
-    crearFaena
+    crearFaena,
+    actualizarSaldoFaena
 }
