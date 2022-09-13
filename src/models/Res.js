@@ -1,34 +1,34 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-  sequelize.define('cliente', {
+  sequelize.define('res', {
     ID: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
     },
-    nombre: {
-      type: DataTypes.STRING,
+    correlativo: {
+      type: DataTypes.INTEGER,
       allowNull: true,
     },
-    telefono: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    direccion: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    ultima_venta: {
-      type: DataTypes.DATE,
-      allowNull: true,
-    },
-    saldo: {
+    kg: {
       type: DataTypes.FLOAT,
+      allowNull: true,
+    },
+    $_kg: {
+      type: DataTypes.FLOAT,
+      allowNull: true,
+    },
+    tropa: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
+    stock: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true,
+    },
+    id_v: {
+      type: DataTypes.INTEGER,
       allowNull: true,
     },
   });
