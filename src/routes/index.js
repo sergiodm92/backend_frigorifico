@@ -6,6 +6,7 @@ const pagoCompras = require('./pagoCompras');
 const pagoFaenas = require('./pagoFaenas');
 const pagoVentas = require('./pagoVentas');
 const proveedores = require('./proveedores');
+const res = require('./res');
 const stock = require('./stock');
 const ventas = require('./ventas');
 
@@ -18,6 +19,7 @@ router.use('/pago-compras', pagoCompras);
 router.use('/pago-faenas', pagoFaenas);
 router.use('/pago-ventas', pagoVentas);
 router.use('/proveedores', proveedores);
+router.use('/res', res);
 router.use('/stock', stock);
 router.use('/ventas', ventas);
 
