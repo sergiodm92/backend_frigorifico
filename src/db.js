@@ -59,8 +59,10 @@ const {
   PagoFaena, 
   PagoVenta,
   Proveedor,
+  Res,
+  Stock,
+  User,
   Venta,
-  Stock
 } = sequelize.models;
 
 // Aca vendrian las relaciones

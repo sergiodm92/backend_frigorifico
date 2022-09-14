@@ -14,6 +14,15 @@ const getAllResesPorCorrelativo = async (correlativo) => {
     return faena;
 };
 
+const getAllResesEnStock = async () => {
+    let reses = await reses.findAll({
+        where:{
+            stock: true
+        }
+    });
+    return faena;
+};
+
 /* const crearFaena = async ({ fecha, tropa, frigorifico, proveedor, detalle, total_kg, total_medias, costo_total }) => {
     try {
         await Faena.create({
@@ -53,4 +62,5 @@ const actualizarSaldoFaena = async (faena_id, saldo) => {
 module.exports = {
     getAllReses,
     getAllResesPorCorrelativo,
+    getAllResesEnStock
 }

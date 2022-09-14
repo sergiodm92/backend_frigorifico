@@ -3,6 +3,7 @@ const { Router } = require('express');
 const {
     getAllReses,
     getAllResPorCorrelativo,
+    getAllResesEnStock
 } = require("../services/res.service");
 
 const {
@@ -14,6 +15,10 @@ const route = Router();
 
 route.get('/all', async (req, res) => {
     return res.send(customResponseExito(await getAllReses()))
+});
+
+route.get('/all_stock', async (req, res) => {
+    return res.send(customResponseExito(await getAllResesEnStock()))
 });
 
 route.get('/:correlativo', async (req, res) => {
