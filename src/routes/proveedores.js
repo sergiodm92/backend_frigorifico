@@ -4,6 +4,7 @@ const {
     getProveedor,
     getAllProveedores,
     crearProveedor,
+    actualizarSaldoCompra
 } = require("../services/cliente_proveedor.service");
 
 const {
@@ -46,6 +47,27 @@ route.post('/', (req, res) => {
         return res.status(201).send(customResponseExito("Proveedor creado con éxito"));
     }
     return res.status(400).send(customResponseError("Error al crear el proveedor", 400));
+})
+
+route.put('/', (req, res) => {
+    const { proveedor_id, saldo } = req.body
+
+    try {
+        if(!saldo || !proveedor_id){
+            return res.status(400).send(customResponseError("Se necesita información para procesar la solicitud", 400));
+        }
+
+        if (!Number.isInteger(parseInt(proveedor_id))) {
+            return res.status(400).send(customResponseError("El id del proveedor debe ser un número entero", 400));
+        }
+
+        if(actualizarSaldoCompra(proveedor_id, saldo)){
+            return res.status(201).send(customResponseExito("Saldo de compra actualizado con éxito"));
+        }
+        return res.status(400).send(customResponseError("Error al actualizar el saldo", 400));
+    } catch (error) {
+        return res.status(400).send(customResponseError("Error, compruebe que el id que desea buscar es correcto o verifique que el saldo.", 400));
+    }
 })
 
 module.exports = route;

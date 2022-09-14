@@ -1,4 +1,4 @@
-const { Cliente, Proveedor } = require("../db");
+const { Cliente, Proveedor, Compra } = require("../db");
 
 
 const getAllClientes = async () => {
@@ -51,6 +51,23 @@ const crearProveedor = async ({ nombre, telefono, email, direccion }) => {
     }
 };
 
+const actualizarSaldoCompra = async (proveedor_id, saldo) => {
+    try{
+        const compra = await Compra.findOne({
+            where:{
+                proveedorID: proveedor_id
+            }
+        });
+        compra.saldo = saldo;
+        await compra.save();
+        return true
+    }
+    catch (e) {
+        console.log(e);
+        return false;
+    }
+};
+
 module.exports = {
     getAllClientes,
     getCliente,
@@ -58,5 +75,6 @@ module.exports = {
 
     getAllProveedores,
     getProveedor,
-    crearProveedor
+    crearProveedor,
+    actualizarSaldoCompra
 }
