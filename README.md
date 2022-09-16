@@ -34,7 +34,7 @@
 
 | Método  | Ruta | Descripción | Que se le pasa? | Data que necesita | Ejemplo de ruta | Objeto que devuelve |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| GET | /all | Ruta que trae todas las faenas | nada | Token Bearer (header) | `/clientes/all` | `{ "status": "ok", "status_code": 200, "data": [ARRAY CON CLIENTES] }` |
-| GET | /:tropa | Ruta que trae todas las faenas por numero de tropa | query param  + Token Bearer | Token Bearer (header) | `/clientes/all` | `{ "status": "ok", "status_code": 200, "data": [ARRAY CON CLIENTES] }` |
-| POST | / | Ruta para crear una faena | body  + Token Bearer | { nombre, telefono, email, direccion } | `/clientes/` | `{ "status": "ok", "status_code": 200, "data": "Cliente creado con éxito"}` |
-| PUT | / | Ruta para actualizar saldo de faena | body  + Token Bearer | `{ faena_id, saldo }` | `/clientes/2` | `{ "status": "ok", "status_code": 200, "data": {OBJETO CON EL CLIENTE}` |
+| GET | /all | Ruta que trae todas las faenas | nada | Token Bearer (header) | `/faenas/all` | `{ "status": "ok", "status_code": 200, "data": [ARRAY CON FAENAS] }` |
+| GET | /:tropa | Ruta que trae todas las faenas por numero de tropa | query param  + Token Bearer | tropa | `/faenas/1231` | `{ "status": "ok", "status_code": 200, "data": [ARRAY CON FAENAS] }` |
+| POST | / | Ruta para crear una faena | body  + Token Bearer | ![image](https://user-images.githubusercontent.com/54594663/190549566-e6ab76fa-94ed-4dbe-9427-d5a2c5d1959a.png) | `/faenas/` | `{ "status": "ok", "status_code": 200, "data": "Faena creada con éxito"}` |
+| PUT | / | Ruta para actualizar saldo de faena | body  + Token Bearer | `{ faena_id, saldo }` | `/faenas/` | `{ "status": "ok", "status_code": 200, "data": "Saldo de faena actualizado con éxito"` |
