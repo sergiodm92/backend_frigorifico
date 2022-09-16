@@ -51,3 +51,19 @@
 | GET | /:id | Ruta que trae un proveedor | query param  + Token Bearer | id | `/proveedores/5` | `{ "status": "ok", "status_code": 200, "data": {OBJETO CON EL PROVEEDOR}` |
 | POST | / | Ruta para crear un proveedor | body  + Token Bearer | `{ nombre, telefono, email, direccion }` | `/proveedores/` | `{ "status": "ok", "status_code": 200, "data": "Proveedor creado con éxito"}` |
 | PUT | / | Ruta para actualizar saldo de un proveedor | body  + Token Bearer | `{ proveedor_id, saldo }` | `/proveedores/` | `{ "status": "ok", "status_code": 200, "data": "Saldo de proveedor actualizado con éxito"` |
+
+## Res
+
+> Para acceder a dicha ruta se usa el endpoint **/res**
+
+#### Contiene las siguientes rutas:
+
+| Método  | Ruta | Descripción | Que se le pasa? | Data que necesita | Ejemplo de ruta | Objeto que devuelve |
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+| GET | /all | Ruta que trae todas las reses | nada | Token Bearer (header) | `/res/all` | `{ "status": "ok", "status_code": 200, "data": [ARRAY CON RESES] }` |
+| GET | /all_stock | Ruta que trae las reses en stock | query param  + Token Bearer | id | `/res/5` | `{ "status": "ok", "status_code": 200, "data": [ARRAY CON RESES EN STOCK]` |
+| GET | /:correlativo | Ruta que trae res por correlativo | query param  + Token Bearer | id | `/res/521312` | `{ "status": "ok", "status_code": 200, "data": {OBJETO CON LA RES}` |
+| POST | / | Ruta para crear una res | body  + Token Bearer | ![image](https://user-images.githubusercontent.com/54594663/190550743-642962cf-686e-446b-8822-e477952256b1.png) | `/res/` | `{ "status": "ok", "status_code": 200, "data": "Res creada con éxito"}` |
+
+
+
