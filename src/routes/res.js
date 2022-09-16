@@ -1,6 +1,7 @@
 const { Router } = require('express');
 
 const {
+    crearRes,
     getAllReses,
     getAllResPorCorrelativo,
     getAllResesEnStock
@@ -37,17 +38,18 @@ route.get('/:correlativo', async (req, res) => {
     }
 });
 
-/* route.post('/', (req, res) => {
+route.post('/', (req, res) => {
     if(!req.body){
-        return res.status(400).send(customResponseError("Se necesita información para crear la faena", 400));
+        return res.status(400).send(customResponseError("Se necesita información para crear la res", 400));
     }
 
-    if(crearFaena(req.body)){
-        return res.status(201).send(customResponseExito("Faena creada con éxito"));
+    if(crearRes(req.body)){
+        return res.status(201).send(customResponseExito("Res creada con éxito"));
     }
-    return res.status(400).send(customResponseError("Error al crear la faena", 400));
+    return res.status(400).send(customResponseError("Error al crear la res", 400));
 })
 
+/* 
 route.put('/', (req, res) => {
     const { faena_id, saldo } = req.body
 
