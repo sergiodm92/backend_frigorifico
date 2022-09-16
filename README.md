@@ -38,3 +38,16 @@
 | GET | /:tropa | Ruta que trae todas las faenas por numero de tropa | query param  + Token Bearer | tropa | `/faenas/1231` | `{ "status": "ok", "status_code": 200, "data": [ARRAY CON FAENAS] }` |
 | POST | / | Ruta para crear una faena | body  + Token Bearer | ![image](https://user-images.githubusercontent.com/54594663/190549566-e6ab76fa-94ed-4dbe-9427-d5a2c5d1959a.png) | `/faenas/` | `{ "status": "ok", "status_code": 200, "data": "Faena creada con éxito"}` |
 | PUT | / | Ruta para actualizar saldo de faena | body  + Token Bearer | `{ faena_id, saldo }` | `/faenas/` | `{ "status": "ok", "status_code": 200, "data": "Saldo de faena actualizado con éxito"` |
+
+## Proveedores
+
+> Para acceder a dicha ruta se usa el endpoint **/proveedores**
+
+#### Contiene las siguientes rutas:
+
+| Método  | Ruta | Descripción | Que se le pasa? | Data que necesita | Ejemplo de ruta | Objeto que devuelve |
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+| GET | /all | Ruta que trae todos los proveedores | nada | Token Bearer (header) | `/proveedores/all` | `{ "status": "ok", "status_code": 200, "data": [ARRAY CON PROVEEDORES] }` |
+| GET | /:id | Ruta que trae un proveedor | query param  + Token Bearer | id | `/proveedores/5` | `{ "status": "ok", "status_code": 200, "data": {OBJETO CON EL PROVEEDOR}` |
+| POST | / | Ruta para crear un proveedor | body  + Token Bearer | `{ nombre, telefono, email, direccion }` | `/proveedores/` | `{ "status": "ok", "status_code": 200, "data": "Proveedor creado con éxito"}` |
+| PUT | / | Ruta para actualizar saldo de un proveedor | body  + Token Bearer | `{ proveedor_id, saldo }` | `/proveedores/` | `{ "status": "ok", "status_code": 200, "data": "Saldo de proveedor actualizado con éxito"` |
