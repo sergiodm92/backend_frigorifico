@@ -74,3 +74,14 @@
 | Método  | Ruta | Descripción | Que se le pasa? | Data que necesita | Ejemplo de ruta | Objeto que devuelve |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 | GET | /all | Ruta que trae todo el stock | nada | Token Bearer (header) | `/stock/all` | `{ "status": "ok", "status_code": 200, "data": [ARRAY CON STOCK] }` |
+
+## User
+
+> Para acceder a dicha ruta se usa el endpoint **/res**
+
+#### Contiene las siguientes rutas:
+
+| Método  | Ruta | Descripción | Que se le pasa? | Data que necesita | Ejemplo de ruta | Objeto que devuelve |
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+| POST | /login | Ruta para iniciar sesión | body  + Token Bearer | { name, password } | `/user/login` | `[HEADER] "auth-token": "TOKEN BEARER"` |
+| POST | /register | Ruta para registrarse | body  + Token Bearer | { name, password } | `/user/register` | `{ "status": "ok", "status_code": 200, "data": [OBJETO CON EL USUARIO REGISTRADO] }` |
