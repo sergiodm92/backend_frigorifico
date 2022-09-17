@@ -31,7 +31,7 @@ route.post('/login', async (req, res) => {
     try {
         const token = await authLogin(req.body);
         if (token.length > 100) {
-            res.header('auth-token', token).json(token);
+            res.status(200).send(customResponseExito(token));
         }
         else {
             res.status(400).json(customResponseError("No se pudo iniciar sesión, reintente..."))
@@ -48,7 +48,7 @@ route.post('/register', async (req, res) => {
     try {
         const user = await authRegister(req.body);
         if (typeof token !== 'string') {
-            res.status(201).json(user);
+            res.status(201).json(customResponseExito(user));
         }
         else {
             res.status(400).json(customResponseError("No se ha podido registrar, reintente..."));
