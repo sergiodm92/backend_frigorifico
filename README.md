@@ -11,8 +11,8 @@
 | Método  | Ruta | Descripción | Que se le pasa? | Data que necesita | Ejemplo de ruta | Objeto que devuelve |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 | GET | /all | Ruta que trae todos los clientes | nada | Token Bearer (header) | `/clientes/all` | `{ "status": "ok", "status_code": 200, "data": [ARRAY CON CLIENTES] }` |
-| GET | /:id | Ruta para traer un cliente por su ID | query param + Token Bearer | id | `/clientes/2` | `{ "status": "ok", "status_code": 200, "data": {OBJETO CON EL CLIENTE}` |
-| POST | / | Ruta para crear un cliente | body  + Token Bearer | `{ nombre, telefono, email, direccion }` | `/clientes/` | `{ "status": "ok", "status_code": 200, "data": "Cliente creado con éxito"}` |
+| GET | /:id | Ruta para traer un cliente por su ID | query param + Token Bearer (header) | id | `/clientes/2` | `{ "status": "ok", "status_code": 200, "data": {OBJETO CON EL CLIENTE}` |
+| POST | / | Ruta para crear un cliente | body  + Token Bearer (header) | `{ nombre, telefono, email, direccion }` | `/clientes/` | `{ "status": "ok", "status_code": 200, "data": "Cliente creado con éxito"}` |
 
 ## Compras
 > Para acceder a dicha ruta se usa el endpoint **/compras**
@@ -22,9 +22,9 @@
 | Método  | Ruta | Descripción | Que se le pasa? | Data que necesita | Ejemplo de ruta | Objeto que devuelve |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 | GET | /all | Ruta que trae todos las compras | nada | Token Bearer (header) | `/compras/all` | `{ "status": "ok", "status_code": 200, "data": [ARRAY CON CLIENTES] }` |
-| GET | /all/:proveedor | Ruta para traer un cliente por nombre de proveedor | query param  + Token Bearer | proveedor | `/compras/all/Proveedor de prueba` | `{ "status": "ok", "status_code": 200, "data": [ARRAY CON LAS COMPRAS AL PROVEEDOR]` |
-| GET | /:id | Ruta para traer una compra por su ID | query param  + Token Bearer | id | `/compras/2` | `{ "status": "ok", "status_code": 200, "data": {OBJETO CON LA COMPRA}` |
-| POST | / | Ruta para crear una compra | body  + Token Bearer | ![image](https://user-images.githubusercontent.com/54594663/190548645-24cb1c4b-612e-4bcb-bdb3-a024acdb0c3a.png) | `/compras/` | `{ "status": "ok", "status_code": 200, "data": "Compra creada con éxito"}` |
+| GET | /all/:proveedor | Ruta para traer un cliente por nombre de proveedor | query param  + Token Bearer (header) | proveedor | `/compras/all/Proveedor de prueba` | `{ "status": "ok", "status_code": 200, "data": [ARRAY CON LAS COMPRAS AL PROVEEDOR]` |
+| GET | /:id | Ruta para traer una compra por su ID | query param  + Token Bearer (header) | id | `/compras/2` | `{ "status": "ok", "status_code": 200, "data": {OBJETO CON LA COMPRA}` |
+| POST | / | Ruta para crear una compra | body  + Token Bearer (header) | ![image](https://user-images.githubusercontent.com/54594663/190548645-24cb1c4b-612e-4bcb-bdb3-a024acdb0c3a.png) | `/compras/` | `{ "status": "ok", "status_code": 200, "data": "Compra creada con éxito"}` |
 
 ## Faenas
 
@@ -35,9 +35,9 @@
 | Método  | Ruta | Descripción | Que se le pasa? | Data que necesita | Ejemplo de ruta | Objeto que devuelve |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 | GET | /all | Ruta que trae todas las faenas | nada | Token Bearer (header) | `/faenas/all` | `{ "status": "ok", "status_code": 200, "data": [ARRAY CON FAENAS] }` |
-| GET | /:tropa | Ruta que trae todas las faenas por numero de tropa | query param  + Token Bearer | tropa | `/faenas/1231` | `{ "status": "ok", "status_code": 200, "data": [ARRAY CON FAENAS] }` |
-| POST | / | Ruta para crear una faena | body  + Token Bearer | ![image](https://user-images.githubusercontent.com/54594663/190549566-e6ab76fa-94ed-4dbe-9427-d5a2c5d1959a.png) | `/faenas/` | `{ "status": "ok", "status_code": 200, "data": "Faena creada con éxito"}` |
-| PUT | / | Ruta para actualizar saldo de faena | body  + Token Bearer | `{ faena_id, saldo }` | `/faenas/` | `{ "status": "ok", "status_code": 200, "data": "Saldo de faena actualizado con éxito"` |
+| GET | /:tropa | Ruta que trae todas las faenas por numero de tropa | query param  + Token Bearer (header) | tropa | `/faenas/1231` | `{ "status": "ok", "status_code": 200, "data": [ARRAY CON FAENAS] }` |
+| POST | / | Ruta para crear una faena | body  + Token Bearer (header) | ![image](https://user-images.githubusercontent.com/54594663/190549566-e6ab76fa-94ed-4dbe-9427-d5a2c5d1959a.png) | `/faenas/` | `{ "status": "ok", "status_code": 200, "data": "Faena creada con éxito"}` |
+| PUT | / | Ruta para actualizar saldo de faena | body  + Token Bearer (header) | `{ faena_id, saldo }` | `/faenas/` | `{ "status": "ok", "status_code": 200, "data": "Saldo de faena actualizado con éxito"` |
 
 ## Proveedores
 
@@ -48,9 +48,9 @@
 | Método  | Ruta | Descripción | Que se le pasa? | Data que necesita | Ejemplo de ruta | Objeto que devuelve |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 | GET | /all | Ruta que trae todos los proveedores | nada | Token Bearer (header) | `/proveedores/all` | `{ "status": "ok", "status_code": 200, "data": [ARRAY CON PROVEEDORES] }` |
-| GET | /:id | Ruta que trae un proveedor | query param  + Token Bearer | id | `/proveedores/5` | `{ "status": "ok", "status_code": 200, "data": {OBJETO CON EL PROVEEDOR}` |
-| POST | / | Ruta para crear un proveedor | body  + Token Bearer | `{ nombre, telefono, email, direccion }` | `/proveedores/` | `{ "status": "ok", "status_code": 200, "data": "Proveedor creado con éxito"}` |
-| PUT | / | Ruta para actualizar saldo de un proveedor | body  + Token Bearer | `{ proveedor_id, saldo }` | `/proveedores/` | `{ "status": "ok", "status_code": 200, "data": "Saldo de proveedor actualizado con éxito"` |
+| GET | /:id | Ruta que trae un proveedor | query param  + Token Bearer (header) | id | `/proveedores/5` | `{ "status": "ok", "status_code": 200, "data": {OBJETO CON EL PROVEEDOR}` |
+| POST | / | Ruta para crear un proveedor | body  + Token Bearer (header) | `{ nombre, telefono, email, direccion }` | `/proveedores/` | `{ "status": "ok", "status_code": 200, "data": "Proveedor creado con éxito"}` |
+| PUT | / | Ruta para actualizar saldo de un proveedor | body  + Token Bearer (header) | `{ proveedor_id, saldo }` | `/proveedores/` | `{ "status": "ok", "status_code": 200, "data": "Saldo de proveedor actualizado con éxito"` |
 
 ## Res
 
@@ -61,9 +61,9 @@
 | Método  | Ruta | Descripción | Que se le pasa? | Data que necesita | Ejemplo de ruta | Objeto que devuelve |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 | GET | /all | Ruta que trae todas las reses | nada | Token Bearer (header) | `/res/all` | `{ "status": "ok", "status_code": 200, "data": [ARRAY CON RESES] }` |
-| GET | /all_stock | Ruta que trae las reses en stock | query param  + Token Bearer | id | `/res/5` | `{ "status": "ok", "status_code": 200, "data": [ARRAY CON RESES EN STOCK]` |
-| GET | /:correlativo | Ruta que trae res por correlativo | query param  + Token Bearer | id | `/res/521312` | `{ "status": "ok", "status_code": 200, "data": {OBJETO CON LA RES}` |
-| POST | / | Ruta para crear una res | body  + Token Bearer | ![image](https://user-images.githubusercontent.com/54594663/190550743-642962cf-686e-446b-8822-e477952256b1.png) | `/res/` | `{ "status": "ok", "status_code": 200, "data": "Res creada con éxito"}` |
+| GET | /all_stock | Ruta que trae las reses en stock | query param  + Token Bearer (header) | id | `/res/5` | `{ "status": "ok", "status_code": 200, "data": [ARRAY CON RESES EN STOCK]` |
+| GET | /:correlativo | Ruta que trae res por correlativo | query param  + Token Bearer (header) | id | `/res/521312` | `{ "status": "ok", "status_code": 200, "data": {OBJETO CON LA RES}` |
+| POST | / | Ruta para crear una res | body  + Token Bearer (header) | ![image](https://user-images.githubusercontent.com/54594663/190550743-642962cf-686e-446b-8822-e477952256b1.png) | `/res/` | `{ "status": "ok", "status_code": 200, "data": "Res creada con éxito"}` |
 
 ## Stock
 
@@ -83,8 +83,8 @@
 
 | Método  | Ruta | Descripción | Que se le pasa? | Data que necesita | Ejemplo de ruta | Objeto que devuelve |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| POST | /login | Ruta para iniciar sesión | body  + Token Bearer | { name, password } | `/user/login` | `{ "status": "ok", "status_code": 200, "data": [TOKEN DE SESIÓN] }` |
-| POST | /register | Ruta para registrarse | body  + Token Bearer | { name, password } | `/user/register` | `{ "status": "ok", "status_code": 200, "data": [OBJETO CON EL USUARIO REGISTRADO] }` |
+| POST | /login | Ruta para iniciar sesión | body  + Token Bearer (header) | { name, password } | `/user/login` | `{ "status": "ok", "status_code": 200, "data": [TOKEN DE SESIÓN] }` |
+| POST | /register | Ruta para registrarse | body  + Token Bearer (header) | { name, password } | `/user/register` | `{ "status": "ok", "status_code": 200, "data": [OBJETO CON EL USUARIO REGISTRADO] }` |
 
 ## Ventas
 
@@ -95,7 +95,7 @@
 | Método  | Ruta | Descripción | Que se le pasa? | Data que necesita | Ejemplo de ruta | Objeto que devuelve |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 | GET | /all | Ruta que trae todas las ventas | nada | Token Bearer (header) | `/ventas/all` | `{ "status": "ok", "status_code": 200, "data": [ARRAY CON VENTAS] }` |
-| GET | /all/:client_id | Ruta que trae las ventas de un cliente | query param  + Token Bearer | client_id | `/ventas/all/123` | `{ "status": "ok", "status_code": 200, "data": [ARRAY CON LAS VENTAS DEL CLIENTE]` |
-| GET | /:id | Ruta que trae una venta en específico | query param  + Token Bearer | id | `/ventas/52` | `{ "status": "ok", "status_code": 200, "data": {OBJETO CON LA VENTA}` |
-| POST | / | Ruta para crear una venta | body  + Token Bearer | ![image](https://user-images.githubusercontent.com/54594663/190869461-0270c1f8-dd56-4665-ae35-4c5d8f8c764c.png) | `/ventas/` | `{ "status": "ok", "status_code": 200, "data": "Venta creada con éxito"}` |
-| PUT | / | Ruta para crear una res | body  + Token Bearer | `{ client_id, saldo }` | `/ventas/` | `{ "status": "ok", "status_code": 200, "data": "Saldo de venta actualizado con éxito" }` |
+| GET | /all/:client_id | Ruta que trae las ventas de un cliente | query param  + Token Bearer (header) | client_id | `/ventas/all/123` | `{ "status": "ok", "status_code": 200, "data": [ARRAY CON LAS VENTAS DEL CLIENTE]` |
+| GET | /:id | Ruta que trae una venta en específico | query param  + Token Bearer (header) | id | `/ventas/52` | `{ "status": "ok", "status_code": 200, "data": {OBJETO CON LA VENTA}` |
+| POST | / | Ruta para crear una venta | body  + Token Bearer (header) | ![image](https://user-images.githubusercontent.com/54594663/190869461-0270c1f8-dd56-4665-ae35-4c5d8f8c764c.png) | `/ventas/` | `{ "status": "ok", "status_code": 200, "data": "Venta creada con éxito"}` |
+| PUT | / | Ruta para crear una res | body  + Token Bearer (header) | `{ client_id, saldo }` | `/ventas/` | `{ "status": "ok", "status_code": 200, "data": "Saldo de venta actualizado con éxito" }` |
