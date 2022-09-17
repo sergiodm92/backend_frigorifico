@@ -24,7 +24,7 @@ const schemaLogin = Joi.object({
 
 const route = Router();
 
-route.post('/', async (req, res) => {
+route.post('/login', async (req, res) => {
     const { error } = schemaLogin.validate(req.body);
     if (error) return res.status(400).json(customResponseError(error.details[0].message));
 
@@ -41,7 +41,7 @@ route.post('/', async (req, res) => {
     }
 })
 
-route.post('/', async (req, res) => {
+route.post('/register', async (req, res) => {
     const { error } = schemaRegister.validate(req.body);
     if (error) return res.status(400).json(customResponseError(error.details[0].message));
 
