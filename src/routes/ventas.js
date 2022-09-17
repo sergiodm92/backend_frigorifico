@@ -39,15 +39,15 @@ route.get('/:id', async (req, res) => {
     }
 })
 
-route.get('/all/:id', async (req, res) => {
-    const { id } = req.params;
+route.get('/all/:client_id', async (req, res) => {
+    const { client_id } = req.params;
 
     try {
-        if (!Number.isInteger(parseInt(id))) {
+        if (!Number.isInteger(parseInt(client_id))) {
             return res.status(400).send(customResponseError("El id debe ser un número entero", 400));
         }
     
-        const ventas = await getAllVentasPorIDCliente(id);
+        const ventas = await getAllVentasPorIDCliente(client_id);
         
         if (ventas.length > 0) {
             return res.send(customResponseExito(ventas));
