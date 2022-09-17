@@ -83,5 +83,18 @@
 
 | Método  | Ruta | Descripción | Que se le pasa? | Data que necesita | Ejemplo de ruta | Objeto que devuelve |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| POST | /login | Ruta para iniciar sesión | body  + Token Bearer | { name, password } | `/user/login` | `[HEADER] "auth-token": "TOKEN BEARER"` |
+| POST | /login | Ruta para iniciar sesión | body  + Token Bearer | { name, password } | `/user/login` | `{ "status": "ok", "status_code": 200, "data": [TOKEN DE SESIÓN] }` |
 | POST | /register | Ruta para registrarse | body  + Token Bearer | { name, password } | `/user/register` | `{ "status": "ok", "status_code": 200, "data": [OBJETO CON EL USUARIO REGISTRADO] }` |
+
+## Ventas
+
+> Para acceder a dicha ruta se usa el endpoint **/ventas**
+
+#### Contiene las siguientes rutas:
+
+| Método  | Ruta | Descripción | Que se le pasa? | Data que necesita | Ejemplo de ruta | Objeto que devuelve |
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+| GET | /all | Ruta que trae todas las reses | nada | Token Bearer (header) | `/res/all` | `{ "status": "ok", "status_code": 200, "data": [ARRAY CON RESES] }` |
+| GET | /all_stock | Ruta que trae las reses en stock | query param  + Token Bearer | id | `/res/5` | `{ "status": "ok", "status_code": 200, "data": [ARRAY CON RESES EN STOCK]` |
+| GET | /:correlativo | Ruta que trae res por correlativo | query param  + Token Bearer | id | `/res/521312` | `{ "status": "ok", "status_code": 200, "data": {OBJETO CON LA RES}` |
+| POST | / | Ruta para crear una res | body  + Token Bearer | ![image](https://user-images.githubusercontent.com/54594663/190550743-642962cf-686e-446b-8822-e477952256b1.png) | `/res/` | `{ "status": "ok", "status_code": 200, "data": "Res creada con éxito"}` |
