@@ -1,5 +1,11 @@
 # Frigorifico backend
 
+# Cómo enviar el token de login:
+
+![image](https://user-images.githubusercontent.com/54594663/190881907-d8136854-fdce-403b-b92d-ba5711851d66.png)
+
+Se debe enviar en la sección headers como "auth-token" y pegar el token que te da el login
+
 # Endpoints:
 
 ## Clientes
