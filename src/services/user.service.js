@@ -1,51 +1,56 @@
-const User = require('../models/User');
+require("dotenv").config();
+
+const { User } = require('../db');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 const authRegister = async (data) => {
+    const { name, password } = data;
+
+    
     const isUserExist = await User.findOne({
-        where:{
-            name: data.name
-        }
+        where: { name },
     });
 
     if (isUserExist) {
-        return 'Email ya registrado';
-    }
+        throw 'Usuario ya registrado';
+    } 
+   
 
     const salt = await bcrypt.genSalt(10);
-    const password = await bcrypt.hash(data.password, salt);
+    const pass = await bcrypt.hash(password, salt);
 
     const user = await User.create({
-        name: data.name,
-        password: password
+        name,
+        password: pass
     });
 
     try {
         const savedUser = await user.save();
         return savedUser;
     } catch (error) {
-       return error;
+        throw error;
     }
 };
 
 const authLogin = async (data) => {
-    const user = await User.findOne({
-        where:{
-            name: data.name
-        }
-    });
-    if (!user) throw Error('Usuario no encontrado');
+    const { name, password } = data;
 
-    const validPassword = await bcrypt.compare(data.password, user.password);
+    const user = await User.findOne({
+        where: { name }
+    });
+
+    if (!user) throw Error('Usuario no encontrado');
+    
+    const validPassword = await bcrypt.compare(password, user.password);
 
     if (!validPassword) throw Error('contraseña no válida');
 
     const token = jwt.sign({
-        name: user.name,
+        name,
         id: user.ID
     }, process.env.TOKEN_SECRET);
-    
+
     return token;
 };
 

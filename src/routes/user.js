@@ -18,7 +18,7 @@ const schemaRegister = Joi.object({
 })
 
 const schemaLogin = Joi.object({
-    name: Joi.string().min(6).max(255).required().email(),
+    name: Joi.string().min(6).max(255).required(),
     password: Joi.string().min(6).max(1024).required()
 })
 
@@ -47,7 +47,7 @@ route.post('/register', async (req, res) => {
 
     try {
         const user = await authRegister(req.body);
-        if (typeof token !== 'string') {
+        if (typeof user !== 'string') {
             res.status(201).json(customResponseExito(user));
         }
         else {
