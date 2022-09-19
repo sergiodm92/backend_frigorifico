@@ -30,7 +30,7 @@ Se debe enviar en la sección headers como "auth-token" y pegar el token que te 
 | GET | /all | Ruta que trae todos las compras | nada | Token Bearer (header) | `/compras/all` | `{ "status": "ok", "status_code": 200, "data": [ARRAY CON CLIENTES] }` |
 | GET | /all/:proveedor | Ruta para traer un cliente por nombre de proveedor | query param  + Token Bearer (header) | proveedor | `/compras/all/Proveedor de prueba` | `{ "status": "ok", "status_code": 200, "data": [ARRAY CON LAS COMPRAS AL PROVEEDOR]` |
 | GET | /:id | Ruta para traer una compra por su ID | query param  + Token Bearer (header) | id | `/compras/2` | `{ "status": "ok", "status_code": 200, "data": {OBJETO CON LA COMPRA}` |
-| POST | / | Ruta para crear una compra | body  + Token Bearer (header) | ![image](https://user-images.githubusercontent.com/54594663/190548645-24cb1c4b-612e-4bcb-bdb3-a024acdb0c3a.png) | `/compras/` | `{ "status": "ok", "status_code": 200, "data": "Compra creada con éxito"}` |
+| POST | / | Ruta para crear una compra | body  + Token Bearer (header) | ![image](https://user-images.githubusercontent.com/54594663/190939642-1ef0b77a-ece9-40bf-b1b7-52ab38e47eba.png) | `/compras/` | `{ "status": "ok", "status_code": 200, "data": "Compra creada con éxito"}` |
 
 ## Faenas
 
