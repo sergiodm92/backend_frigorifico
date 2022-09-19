@@ -49,16 +49,16 @@ route.get('/all/:proveedor', async (req, res) => {
         }
         return res.status(404).send(customResponseError("No se han encontrado compras", 404));
     } catch (error) {
-        return res.status(400).send(customResponseError("Error, compruebe que el id que desea buscar es correcto.", 400));
+        return res.status(400).send(customResponseError("Error, compruebe que el proveedor que desea buscar es correcto.", 400));
     }
 })
 
-route.post('/', (req, res) => {
+route.post('/', async (req, res) => {
     if(!req.body){
         return res.status(400).send(customResponseError("Se necesita información para crear la compra", 400));
     }
 
-    if(crearCompra(req.body)){
+    if(await crearCompra(req.body)){
         return res.status(201).send(customResponseExito("Compra creada con éxito"));
     }
     return res.status(400).send(customResponseError("Error al crear la compra", 400));

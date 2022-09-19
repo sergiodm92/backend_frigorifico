@@ -9,6 +9,7 @@ module.exports = (sequelize) => {
     },
     fecha: {
       type: DataTypes.DATE,
+      default: new Date().toLocaleDateString(),
       allowNull: true,
     },
     cliente: {
@@ -44,6 +45,10 @@ module.exports = (sequelize) => {
       allowNull: true,
     },
     margen_porciento: {
+      type: DataTypes.FLOAT,
+      allowNull: true,
+    },
+    saldo: {
       type: DataTypes.FLOAT,
       allowNull: true,
     },

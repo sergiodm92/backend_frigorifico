@@ -1,4 +1,4 @@
-const { Compra, Venta, Cliente, PagoCompra, PagoFaena, PagoVenta } = require("../db");
+const { Compra, Venta, Cliente, Proveedor, PagoCompra, PagoFaena, PagoVenta } = require("../db");
 
 
 const getAllVentas = async () => {
@@ -20,10 +20,10 @@ const getAllVentasPorIDCliente = async (client_id) => {
     return ventas;
 };
 
-const crearVenta = async ({ fecha, cliente, detalle, cant, kg_total, precio_kg_prom, total, margen_kg, margen_venta, margen_porciento }) => {
+const crearVenta = async ({ cliente, detalle, cant, kg_total, precio_kg_prom, total, margen_kg, margen_venta, margen_porciento, saldo }) => {
     try {
         const venta = await Venta.create({
-            fecha,
+            fecha: new Date(),
             cliente,
             detalle,
             cant,
@@ -32,16 +32,19 @@ const crearVenta = async ({ fecha, cliente, detalle, cant, kg_total, precio_kg_p
             total,
             margen_kg,
             margen_venta,
-            margen_porciento
+            margen_porciento,
+            saldo
         })
 
-        let cliente_db = await Cliente.find({
+        let cliente_db = await Cliente.findOne({
             where: {
                 nombre: cliente
             }
         })
 
-        await venta.addCliente(cliente_db);
+        venta.clienteID = cliente_db.ID;
+
+        await venta.save();
         return true;
     } catch (e) {
         console.log(e);
@@ -49,11 +52,12 @@ const crearVenta = async ({ fecha, cliente, detalle, cant, kg_total, precio_kg_p
     }
 };
 
-const actualizarSaldoVenta = async (client_id, saldo) => {
+const actualizarSaldoVenta = async (venta_id, client_id, saldo) => {
     try{
         const venta = await Venta.findOne({
             where:{
-                clienteID: client_id
+                ID: venta_id,
+                clienteID: client_id,
             }
         });
         venta.saldo = saldo;
@@ -88,7 +92,7 @@ const getComprasPorProveedor = async (proveedor) => {
 const crearCompra = async ({ proveedor, lugar, n_dte, categoria, cant, kgv_brutos, desbaste, kg_desbaste, kgv_netos, precio_kgv_netos, n_tropa, kg_carne, kg_achuras, precio_venta, recupero_precio_kg, costo_hac, costo_faena_kg, comision, costo_flete, costo_veps, costo_faena, costo_total, costo_kg }) => {
     try {
         const compra = await Compra.create({
-            fecha: new Date().getDate().toLocaleString(),
+            fecha: new Date(),
             proveedor,
             lugar,
             n_dte,
@@ -113,12 +117,13 @@ const crearCompra = async ({ proveedor, lugar, n_dte, categoria, cant, kgv_bruto
             costo_total,
             costo_kg,
         })
-        proveedor_db = await Proveedor.find({
+        let proveedor_db = await Proveedor.findOne({
             where: {
                 nombre: proveedor
             }
         })
-        await compra.addProveedors(proveedor_db);
+        compra.proveedorID = proveedor_db?.ID;
+        compra.save();
         return true;
     } catch (e) {
         console.log(e);

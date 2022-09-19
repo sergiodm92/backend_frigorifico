@@ -1,9 +1,13 @@
-const { Faena, Stock } = require("../db");
+const { Faena, Stock, Res, Compra } = require("../db");
 
 
 const getAllStock = async () => {
-    let allStock = await Stock.findAll();
-    return allStock;
+    let reses = await Res.findAll({
+        where: {
+            stock: true
+        }
+    });
+    return reses;
 };
 
 
@@ -21,10 +25,10 @@ const getAllFaenasPorNTropa = async (nTropa) => {
     return faena;
 };
 
-const crearFaena = async ({ fecha, tropa, frigorifico, proveedor, detalle, total_kg, total_medias, costo_total }) => {
+const crearFaena = async ({ tropa, frigorifico, proveedor, detalle, total_kg, total_medias, costo_total, saldo }) => {
     try {
         await Faena.create({
-            fecha,
+            fecha: new Date(),
             tropa,
             frigorifico,
             proveedor,
@@ -32,6 +36,7 @@ const crearFaena = async ({ fecha, tropa, frigorifico, proveedor, detalle, total
             total_kg,
             total_medias,
             costo_total,
+            saldo
         })
         return true;
     } catch (e) {
@@ -40,20 +45,19 @@ const crearFaena = async ({ fecha, tropa, frigorifico, proveedor, detalle, total
     }
 };
 
-const actualizarSaldoFaena = async (faena_id, saldo) => {
+const actualizarSaldoFaena = async (faena_id, compraId, saldo) => {
     try{
-        const faena = await Faena.findOne({
-            where:{
-                faena_id: faena_id
-            }
-        });
+        const faena = await Faena.findByPk(faena_id);
+        const compra = await Compra.findByPk(compraId);
         faena.saldo = saldo;
+        faena.compraId = compra;
+        faena.setCompra(compra);
         await faena.save();
-        return true
+        return true;
     }
     catch (e) {
         console.log(e);
-        return false;
+        throw e;
     }
 };
 

@@ -9,6 +9,7 @@ module.exports = (sequelize) => {
     },
     fecha: {
       type: DataTypes.DATE,
+      default: new Date().toLocaleDateString(),
       allowNull: true,
     },
     tropa: {

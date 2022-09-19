@@ -4,6 +4,7 @@ module.exports = (sequelize) => {
   sequelize.define('compra', {
     fecha: {
       type: DataTypes.DATE,
+      default: new Date().toLocaleDateString(),
       allowNull: true,
     },
     proveedor: {

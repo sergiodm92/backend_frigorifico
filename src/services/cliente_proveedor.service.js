@@ -36,13 +36,14 @@ const getProveedor = async (id) => {
     return proveedor;
 };
 
-const crearProveedor = async ({ nombre, telefono, email, direccion }) => {
+const crearProveedor = async ({ saldo, nombre, telefono, email, direccion }) => {
     try {
         await Proveedor.create({
             nombre,
             telefono,
             email,
-            direccion
+            direccion,
+            saldo
         })
         return true;
     } catch (e) {
@@ -53,14 +54,10 @@ const crearProveedor = async ({ nombre, telefono, email, direccion }) => {
 
 const actualizarSaldoCompra = async (proveedor_id, saldo) => {
     try{
-        const compra = await Compra.findOne({
-            where:{
-                proveedorID: proveedor_id
-            }
-        });
-        compra.saldo = saldo;
-        await compra.save();
-        return true
+        const proveedor = await Proveedor.findByPk(proveedor_id);
+        proveedor.saldo = saldo;
+        await proveedor.save();
+        return true;
     }
     catch (e) {
         console.log(e);

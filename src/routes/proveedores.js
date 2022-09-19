@@ -38,18 +38,18 @@ route.get('/:id', async (req, res) => {
     }
 })
 
-route.post('/', (req, res) => {
+route.post('/', async(req, res) => {
     if(!req.body){
         return res.status(400).send(customResponseError("Se necesita información para crear el proveedor", 400));
     }
 
-    if(crearProveedor(req.body)){
+    if(await crearProveedor(req.body)){
         return res.status(201).send(customResponseExito("Proveedor creado con éxito"));
     }
     return res.status(400).send(customResponseError("Error al crear el proveedor", 400));
 })
 
-route.put('/', (req, res) => {
+route.put('/', async(req, res) => {
     const { proveedor_id, saldo } = req.body
 
     try {
@@ -61,7 +61,7 @@ route.put('/', (req, res) => {
             return res.status(400).send(customResponseError("El id del proveedor debe ser un número entero", 400));
         }
 
-        if(actualizarSaldoCompra(proveedor_id, saldo)){
+        if(await actualizarSaldoCompra(proveedor_id, saldo)){
             return res.status(201).send(customResponseExito("Saldo de compra actualizado con éxito"));
         }
         return res.status(400).send(customResponseError("Error al actualizar el saldo", 400));

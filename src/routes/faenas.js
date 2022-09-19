@@ -24,7 +24,7 @@ route.get('/:tropa', async (req, res) => {
     try {    
         const faenas = await getAllFaenasPorNTropa(tropa);
         
-        if (compras) {
+        if (faenas) {
             return res.json(customResponseExito(faenas));
         }
         return res.status(404).json(customResponseError("No se ha encontrado la faena por tropa", 404));
@@ -45,19 +45,23 @@ route.post('/', (req, res) => {
     return res.status(400).send(customResponseError("Error al crear la faena", 400));
 })
 
-route.put('/', (req, res) => {
-    const { faena_id, saldo } = req.body
+route.put('/', async (req, res) => {
+    const { faena_id, compra_id, saldo } = req.body
 
     try {
-        if(!saldo || !faena_id){
+        if(!saldo || !faena_id || !compra_id){
             return res.status(400).send(customResponseError("Se necesita información para procesar la solicitud", 400));
         }
 
         if (!Number.isInteger(parseInt(faena_id))) {
             return res.status(400).send(customResponseError("El id de la faena debe ser un número entero", 400));
         }
+        
+        if (!Number.isInteger(parseInt(compra_id))) {
+            return res.status(400).send(customResponseError("El id de la compra debe ser un número entero", 400));
+        }
 
-        if(actualizarSaldoFaena(faena_id, saldo)){
+        if(await actualizarSaldoFaena(faena_id, compra_id, saldo)){
             return res.status(200).send(customResponseExito("Saldo de faena actualizado con éxito"));
         }
         return res.status(400).send(customResponseError("Error al actualizar el saldo de la faena", 400));

@@ -38,12 +38,12 @@ route.get('/:correlativo', async (req, res) => {
     }
 });
 
-route.post('/', (req, res) => {
+route.post('/', async (req, res) => {
     if(!req.body){
         return res.status(400).send(customResponseError("Se necesita información para crear la res", 400));
     }
 
-    if(crearRes(req.body)){
+    if(await crearRes(req.body)){
         return res.status(201).send(customResponseExito("Res creada con éxito"));
     }
     return res.status(400).send(customResponseError("Error al crear la res", 400));

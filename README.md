@@ -43,7 +43,7 @@ Se debe enviar en la sección headers como "auth-token" y pegar el token que te 
 | GET | /all | Ruta que trae todas las faenas | nada | Token Bearer (header) | `/faenas/all` | `{ "status": "ok", "status_code": 200, "data": [ARRAY CON FAENAS] }` |
 | GET | /:tropa | Ruta que trae todas las faenas por numero de tropa | query param  + Token Bearer (header) | tropa | `/faenas/1231` | `{ "status": "ok", "status_code": 200, "data": [ARRAY CON FAENAS] }` |
 | POST | / | Ruta para crear una faena | body  + Token Bearer (header) | ![image](https://user-images.githubusercontent.com/54594663/190549566-e6ab76fa-94ed-4dbe-9427-d5a2c5d1959a.png) | `/faenas/` | `{ "status": "ok", "status_code": 200, "data": "Faena creada con éxito"}` |
-| PUT | / | Ruta para actualizar saldo de faena | body  + Token Bearer (header) | `{ faena_id, saldo }` | `/faenas/` | `{ "status": "ok", "status_code": 200, "data": "Saldo de faena actualizado con éxito"` |
+| PUT | / | Ruta para actualizar saldo de faena | body  + Token Bearer (header) | `{ faena_id, compra_id, saldo }` | `/faenas/` | `{ "status": "ok", "status_code": 200, "data": "Saldo de faena actualizado con éxito"` |
 
 ## Proveedores
 
@@ -104,4 +104,4 @@ Se debe enviar en la sección headers como "auth-token" y pegar el token que te 
 | GET | /all/:client_id | Ruta que trae las ventas de un cliente | query param  + Token Bearer (header) | client_id | `/ventas/all/123` | `{ "status": "ok", "status_code": 200, "data": [ARRAY CON LAS VENTAS DEL CLIENTE]` |
 | GET | /:id | Ruta que trae una venta en específico | query param  + Token Bearer (header) | id | `/ventas/52` | `{ "status": "ok", "status_code": 200, "data": {OBJETO CON LA VENTA}` |
 | POST | / | Ruta para crear una venta | body  + Token Bearer (header) | ![image](https://user-images.githubusercontent.com/54594663/190939688-98d1a820-3bd0-4a77-8401-967c06252e0c.png) | `/ventas/` | `{ "status": "ok", "status_code": 200, "data": "Venta creada con éxito"}` |
-| PUT | / | Ruta para crear una res | body  + Token Bearer (header) | `{ client_id, saldo }` | `/ventas/` | `{ "status": "ok", "status_code": 200, "data": "Saldo de venta actualizado con éxito" }` |
+| PUT | / | Ruta para crear una res | body  + Token Bearer (header) | `{ venta_id, client_id, saldo }` | `/ventas/` | `{ "status": "ok", "status_code": 200, "data": "Saldo de venta actualizado con éxito" }` |
