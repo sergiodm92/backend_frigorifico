@@ -69,7 +69,7 @@ Se debe enviar en la sección headers como "auth-token" y pegar el token que te 
 | GET | /all | Ruta que trae todas las reses | nada | Token Bearer (header) | `/res/all` | `{ "status": "ok", "status_code": 200, "data": [ARRAY CON RESES] }` |
 | GET | /all_stock | Ruta que trae las reses en stock | query param  + Token Bearer (header) | id | `/res/5` | `{ "status": "ok", "status_code": 200, "data": [ARRAY CON RESES EN STOCK]` |
 | GET | /:correlativo | Ruta que trae res por correlativo | query param  + Token Bearer (header) | id | `/res/521312` | `{ "status": "ok", "status_code": 200, "data": {OBJETO CON LA RES}` |
-| POST | / | Ruta para crear una res | body  + Token Bearer (header) | ![image](https://user-images.githubusercontent.com/54594663/190550743-642962cf-686e-446b-8822-e477952256b1.png) | `/res/` | `{ "status": "ok", "status_code": 200, "data": "Res creada con éxito"}` |
+| POST | / | Ruta para crear una res | body  + Token Bearer (header) | ![image](https://user-images.githubusercontent.com/54594663/190939735-36e2da77-6c40-4f88-a282-f65534ca5bc6.png) | `/res/` | `{ "status": "ok", "status_code": 200, "data": "Res creada con éxito"}` |
 
 ## Stock
 
