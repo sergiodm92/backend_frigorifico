@@ -27,7 +27,7 @@ module.exports = (sequelize) => {
       type: DataTypes.FLOAT,
       allowNull: true,
     },
-    $_kg_prom: {
+    precio_kg_prom: {
       type: DataTypes.FLOAT,
       allowNull: true,
     },

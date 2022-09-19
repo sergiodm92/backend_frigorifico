@@ -42,7 +42,7 @@ module.exports = (sequelize) => {
       type: DataTypes.FLOAT,
       allowNull: true,
     },
-    $_kgv_netos: {
+    precio_kgv_netos: {
       type: DataTypes.FLOAT,
       allowNull: true,
     },
@@ -58,11 +58,11 @@ module.exports = (sequelize) => {
       type: DataTypes.FLOAT,
       allowNull: true,
     },
-    $_venta: {
+    precio_venta: {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    recupero_$kg: {
+    recupero_precio_kg: {
       type: DataTypes.STRING,
       allowNull: true,
     },

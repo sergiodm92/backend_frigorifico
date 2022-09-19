@@ -23,13 +23,13 @@ const getAllResesEnStock = async () => {
     return faena;
 };
 
-const crearRes = async ({ type, kg, $_kg, stock, id_v }) => {
+const crearRes = async ({ type, correlativo, kg, precio_kg, tropa, stock, id_v }) => {
     try {
         await Res.create({
             type,
             correlativo,
             kg,
-            $_kg,
+            precio_kg,
             tropa,
             stock,
             id_v
@@ -40,6 +40,7 @@ const crearRes = async ({ type, kg, $_kg, stock, id_v }) => {
         return false;
     }
 };
+
 /* 
 const actualizarSaldoFaena = async (faena_id, saldo) => {
     try{

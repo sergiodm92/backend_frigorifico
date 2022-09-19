@@ -20,7 +20,7 @@ const getAllVentasPorIDCliente = async (client_id) => {
     return ventas;
 };
 
-const crearVenta = async ({ fecha, cliente, detalle, cant, kg_total, $_kg_prom, total, margen_kg, margen_venta, margen_porciento }) => {
+const crearVenta = async ({ fecha, cliente, detalle, cant, kg_total, precio_kg_prom, total, margen_kg, margen_venta, margen_porciento }) => {
     try {
         const venta = await Venta.create({
             fecha,
@@ -28,14 +28,14 @@ const crearVenta = async ({ fecha, cliente, detalle, cant, kg_total, $_kg_prom, 
             detalle,
             cant,
             kg_total,
-            $_kg_prom,
+            precio_kg_prom,
             total,
             margen_kg,
             margen_venta,
             margen_porciento
         })
 
-        cliente_db = await Cliente.find({
+        let cliente_db = await Cliente.find({
             where: {
                 nombre: cliente
             }
@@ -98,12 +98,12 @@ const crearCompra = async (data) => {
             desbaste: data.desbaste,
             kg_desbaste: data.kg_desbaste,
             kgv_netos: data.kgv_netos,
-            $_kgv_netos: data.$_kgv_netos,
+            precio_kgv_netos: data.precio_kgv_netos,
             n_tropa: data.n_tropa,
             kg_carne: data.kg_carne,
             kg_achuras: data.kg_achuras,
-            $_venta: data.$_venta,
-            recupero_$kg: data.recupero_$kg,
+            precio_venta: data.precio_venta,
+            recupero_precio_kg: data.recupero_precio_kg,
             costo_hac: data.costo_hac,
             costo_faena_kg: data.costo_faena_kg,
             comision: data.comision,

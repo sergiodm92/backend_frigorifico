@@ -15,7 +15,7 @@ class DetalleVenta {
     categoria;
     total_media;
     kg;
-    $_kg;
+    precio_kg;
     margen;
     saldo;
 }
