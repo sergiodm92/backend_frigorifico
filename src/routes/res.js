@@ -3,7 +3,7 @@ const { Router } = require('express');
 const {
     crearRes,
     getAllReses,
-    getAllResPorCorrelativo,
+    getAllResesPorCorrelativo,
     getAllResesEnStock
 } = require("../services/res.service");
 
@@ -26,10 +26,10 @@ route.get('/:correlativo', async (req, res) => {
     const { correlativo } = req.params;
 
     try {
-        const reses = await getAllResPorCorrelativo(correlativo);
+        const reses = await getAllResesPorCorrelativo(correlativo);
         
         if (reses) {
-            return res.json(customResponseExito(correlativo));
+            return res.json(customResponseExito(reses));
         }
         return res.status(404).json(customResponseError("No se ha encontrado la res por correlativo", 404));
     } catch (error) {

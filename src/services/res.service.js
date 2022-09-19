@@ -6,21 +6,21 @@ const getAllReses = async () => {
 };
 
 const getAllResesPorCorrelativo = async (correlativo) => {
-    let reses = await reses.findAll({
+    let reses = await Res.findAll({
         where: {
             correlativo
         }
     });
-    return faena;
+    return reses;
 };
 
 const getAllResesEnStock = async () => {
-    let reses = await reses.findAll({
+    let reses = await Res.findAll({
         where: {
             stock: true
         }
     });
-    return faena;
+    return reses;
 };
 
 const crearRes = async ({ type, correlativo, kg, precio_kg, tropa, stock, id_v }) => {
