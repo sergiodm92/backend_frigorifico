@@ -85,33 +85,33 @@ const getComprasPorProveedor = async (proveedor) => {
     return compras;
 };
 
-const crearCompra = async (data) => {
+const crearCompra = async ({ proveedor, lugar, n_dte, categoria, cant, kgv_brutos, desbaste, kg_desbaste, kgv_netos, precio_kgv_netos, n_tropa, kg_carne, kg_achuras, precio_venta, recupero_precio_kg, costo_hac, costo_faena_kg, comision, costo_flete, costo_veps, costo_faena, costo_total, costo_kg }) => {
     try {
         const compra = await Compra.create({
             fecha: new Date().getDate().toLocaleString(),
-            proveedor: data.proveedor,
-            lugar: data.lugar,
-            n_dte: data.n_dte,
-            categoria: data.categoria,
-            cant: data.cant,
-            kgv_brutos: data.kgv_brutos,
-            desbaste: data.desbaste,
-            kg_desbaste: data.kg_desbaste,
-            kgv_netos: data.kgv_netos,
-            precio_kgv_netos: data.precio_kgv_netos,
-            n_tropa: data.n_tropa,
-            kg_carne: data.kg_carne,
-            kg_achuras: data.kg_achuras,
-            precio_venta: data.precio_venta,
-            recupero_precio_kg: data.recupero_precio_kg,
-            costo_hac: data.costo_hac,
-            costo_faena_kg: data.costo_faena_kg,
-            comision: data.comision,
-            costo_flete: data.costo_flete,
-            costo_veps: data.costo_veps,
-            costo_faena: data.costo_faena,
-            costo_total: data.costo_total,
-            costo_kg: data.costo_kg,
+            proveedor,
+            lugar,
+            n_dte,
+            categoria,
+            cant,
+            kgv_brutos,
+            desbaste,
+            kg_desbaste,
+            kgv_netos,
+            precio_kgv_netos,
+            n_tropa,
+            kg_carne,
+            kg_achuras,
+            precio_venta,
+            recupero_precio_kg,
+            costo_hac,
+            costo_faena_kg,
+            comision,
+            costo_flete,
+            costo_veps,
+            costo_faena,
+            costo_total,
+            costo_kg,
         })
         proveedor_db = await Proveedor.find({
             where: {
