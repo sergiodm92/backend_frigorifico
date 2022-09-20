@@ -26,31 +26,32 @@ const getAllFaenasPorNTropa = async (nTropa) => {
 };
 
 const crearFaena = async ({ tropa, frigorifico, proveedor, detalle, total_kg, total_medias, costo_total, saldo }) => {
-    try {
-        let faena = await Faena.findAll({
+    let faena = await Faena.findAll({
         where:{
             tropa: tropa
         }
         });
-        if(faena.length===0){
-        await Faena.create({
-            fecha: new Date(),
-            tropa,
-            frigorifico,
-            proveedor,
-            detalle,
-            total_kg,
-            total_medias,
-            costo_total,
-            saldo
-        })
-        return true;
+    if(faena.length===0){
+        try {
+            await Faena.create({
+                fecha: new Date(),
+                tropa,
+                frigorifico,
+                proveedor,
+                detalle,
+                total_kg,
+                total_medias,
+                costo_total,
+                saldo
+            })
+            return true;
         }
-        else return false
-    } catch (e) {
-        console.log(e);
-        return false;
+        catch (e) {
+            console.log(e);
+            return false;
+        }
     }
+    else return false
 };
 
 const actualizarSaldoFaena = async (faena_id, compraId, saldo) => {
