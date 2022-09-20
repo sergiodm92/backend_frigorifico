@@ -42,7 +42,7 @@ route.post('/', (req, res) => {
         return res.status(400).send(customResponseError("tropa repetida", 400));
     }
     if(crearFaena(req.body)){
-        return res.status(201).send(customResponseExito("Faena creada con éxitoo"));
+        return res.status(201).send(customResponseExito("Faena creada con éxito"));
     }
  
 })
