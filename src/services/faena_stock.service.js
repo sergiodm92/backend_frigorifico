@@ -32,8 +32,8 @@ const crearFaena = async ({ tropa, frigorifico, proveedor, detalle, total_kg, to
         }
         });
        
-       if(faena.length===0){
         try {
+           if(faena.length===0){
             await Faena.create({
                 fecha: new Date(),
                 tropa,
@@ -46,13 +46,13 @@ const crearFaena = async ({ tropa, frigorifico, proveedor, detalle, total_kg, to
                 saldo
             })
             return true;
+           }
         }
         catch (e) {
             console.log(e);
             return false;
         }
-    }
-   return false;
+
 };
 
 const actualizarSaldoFaena = async (faena_id, compraId, saldo) => {
