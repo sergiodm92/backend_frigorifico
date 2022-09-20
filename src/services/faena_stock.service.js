@@ -27,6 +27,12 @@ const getAllFaenasPorNTropa = async (nTropa) => {
 
 const crearFaena = async ({ tropa, frigorifico, proveedor, detalle, total_kg, total_medias, costo_total, saldo }) => {
     try {
+        let faena = await Faena.findAll({
+        where:{
+            tropa: tropa
+        }
+        });
+        if(faena.length===0){
         await Faena.create({
             fecha: new Date(),
             tropa,
@@ -39,6 +45,7 @@ const crearFaena = async ({ tropa, frigorifico, proveedor, detalle, total_kg, to
             saldo
         })
         return true;
+        }
     } catch (e) {
         console.log(e);
         return false;
