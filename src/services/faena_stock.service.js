@@ -26,12 +26,12 @@ const getAllFaenasPorNTropa = async (nTropa) => {
 };
 
 const crearFaena = async ({ tropa, frigorifico, proveedor, detalle, total_kg, total_medias, costo_total, saldo }) => {
-       arrfaena = await Faena.findAll({
+       faena = await Faena.findAll({
         where:{
             tropa: tropa
         }
         });
-    if(arrfaena && arrfaena.length===0){
+    if(faena.length===0){
         try {
             await Faena.create({
                 fecha: new Date(),
@@ -51,7 +51,7 @@ const crearFaena = async ({ tropa, frigorifico, proveedor, detalle, total_kg, to
             return 1;
         }
     }
-    if(arrfaena.length>0) return 2;
+    if(faena.length>0) return 2;
 };
 
 const actualizarSaldoFaena = async (faena_id, compraId, saldo) => {
