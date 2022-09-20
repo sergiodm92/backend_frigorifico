@@ -36,7 +36,7 @@ route.get('/:tropa', async (req, res) => {
 
 route.post('/', (req, res) => {
     if(!req.body){
-        return res.status(400).send(customResponseError("Se necesita información para crear la faena", 400));
+        return res.status(400).send(customResponseError("Se necesita información para crear la faena, o tropa repetida", 400));
     }
 
     if(crearFaena(req.body)){
