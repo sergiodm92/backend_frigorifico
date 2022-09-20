@@ -32,7 +32,7 @@ const crearFaena = async ({ tropa, frigorifico, proveedor, detalle, total_kg, to
         }
         });
        
-       if(faena.length){
+       if(faena.length===0){
         try {
             await Faena.create({
                 fecha: new Date(),
