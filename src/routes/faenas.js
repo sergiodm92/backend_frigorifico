@@ -38,13 +38,13 @@ route.post('/', (req, res) => {
     if(!req.body){
         return res.status(400).send(customResponseError("Se necesita información para crear la faena", 400));
     }
-
+   if(crearFaena(req.body)===false){
+        return res.status(400).send(customResponseError("Error al crear la faena, verificar tropa", 400));
+    }
     if(crearFaena(req.body)){
         return res.status(201).send(customResponseExito("Faena creada con éxito"));
     }
-    if(crearFaena(req.body)==0){
-        return res.status(400).send(customResponseError("Error al crear la faena, verificar tropa", 400));
-    }
+ 
 })
 
 route.put('/', async (req, res) => {
