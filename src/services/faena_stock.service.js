@@ -17,7 +17,7 @@ const getAllFaenas = async () => {
 };
 
 const getAllFaenasPorNTropa = async (nTropa) => {
-    let faena = await Faena.find({
+    let faena = await Faena.findAll({
         where:{
             tropa: nTropa
         }
