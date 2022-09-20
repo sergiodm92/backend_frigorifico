@@ -51,7 +51,7 @@ const crearFaena = async ({ tropa, frigorifico, proveedor, detalle, total_kg, to
             return false;
         }
     }
-    else return false
+    if(faena.length>0) return false
 };
 
 const actualizarSaldoFaena = async (faena_id, compraId, saldo) => {
