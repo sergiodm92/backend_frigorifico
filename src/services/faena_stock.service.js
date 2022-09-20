@@ -26,8 +26,7 @@ const getAllFaenasPorNTropa = async (nTropa) => {
 };
 
 const crearFaena = async ({ tropa, frigorifico, proveedor, detalle, total_kg, total_medias, costo_total, saldo }) => {
-    let faena = [];
-    faena = await Faena.findAll({
+       faena = await Faena.findAll({
         where:{
             tropa: tropa
         }
