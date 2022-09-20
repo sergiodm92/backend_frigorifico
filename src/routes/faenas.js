@@ -41,8 +41,8 @@ route.post('/', (req, res) => {
    if(crearFaena(req.body)===false){
         return res.status(400).send(customResponseError("Error al crear la faena, verificar tropa", 400));
     }
-    if(crearFaena(req.body)){
-        return res.status(201).send(customResponseExito("Faena creada con éxito"));
+    if(crearFaena(req.body)===true){
+        return res.status(201).send(customResponseExito("Faena creada con éxitoo"));
     }
  
 })
