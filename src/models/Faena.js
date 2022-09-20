@@ -9,9 +9,6 @@ module.exports = (sequelize) => {
     },
     fecha: {
       type: DataTypes.DATEONLY,
-      get: function() {
-       return moment(this.getDataValue('DateTime')).format('DD.MM.YYYY')
-      }
       default: new Date().toLocaleDateString(),
       allowNull: true,
     },
