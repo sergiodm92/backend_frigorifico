@@ -2,7 +2,7 @@ const { Faena, Stock, Res, Compra } = require("../db");
 
 
 const getAllStock = async () => {
-    let reses = await Res.find({
+    let reses = await Res.findAll({
         where: {
             stock: true
         }
@@ -17,7 +17,7 @@ const getAllFaenas = async () => {
 };
 
 const getAllFaenasPorNTropa = async (nTropa) => {
-    let faena = await Faena.findAll({
+    let faena = await Faena.find({
         where:{
             tropa: nTropa
         }
