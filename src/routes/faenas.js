@@ -23,9 +23,9 @@ route.get('/:tropa', async (req, res) => {
 
     try {    
         const faenas = await getAllFaenasPorNTropa(tropa);
-        
+                
         if (faenas) {
-            return res.json(customResponseExito(faenas));
+            return res.json(customResponseExito(faenas[0]));
         }
         return res.status(404).json(customResponseError("No se ha encontrado la faena por tropa", 404));
     } catch (error) {
