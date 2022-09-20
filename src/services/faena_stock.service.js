@@ -46,6 +46,7 @@ const crearFaena = async ({ tropa, frigorifico, proveedor, detalle, total_kg, to
         })
         return true;
         }
+        else return false
     } catch (e) {
         console.log(e);
         return false;
