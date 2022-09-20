@@ -38,13 +38,10 @@ route.post('/', (req, res) => {
     if(!req.body){
         return res.status(400).send(customResponseError("Se necesita información para crear la faena", 400));
     }
-   if(crearFaena(req.body)===1){
-        return res.status(400).send(customResponseError("Error al crear la faena", 400));
-    }
-     if(crearFaena(req.body)===2){
+     if(crearFaena(req.body)==false){
         return res.status(400).send(customResponseError("tropa repetida", 400));
     }
-    if(crearFaena(req.body)===3){
+    if(crearFaena(req.body)){
         return res.status(201).send(customResponseExito("Faena creada con éxitoo"));
     }
  
