@@ -25,7 +25,7 @@ module.exports = (sequelize) => {
       allowNull: true,
     },
     detalle: {
-      type: DataTypes.ARRAY(DataTypes.JSONB),
+      type: DataTypes.ARRAY(DataTypes.JSON),
       allowNull: true,
     },
     total_kg: {
