@@ -46,7 +46,7 @@ Se debe enviar en la sección headers como "auth-token" y pegar el token que te 
 | GET | /:tropa | Ruta que trae todas las faenas por numero de tropa | query param  + Token Bearer (header) | tropa | `/faenas/1231` | `{ "status": "ok", "status_code": 200, "data": [ARRAY CON FAENAS] }` |
 | POST | / | Ruta para crear una faena | body  + Token Bearer (header) | ![image](https://user-images.githubusercontent.com/54594663/190549566-e6ab76fa-94ed-4dbe-9427-d5a2c5d1959a.png) | `/faenas/` | `{ "status": "ok", "status_code": 200, "data": "Faena creada con éxito"}` |
 | PUT | / | Ruta para actualizar saldo de faena | body  + Token Bearer (header) | `{ faena_id, compra_id, saldo }` | `/faenas/` | `{ "status": "ok", "status_code": 200, "data": "Saldo de faena actualizado con éxito"` |
-| DELETE | / | Ruta para eliminar una faena | body  + Token Bearer (header) | `{ faena_id }` | `/faenas/2` | `{ "status": "ok", "status_code": 200, "data": "Faena eliminada con éxito"}` |
+| DELETE | / | Ruta para eliminar una faena | body  + Token Bearer (header) | `{ faena_id }` | `/faenas` | `{ "status": "ok", "status_code": 200, "data": "Faena eliminada con éxito"}` |
 
 ## Proveedores
 
