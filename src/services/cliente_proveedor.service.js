@@ -26,6 +26,21 @@ const crearCliente = async ({ nombre, telefono, email, direccion }) => {
     }
 };
 
+const eliminarCliente = async (cliente_id) => {
+    try {
+        await Cliente.destroy({
+            where: {
+                ID: cliente_id
+            },
+            force: true
+        });
+        return true;
+    } catch (e) {
+        console.log(e);
+        throw e;
+    }
+};
+
 const getAllProveedores = async () => {
     let allProveedores = await Proveedor.findAll();
     return allProveedores;
@@ -52,6 +67,22 @@ const crearProveedor = async ({ saldo, nombre, telefono, email, direccion }) => 
     }
 };
 
+const eliminarProveedor = async (proveedor_id) => {
+    try {
+        await Proveedor.destroy({
+            where: {
+                ID: proveedor_id
+            },
+            force: true
+        });
+        return true;
+    } catch (e) {
+        console.log(e);
+        throw e;
+    }
+};
+
+
 const actualizarSaldoCompra = async (proveedor_id, saldo) => {
     try{
         const proveedor = await Proveedor.findByPk(proveedor_id);
@@ -69,9 +100,11 @@ module.exports = {
     getAllClientes,
     getCliente,
     crearCliente,
+    eliminarCliente,
 
     getAllProveedores,
     getProveedor,
     crearProveedor,
-    actualizarSaldoCompra
+    actualizarSaldoCompra,
+    eliminarProveedor
 }

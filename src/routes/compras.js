@@ -4,7 +4,8 @@ const {
     getCompra,
     getAllCompras,
     getComprasPorProveedor,
-    crearCompra
+    crearCompra,
+    eliminarCompra
 } = require("../services/compra_venta_pagos.service");
 
 const {
@@ -62,6 +63,27 @@ route.post('/', async (req, res) => {
         return res.status(201).send(customResponseExito("Compra creada con éxito"));
     }
     return res.status(400).send(customResponseError("Error al crear la compra", 400));
+})
+
+route.delete('/', async (req, res) => {
+    const { compra_id } = req.body
+
+    try {
+        if(!compra_id){
+            return res.status(400).send(customResponseError("Se necesita información para procesar la solicitud", 400));
+        }
+
+        if (!Number.isInteger(parseInt(compra_id))) {
+            return res.status(400).send(customResponseError("El id de la Compra debe ser un número entero", 400));
+        }
+        
+        if(await eliminarCompra(compra_id)){
+            return res.status(200).send(customResponseExito("Compra eliminada con éxito"));
+        }
+        return res.status(400).send(customResponseError("Error al eliminar la Compra", 400));
+    } catch (error) {
+        return res.status(400).send(customResponseError("Error, compruebe que el id que desea buscar es correcto.", 400));
+    }
 })
 
 module.exports = route;

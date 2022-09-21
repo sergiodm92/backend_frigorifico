@@ -52,6 +52,21 @@ const crearVenta = async ({ cliente, detalle, cant, kg_total, precio_kg_prom, to
     }
 };
 
+const eliminarVenta = async (venta_id) => {
+    try {
+        await Venta.destroy({
+            where: {
+                ID: venta_id
+            },
+            force: true
+        });
+        return true;
+    } catch (e) {
+        console.log(e);
+        throw e;
+    }
+};
+
 const actualizarSaldoVenta = async (venta_id, client_id, saldo) => {
     try{
         const venta = await Venta.findOne({
@@ -131,15 +146,32 @@ const crearCompra = async ({ proveedor, lugar, n_dte, categoria, cant, kgv_bruto
     }
 };
 
+const eliminarCompra = async (compra_id) => {
+    try {
+        await Venta.destroy({
+            where: {
+                id: compra_id
+            },
+            force: true
+        });
+        return true;
+    } catch (e) {
+        console.log(e);
+        throw e;
+    }
+};
+
 module.exports = {
     getCompra,
     getAllCompras,
     getComprasPorProveedor,
     crearCompra,
+    eliminarCompra,
 
     getVenta,
     getAllVentas,
     getAllVentasPorIDCliente,
     crearVenta,
+    eliminarVenta,
     actualizarSaldoVenta,
 };

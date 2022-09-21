@@ -3,7 +3,8 @@ const { Router } = require('express');
 const {
     getCliente,
     getAllClientes,
-    crearCliente
+    crearCliente,
+    eliminarCliente
 } = require("../services/cliente_proveedor.service");
 
 const {
@@ -47,5 +48,27 @@ route.post('/', async(req, res) => {
     }
     return res.status(400).send(customResponseError("Error al crear el cliente", 400));
 })
+
+route.delete('/', async (req, res) => {
+    const { cliente_id } = req.body
+
+    try {
+        if(!cliente_id){
+            return res.status(400).send(customResponseError("Se necesita información para procesar la solicitud", 400));
+        }
+
+        if (!Number.isInteger(parseInt(cliente_id))) {
+            return res.status(400).send(customResponseError("El id del Cliente debe ser un número entero", 400));
+        }
+        
+        if(await eliminarCliente(cliente_id)){
+            return res.status(200).send(customResponseExito("Cliente eliminado con éxito"));
+        }
+        return res.status(400).send(customResponseError("Error al eliminar el Cliente", 400));
+    } catch (error) {
+        return res.status(400).send(customResponseError("Error, compruebe que el id que desea buscar es correcto.", 400));
+    }
+})
+
 
 module.exports = route;

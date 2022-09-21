@@ -4,7 +4,8 @@ const {
     crearRes,
     getAllReses,
     getAllResesPorCorrelativo,
-    getAllResesEnStock
+    getAllResesEnStock,
+    eliminarRes
 } = require("../services/res.service");
 
 const {
@@ -49,23 +50,44 @@ route.post('/', async (req, res) => {
     return res.status(400).send(customResponseError("Error al crear la res", 400));
 })
 
-/* 
-route.put('/', (req, res) => {
-    const { faena_id, saldo } = req.body
+route.delete('/', async (req, res) => {
+    const { res_id } = req.body
 
     try {
-        if(!saldo || !faena_id){
+        if(!res_id){
             return res.status(400).send(customResponseError("Se necesita información para procesar la solicitud", 400));
         }
 
-        if (!Number.isInteger(parseInt(faena_id))) {
-            return res.status(400).send(customResponseError("El id de la faena debe ser un número entero", 400));
+        if (!Number.isInteger(parseInt(res_id))) {
+            return res.status(400).send(customResponseError("El id de la Res debe ser un número entero", 400));
+        }
+        
+        if(await eliminarRes(res_id)){
+            return res.status(200).send(customResponseExito("Res eliminada con éxito"));
+        }
+        return res.status(400).send(customResponseError("Error al eliminar la Res", 400));
+    } catch (error) {
+        return res.status(400).send(customResponseError("Error, compruebe que el id que desea buscar es correcto.", 400));
+    }
+})
+
+/* 
+route.put('/', (req, res) => {
+    const { Res_id, saldo } = req.body
+
+    try {
+        if(!saldo || !Res_id){
+            return res.status(400).send(customResponseError("Se necesita información para procesar la solicitud", 400));
         }
 
-        if(actualizarSaldoFaena(faena_id, saldo)){
-            return res.status(200).send(customResponseExito("Saldo de faena actualizado con éxito"));
+        if (!Number.isInteger(parseInt(Res_id))) {
+            return res.status(400).send(customResponseError("El id de la Res debe ser un número entero", 400));
         }
-        return res.status(400).send(customResponseError("Error al actualizar el saldo de la faena", 400));
+
+        if(actualizarSaldoRes(Res_id, saldo)){
+            return res.status(200).send(customResponseExito("Saldo de Res actualizado con éxito"));
+        }
+        return res.status(400).send(customResponseError("Error al actualizar el saldo de la Res", 400));
     } catch (error) {
         return res.status(400).send(customResponseError("Error, compruebe que el id que desea buscar es correcto o verifique que el saldo esté escrito correctamente.", 400));
     }

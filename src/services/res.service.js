@@ -41,6 +41,22 @@ const crearRes = async ({ type, correlativo, kg, precio_kg, tropa, stock, id_v }
     }
 };
 
+const eliminarRes = async (res_id) => {
+    try {
+        await Res.destroy({
+            where: {
+                ID: res_id
+            },
+            force: true
+        });
+        return true;
+    } catch (e) {
+        console.log(e);
+        throw e;
+    }
+};
+
+
 /* 
 const actualizarSaldoFaena = async (faena_id, saldo) => {
     try{
@@ -61,6 +77,7 @@ const actualizarSaldoFaena = async (faena_id, saldo) => {
  */
 module.exports = {
     crearRes,
+    eliminarRes,
     getAllReses,
     getAllResesPorCorrelativo,
     getAllResesEnStock

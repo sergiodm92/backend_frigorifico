@@ -17,8 +17,8 @@ const getAllFaenas = async () => {
 };
 
 const getAllFaenasPorNTropa = async (nTropa) => {
-    let faena = await Faena.findAll({
-        where:{
+    let faena = await Faena.findOne({
+        where: {
             tropa: nTropa
         }
     });
@@ -26,14 +26,14 @@ const getAllFaenasPorNTropa = async (nTropa) => {
 };
 
 const crearFaena = async ({ tropa, frigorifico, proveedor, detalle, total_kg, total_medias, costo_total, saldo }) => {
-        faena = await Faena.findAll({
-        where:{
+    let faena = await Faena.findAll({
+        where: {
             tropa: tropa
         }
-        });
-       
-        try {
-           if(faena.length===0){
+    });
+
+    try {
+        if (faena.length === 0) {
             await Faena.create({
                 fecha: new Date(),
                 tropa,
@@ -46,17 +46,35 @@ const crearFaena = async ({ tropa, frigorifico, proveedor, detalle, total_kg, to
                 saldo
             })
             return true;
-           }
         }
-        catch (e) {
-            console.log(e);
+        else{
             return false;
         }
+    }
+    catch (e) {
+        console.log(e);
+        return false;
+    }
 
 };
 
+const eliminarFaena = async (faena_id) => {
+    try {
+        await Faena.destroy({
+            where: {
+                ID: faena_id
+            },
+            force: true
+        });
+        return true;
+    } catch (e) {
+        console.log(e);
+        throw e;
+    }
+};
+
 const actualizarSaldoFaena = async (faena_id, compraId, saldo) => {
-    try{
+    try {
         const faena = await Faena.findByPk(faena_id);
         const compra = await Compra.findByPk(compraId);
         faena.saldo = saldo;
@@ -77,5 +95,6 @@ module.exports = {
     getAllFaenas,
     getAllFaenasPorNTropa,
     crearFaena,
+    eliminarFaena,
     actualizarSaldoFaena
 }

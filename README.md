@@ -19,6 +19,7 @@ Se debe enviar en la sección headers como "auth-token" y pegar el token que te 
 | GET | /all | Ruta que trae todos los clientes | nada | Token Bearer (header) | `/clientes/all` | `{ "status": "ok", "status_code": 200, "data": [ARRAY CON CLIENTES] }` |
 | GET | /:id | Ruta para traer un cliente por su ID | query param + Token Bearer (header) | id | `/clientes/2` | `{ "status": "ok", "status_code": 200, "data": {OBJETO CON EL CLIENTE}` |
 | POST | / | Ruta para crear un cliente | body  + Token Bearer (header) | `{ nombre, telefono, email, direccion }` | `/clientes/` | `{ "status": "ok", "status_code": 200, "data": "Cliente creado con éxito"}` |
+| DELETE | / | Ruta para eliminar un cliente | body  + Token Bearer (header) | `{ cliente_id }` | `/clientes/2` | `{ "status": "ok", "status_code": 200, "data": "Cliente eliminado con éxito"}` |
 
 ## Compras
 > Para acceder a dicha ruta se usa el endpoint **/compras**
@@ -31,6 +32,7 @@ Se debe enviar en la sección headers como "auth-token" y pegar el token que te 
 | GET | /all/:proveedor | Ruta para traer un cliente por nombre de proveedor | query param  + Token Bearer (header) | proveedor | `/compras/all/Proveedor de prueba` | `{ "status": "ok", "status_code": 200, "data": [ARRAY CON LAS COMPRAS AL PROVEEDOR]` |
 | GET | /:id | Ruta para traer una compra por su ID | query param  + Token Bearer (header) | id | `/compras/2` | `{ "status": "ok", "status_code": 200, "data": {OBJETO CON LA COMPRA}` |
 | POST | / | Ruta para crear una compra | body  + Token Bearer (header) | ![image](https://user-images.githubusercontent.com/54594663/190939642-1ef0b77a-ece9-40bf-b1b7-52ab38e47eba.png) | `/compras/` | `{ "status": "ok", "status_code": 200, "data": "Compra creada con éxito"}` |
+| DELETE | / | Ruta para eliminar una compra | body  + Token Bearer (header) | `{ compra_id }` | `/compras/2` | `{ "status": "ok", "status_code": 200, "data": "Compra eliminada con éxito"}` |
 
 ## Faenas
 
@@ -44,6 +46,7 @@ Se debe enviar en la sección headers como "auth-token" y pegar el token que te 
 | GET | /:tropa | Ruta que trae todas las faenas por numero de tropa | query param  + Token Bearer (header) | tropa | `/faenas/1231` | `{ "status": "ok", "status_code": 200, "data": [ARRAY CON FAENAS] }` |
 | POST | / | Ruta para crear una faena | body  + Token Bearer (header) | ![image](https://user-images.githubusercontent.com/54594663/190549566-e6ab76fa-94ed-4dbe-9427-d5a2c5d1959a.png) | `/faenas/` | `{ "status": "ok", "status_code": 200, "data": "Faena creada con éxito"}` |
 | PUT | / | Ruta para actualizar saldo de faena | body  + Token Bearer (header) | `{ faena_id, compra_id, saldo }` | `/faenas/` | `{ "status": "ok", "status_code": 200, "data": "Saldo de faena actualizado con éxito"` |
+| DELETE | / | Ruta para eliminar una faena | body  + Token Bearer (header) | `{ faena_id }` | `/faenas/2` | `{ "status": "ok", "status_code": 200, "data": "Faena eliminada con éxito"}` |
 
 ## Proveedores
 
@@ -57,6 +60,7 @@ Se debe enviar en la sección headers como "auth-token" y pegar el token que te 
 | GET | /:id | Ruta que trae un proveedor | query param  + Token Bearer (header) | id | `/proveedores/5` | `{ "status": "ok", "status_code": 200, "data": {OBJETO CON EL PROVEEDOR}` |
 | POST | / | Ruta para crear un proveedor | body  + Token Bearer (header) | `{ nombre, telefono, email, direccion }` | `/proveedores/` | `{ "status": "ok", "status_code": 200, "data": "Proveedor creado con éxito"}` |
 | PUT | / | Ruta para actualizar saldo de un proveedor | body  + Token Bearer (header) | `{ proveedor_id, saldo }` | `/proveedores/` | `{ "status": "ok", "status_code": 200, "data": "Saldo de proveedor actualizado con éxito"` |
+| DELETE | / | Ruta para eliminar un proveedor | body  + Token Bearer (header) | `{ proveedor_id }` | `/proveedores/2` | `{ "status": "ok", "status_code": 200, "data": "Proveedor eliminado con éxito"}` |
 
 ## Res
 
@@ -70,6 +74,7 @@ Se debe enviar en la sección headers como "auth-token" y pegar el token que te 
 | GET | /all_stock | Ruta que trae las reses en stock | query param  + Token Bearer (header) | id | `/res/5` | `{ "status": "ok", "status_code": 200, "data": [ARRAY CON RESES EN STOCK]` |
 | GET | /:correlativo | Ruta que trae res por correlativo | query param  + Token Bearer (header) | id | `/res/521312` | `{ "status": "ok", "status_code": 200, "data": {OBJETO CON LA RES}` |
 | POST | / | Ruta para crear una res | body  + Token Bearer (header) | ![image](https://user-images.githubusercontent.com/54594663/190939735-36e2da77-6c40-4f88-a282-f65534ca5bc6.png) | `/res/` | `{ "status": "ok", "status_code": 200, "data": "Res creada con éxito"}` |
+| DELETE | / | Ruta para eliminar una Res | body  + Token Bearer (header) | `{ res_id }` | `/res/2` | `{ "status": "ok", "status_code": 200, "data": "Res eliminada con éxito"}` |
 
 ## Stock
 
@@ -105,3 +110,4 @@ Se debe enviar en la sección headers como "auth-token" y pegar el token que te 
 | GET | /:id | Ruta que trae una venta en específico | query param  + Token Bearer (header) | id | `/ventas/52` | `{ "status": "ok", "status_code": 200, "data": {OBJETO CON LA VENTA}` |
 | POST | / | Ruta para crear una venta | body  + Token Bearer (header) | ![image](https://user-images.githubusercontent.com/54594663/190939688-98d1a820-3bd0-4a77-8401-967c06252e0c.png) | `/ventas/` | `{ "status": "ok", "status_code": 200, "data": "Venta creada con éxito"}` |
 | PUT | / | Ruta para crear una res | body  + Token Bearer (header) | `{ venta_id, client_id, saldo }` | `/ventas/` | `{ "status": "ok", "status_code": 200, "data": "Saldo de venta actualizado con éxito" }` |
+| DELETE | / | Ruta para eliminar una venta | body  + Token Bearer (header) | `{ venta_id }` | `/ventas/2` | `{ "status": "ok", "status_code": 200, "data": "Venta eliminada con éxito"}` |
