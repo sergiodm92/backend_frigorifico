@@ -32,7 +32,7 @@ module.exports = (sequelize) => {
       allowNull: true,
     },
     desbaste: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.STRING,
       allowNull: true,
     },
     kg_desbaste: {
@@ -55,24 +55,16 @@ module.exports = (sequelize) => {
       type: DataTypes.FLOAT,
       allowNull: true,
     },
-     saldo: {
+    kg_achuras: {
       type: DataTypes.FLOAT,
       allowNull: true,
     },
-    rinde: {
-      type: DataTypes.FLOAT,
-      allowNull: true,
-    },
-    cant_achuras: {
-      type: DataTypes.FLOAT,
-      allowNull: true,
-    },
-    precio_venta_achuras: {
-      type: DataTypes.FLOAT,
+    precio_venta: {
+      type: DataTypes.STRING,
       allowNull: true,
     },
     recupero_precio_kg: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.STRING,
       allowNull: true,
     },
     costo_hac: {
