@@ -67,7 +67,7 @@ module.exports = (sequelize) => {
       type: DataTypes.FLOAT,
       allowNull: true,
     },
-    precio_venta: {
+    precio_venta_achuras: {
       type: DataTypes.STRING,
       allowNull: true,
     },
