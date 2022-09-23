@@ -8,7 +8,7 @@ module.exports = (sequelize) => {
         primaryKey: true,
     },
     fecha: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       default: new Date().toLocaleDateString(),
       allowNull: true,
     },
