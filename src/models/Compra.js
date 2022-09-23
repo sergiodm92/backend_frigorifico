@@ -63,7 +63,7 @@ module.exports = (sequelize) => {
       type: DataTypes.FLOAT,
       allowNull: true,
     },
-    kg_achuras: {
+    cant_achuras: {
       type: DataTypes.FLOAT,
       allowNull: true,
     },
