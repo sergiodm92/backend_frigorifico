@@ -3,7 +3,7 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   sequelize.define('compra', {
     fecha: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       default: new Date().toLocaleDateString(),
       allowNull: true,
     },
