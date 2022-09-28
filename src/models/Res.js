@@ -11,6 +11,10 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
+    categoria: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     kg: {
       type: DataTypes.FLOAT,
       allowNull: true,
