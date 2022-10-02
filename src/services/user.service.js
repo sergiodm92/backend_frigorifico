@@ -44,6 +44,7 @@ const authLogin = async (data) => {
     
     const validPassword = await bcrypt.compare(password, user.password);
 
+    if (validPassword) console.log("validacion correcta")
     if (!validPassword) throw Error('contraseña no válida');
 
     const token = jwt.sign({
@@ -51,7 +52,9 @@ const authLogin = async (data) => {
         id: user.ID
     }, process.env.TOKEN_SECRET);
 
+    console.log(token)
     return token;
+    
 };
 
 module.exports = {
