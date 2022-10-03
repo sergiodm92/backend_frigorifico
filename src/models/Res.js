@@ -8,7 +8,7 @@ module.exports = (sequelize) => {
         primaryKey: true,
     },
     correlativo: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: true,
     },
     categoria: {
