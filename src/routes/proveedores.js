@@ -1,5 +1,6 @@
 const { Router } = require('express');
 
+
 const {
     getProveedor,
     getAllProveedores,
@@ -45,6 +46,7 @@ route.post('/', async(req, res) => {
     }
 
     if(await crearProveedor(req.body)){
+        
         return res.status(201).send(customResponseExito("Proveedor creado con éxito"));
     }
     return res.status(400).send(customResponseError("Error al crear el proveedor", 400));

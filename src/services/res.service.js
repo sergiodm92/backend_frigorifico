@@ -23,7 +23,7 @@ const getAllResesEnStock = async () => {
     return reses;
 };
 
-const crearRes = async ({ type, correlativo, kg, precio_kg, tropa, stock, id_v }) => {
+const crearRes = async ({ type, correlativo, kg, precio_kg, tropa, stock, id_v, categoria }) => {
     try {
         await Res.create({
             type,
@@ -32,6 +32,7 @@ const crearRes = async ({ type, correlativo, kg, precio_kg, tropa, stock, id_v }
             precio_kg,
             tropa,
             stock,
+            categoria,
             id_v
         })
         return true;
