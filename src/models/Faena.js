@@ -8,8 +8,7 @@ module.exports = (sequelize) => {
         primaryKey: true,
     },
     fecha: {
-      type: DataTypes.DATEONLY,
-      default: new Date().toLocaleDateString(),
+      type: DataTypes.STRING,
       allowNull: true,
     },
     tropa: {
@@ -30,7 +29,7 @@ module.exports = (sequelize) => {
     },
     total_kg: {
       type: DataTypes.FLOAT,
-      allowNull: true,
+      allowNull: true,    
     },
     total_medias: {
       type: DataTypes.INTEGER,
