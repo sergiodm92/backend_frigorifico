@@ -7,6 +7,10 @@ module.exports = (sequelize) => {
         autoIncrement: true,
         primaryKey: true,
     },
+    formaDePago: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
     pagos: {
       type: DataTypes.ARRAY(DataTypes.JSON),
       allowNull: true,
