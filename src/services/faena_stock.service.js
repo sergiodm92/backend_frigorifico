@@ -53,7 +53,7 @@ const eliminarFaena = async (faena_id) => {
     try {
         await Faena.destroy({
             where: {
-                ID: faena_id
+                id: faena_id
             },
             force: true
         });

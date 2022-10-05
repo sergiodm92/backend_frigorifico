@@ -46,7 +46,7 @@ const eliminarRes = async (res_id) => {
     try {
         await Res.destroy({
             where: {
-                ID: res_id
+                id: res_id
             },
             force: true
         });

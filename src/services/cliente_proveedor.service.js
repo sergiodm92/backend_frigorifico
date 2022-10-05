@@ -30,7 +30,7 @@ const eliminarCliente = async (cliente_id) => {
     try {
         await Cliente.destroy({
             where: {
-                ID: cliente_id
+                id: cliente_id
             },
             force: true
         });
@@ -71,7 +71,7 @@ const eliminarProveedor = async (proveedor_id) => {
     try {
         await Proveedor.destroy({
             where: {
-                ID: proveedor_id
+                id: proveedor_id
             },
             force: true
         });

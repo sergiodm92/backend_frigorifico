@@ -42,7 +42,7 @@ const crearVenta = async ({ cliente, detalle, cant, kg_total, precio_kg_prom, to
             }
         })
 
-        venta.clienteID = cliente_db.ID;
+        venta.clienteID = cliente_db.id;
 
         await venta.save();
         return true;
@@ -56,7 +56,7 @@ const eliminarVenta = async (venta_id) => {
     try {
         await Venta.destroy({
             where: {
-                ID: venta_id
+                id: venta_id
             },
             force: true
         });
@@ -71,7 +71,7 @@ const actualizarSaldoVenta = async (venta_id, client_id, saldo) => {
     try{
         const venta = await Venta.findOne({
             where:{
-                ID: venta_id,
+                id: venta_id,
                 clienteID: client_id,
             }
         });
@@ -137,7 +137,7 @@ const crearCompra = async ({ proveedor, lugar, n_dte, categoria, cant, kgv_bruto
                 nombre: proveedor
             }
         })
-        compra.proveedorID = proveedor_db?.ID;
+        compra.proveedorID = proveedor_db?.id;
         compra.save();
         return true;
     } catch (e) {
@@ -148,7 +148,7 @@ const crearCompra = async ({ proveedor, lugar, n_dte, categoria, cant, kgv_bruto
 
 const eliminarCompra = async (compra_id) => {
     try {
-        await Venta.destroy({
+        await Compra.destroy({
             where: {
                 id: compra_id
             },
