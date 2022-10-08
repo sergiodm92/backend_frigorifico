@@ -6,7 +6,7 @@ const { Sequelize } = require('sequelize');
 
 const {DB_USER, DB_PASSWORD, DB_HOST, DB_NAME} = process.env;
 
-let sequelize =
+const sequelize =
   // process.env.NODE_ENV === "production"
     //  new Sequelize( {
     //   database: DB_NAME,
@@ -56,24 +56,34 @@ const {
   Cliente, 
   Compra,
   Faena,
-  PagoCompra, 
-  PagoFaena, 
-  PagoVenta,
   Proveedor,
   Res,
   Stock,
   User,
   Venta,
+  PagoCompra,
+  PagoVenta,
+  PagoFaena
 } = sequelize.models;
 
 // Aca vendrian las relaciones
 
-Cliente.hasMany(Venta);
-Faena.belongsTo(Compra);
-Faena.hasMany(Venta);
-Proveedor.belongsTo(Compra);
-Proveedor.hasOne(Compra);
-Proveedor.belongsTo(Stock);
+// Cliente.hasMany(Venta)
+// Venta.hasOne(Cliente)
+// Proveedor.hasMany(Compra);
+// Compra.belongsTo(Proveedor)
+// Faena.hasMany(Res);
+// Res.belongsTo(Faena)
+// Faena.hasMany(Compra)
+// Compra.belongsTo(Faena)
+// Res.belongsTo(Venta)
+// Venta.hasMany(Res)
+// Faena.hasMany(Venta);
+// Proveedor.hasOne(Compra);//
+// Proveedor.hasMany(PagoCompra)
+// PagoCompra.belongsTo(Proveedor)
+// Faena.hasMany(PagoFaena)
+// Cliente.hasMany(PagoVenta)
 
 module.exports = {
   ...sequelize.models,

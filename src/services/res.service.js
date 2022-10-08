@@ -23,7 +23,7 @@ const getAllResesEnStock = async () => {
     return reses;
 };
 
-const crearRes = async ({ type, correlativo, kg, precio_kg, tropa, stock, id_v, categoria }) => {
+const crearRes = async ({ type, correlativo, kg, precio_kg, tropa, stock, id_v, categoria, fecha, frigorifico }) => {
     try {
         await Res.create({
             type,
@@ -33,7 +33,9 @@ const crearRes = async ({ type, correlativo, kg, precio_kg, tropa, stock, id_v, 
             tropa,
             stock,
             categoria,
-            id_v
+            id_v,
+            fecha,
+            frigorifico
         })
         return true;
     } catch (e) {
@@ -56,6 +58,25 @@ const eliminarRes = async (res_id) => {
         throw e;
     }
 };
+
+const actualizarCostoByKg = async (precio_kg, tropa, categoria) => {
+    try {
+        await Res.update(
+            { precio_kg },
+                {
+                    where:{
+                        tropa,
+                        categoria
+                    }
+                }
+            )
+        return true;
+    } catch (e) {
+        console.log(e);
+        return false;
+    }
+};
+
 
 
 /* 
@@ -81,5 +102,6 @@ module.exports = {
     eliminarRes,
     getAllReses,
     getAllResesPorCorrelativo,
-    getAllResesEnStock
+    getAllResesEnStock,
+    actualizarCostoByKg
 }

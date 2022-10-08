@@ -7,6 +7,10 @@ module.exports = (sequelize) => {
         autoIncrement: true,
         primaryKey: true,
     },
+    fecha: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     correlativo: {
       type: DataTypes.STRING,
       allowNull: true,
@@ -27,6 +31,10 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
+    frigorifico: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     stock: {
       type: DataTypes.BOOLEAN,
       allowNull: true,
@@ -35,5 +43,7 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
+  },{
+    timestamps:false
   });
 };

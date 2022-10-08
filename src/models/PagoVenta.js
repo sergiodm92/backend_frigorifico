@@ -7,9 +7,27 @@ module.exports = (sequelize) => {
         autoIncrement: true,
         primaryKey: true,
     },
-    pagos: {
-      type: DataTypes.ARRAY(DataTypes.JSON),
+    cliente:  {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
+    fecha:  {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
+    monto:  {
+      type: DataTypes.FLOAT,
+      allowNull: true,
+    },
+    formaDePago:  {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    venta_id:  {
+      type: DataTypes.INTEGER,
       allowNull: true,
     }
+  },{
+    timestamps:false
   });
 };

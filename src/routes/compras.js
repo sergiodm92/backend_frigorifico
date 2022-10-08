@@ -60,6 +60,8 @@ route.post('/', async (req, res) => {
     }
 
     if(await crearCompra(req.body)){
+        console.log("------console.log de lo que llega por BODY------")
+        console.log(req.body)
         return res.status(201).send(customResponseExito("Compra creada con éxito"));
     }
     return res.status(400).send(customResponseError("Error al crear la compra", 400));

@@ -1,11 +1,13 @@
 const { Router } = require('express');
+const { Res } = require("../db");
 
 const {
     crearRes,
     getAllReses,
     getAllResesPorCorrelativo,
     getAllResesEnStock,
-    eliminarRes
+    eliminarRes,
+    actualizarCostoByKg
 } = require("../services/res.service");
 
 const {
@@ -71,26 +73,40 @@ route.delete('/', async (req, res) => {
     }
 })
 
-/* 
+
 route.put('/', (req, res) => {
-    const { Res_id, saldo } = req.body
+    let { precio_kg, tropa, categoria } = req.body
 
     try {
-        if(!saldo || !Res_id){
+        if(!precio_kg || !tropa || !categoria ){
             return res.status(400).send(customResponseError("Se necesita información para procesar la solicitud", 400));
         }
-
-        if (!Number.isInteger(parseInt(Res_id))) {
-            return res.status(400).send(customResponseError("El id de la Res debe ser un número entero", 400));
-        }
-
-        if(actualizarSaldoRes(Res_id, saldo)){
-            return res.status(200).send(customResponseExito("Saldo de Res actualizado con éxito"));
+        if(actualizarCostoByKg(precio_kg, tropa, categoria)){
+            return res.status(200).send(customResponseExito("Costo/kg de Res actualizado con éxito"));
         }
         return res.status(400).send(customResponseError("Error al actualizar el saldo de la Res", 400));
     } catch (error) {
         return res.status(400).send(customResponseError("Error, compruebe que el id que desea buscar es correcto o verifique que el saldo esté escrito correctamente.", 400));
     }
-}) */
+}) 
+
+// route.put('/', async (req, res) => {    
+//         try {
+//             let{ precio_kg, id } = req.body;
+//             await Res.update(
+//                 { precio_kg },
+//                 {
+//                     where:{
+//                         id
+//                     }
+//                 }
+//             )
+//             return res.status(200).send(customResponseExito("Costo/kg de Res actualizado con éxito"));
+//         } catch (error) {
+//             return res.status(400).send(customResponseError("Error, compruebe que el id que desea buscar es correcto o verifique que el saldo esté escrito correctamente.", 400));
+//         }
+//     }) 
+
+
 
 module.exports = route;

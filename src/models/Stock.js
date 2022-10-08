@@ -32,5 +32,7 @@ module.exports = (sequelize) => {
       type: DataTypes.FLOAT,
       allowNull: true,
     }
+  },{
+    timestamps:false
   });
 };
