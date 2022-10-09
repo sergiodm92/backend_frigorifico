@@ -12,7 +12,7 @@ const {
     crearVenta,
     actualizarSaldoVenta,
     eliminarVenta
-} = require("../services/compra_venta_pagos.service");
+} = require("../services/compra_venta.service.js")
 
 const route = Router();
 

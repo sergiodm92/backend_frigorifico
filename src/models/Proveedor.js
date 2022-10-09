@@ -23,10 +23,6 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    ultima_compra: {
-      type: DataTypes.DATE,
-      allowNull: true,
-    },
     saldo: {
       type: DataTypes.FLOAT,
       allowNull: true,

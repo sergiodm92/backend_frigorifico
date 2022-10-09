@@ -1,4 +1,4 @@
-const { Compra, Venta, Cliente, Proveedor, PagoCompra, PagoFaena, PagoVenta } = require("../db");
+const { Compra, Venta, Cliente, Proveedor} = require("../db");
 
 
 const getAllVentas = async () => {
@@ -134,8 +134,6 @@ const crearCompra = async ({ fecha, proveedor, lugar, n_dte, categoria, cant, kg
             rinde,
             saldo
         })
-        console.log("------crearCompra 1° console.log------")
-        console.log(compra)
         let proveedor_db = await Proveedor.findOne({
             where: {
                 nombre: proveedor
@@ -143,8 +141,6 @@ const crearCompra = async ({ fecha, proveedor, lugar, n_dte, categoria, cant, kg
         })
         compra.proveedorID = proveedor_db?.id;
         compra.save();
-        console.log("------crearCompra 2° console.log------")
-        console.log(compra)
         return true;
     } catch (e) {
         console.log(e);
@@ -167,157 +163,6 @@ const eliminarCompra = async (compra_id) => {
     }
 };
 
-const getAllPagosByProveedor = async (proveedor) => {
-    let pagos = await PagoCompra.findAll({
-        where: {
-            proveedor: proveedor
-        }
-    });
-    return pagos;
-};
-const getAllPagosByCompra = async (compra_id) => {
-    let pagos = await PagoCompra.findAll({
-        where: {
-            compra_id: compra_id
-        }
-    });
-    return pagos;
-};
-
-const eliminarPagoCompra = async (pagoCompra_id) => {
-    try {
-        await PagoCompra.destroy({
-            where: {
-                id: pagoCompra_id
-            },
-            force: true
-        });
-        return true;
-    } catch (e) {
-        console.log(e);
-        throw e;
-    }
-};
-
-const crearPagoCompra = async ({ fecha, proveedor, monto, formaDePago, compra_id }) => {
-    try {
-        await PagoCompra.create({
-            fecha,
-            proveedor,
-            monto,
-            formaDePago,
-            compra_id,
-        })
-        return true;
-    } catch (e) {
-        console.log(e);
-        return false;
-    }
-};
-
-
-const getAllPagosByFrigorifico = async (frigorifico) => {
-    let pagos = await PagoFaena.findAll({
-        where: {
-            frigorifico: frigorifico
-        }
-    });
-    return pagos;
-};
-const getAllPagosByFaena = async (faena_id) => {
-    let pagos = await PagoFaena.findAll({
-        where: {
-            faena_id: faena_id
-        }
-    });
-    return pagos;
-};
-
-const eliminarPagoFaena = async (pagoFaena_id) => {
-    try {
-        await PagoFaena.destroy({
-            where: {
-                id: pagoFaena_id
-            },
-            force: true
-        });
-        return true;
-    } catch (e) {
-        console.log(e);
-        throw e;
-    }
-};
-
-const crearPagoFaena = async ({ frigorifico, fecha, monto, formaDePago, faena_id }) => {
-    try {
-        const pagoFaena = await PagoFaena.create({
-            fecha,
-            frigorifico,
-            monto,
-            formaDePago,
-            faena_id,
-        })
-        return true;
-    } catch (e) {
-        console.log(e);
-        return false;
-    }
-};
-
-const getAllPagosByCliente = async (cliente) => {
-    let pagos = await PagoVenta.findAll({
-        where: {
-            cliente: cliente
-        }
-    });
-    return pagos;
-};
-const getAllPagosByVenta = async (venta_id) => {
-    let pagos = await PagoVenta.findAll({
-        where: {
-            venta_id: venta_id
-        }
-    });
-    return pagos;
-};
-
-const eliminarPagoVenta = async (pagoVenta_id) => {
-    try {
-        await PagoVenta.destroy({
-            where: {
-                id: pagoVenta_id
-            },
-            force: true
-        });
-        return true;
-    } catch (e) {
-        console.log(e);
-        throw e;
-    }
-};
-
-const crearPagoVenta = async ({ cliente, fecha, monto, formaDePago, venta_id }) => {
-    try {
-        const pagoVenta = await PagoVenta.create({
-            fecha,
-            cliente,
-            monto,
-            formaDePago,
-            venta_id,
-        })
-        let cliente_db = await Cliente.findOne({
-            where: {
-                nombre: cliente
-            }
-        })
-        pagoVenta.cliente = cliente_db?.nombre;
-        pagoVenta.save();
-        return true;
-    } catch (e) {
-        console.log(e);
-        return false;
-    }
-};
 
 module.exports = {
     getCompra,
@@ -330,17 +175,5 @@ module.exports = {
     getAllVentasPorIDCliente,
     crearVenta,
     eliminarVenta,
-    actualizarSaldoVenta,
-    getAllPagosByProveedor,
-    getAllPagosByCompra,
-    eliminarPagoCompra,
-    crearPagoCompra,
-    crearPagoFaena,
-    getAllPagosByFrigorifico,
-    getAllPagosByFaena,
-    eliminarPagoFaena,
-    crearPagoVenta,
-    getAllPagosByCliente,
-    getAllPagosByVenta,
-    eliminarPagoVenta
+    actualizarSaldoVenta
 };

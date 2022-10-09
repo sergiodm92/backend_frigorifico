@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-  sequelize.define('pago_faena', {
+  sequelize.define('pagoFaena', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -23,7 +23,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    faena_id:  {
+    faenaID:  {
       type: DataTypes.INTEGER,
       allowNull: true,
     }

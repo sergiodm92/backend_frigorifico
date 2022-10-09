@@ -1,7 +1,8 @@
 class DetallePagos {
-    ID;
+    id;
     fecha;
     monto;
+    formadepago;
 }
 
 class DetalleFaena {

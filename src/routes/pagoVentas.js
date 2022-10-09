@@ -1,44 +1,68 @@
 const { Router } = require('express');
 
 const {
+    getAllPagosVentas,
+    getAllPagosVentaByID_C,
+    getAllPagosVentaByID_V,
     crearPagoVenta,
-    getAllPagosByCliente,
-    getAllPagosByVenta,
-    eliminarPagoVenta,
-} = require("../services/compra_venta_pagos.service");
+    eliminarPagoVenta
+} = require("../services/pagos.service");
+
+const {
+    customResponseError,
+    customResponseExito
+} = require("../utils/customAPIResponse");
 
 const route = Router();
 
-route.get('/:cliente', async (req, res) => {
-    return res.send(customResponseExito(await getAllPagosByCliente()))
-})
+//-->trae todos los pagos de ventas
+route.get('/all', async (req, res) => {
+    return res.send(customResponseExito(await getAllPagosVentas()))
+});
 
-route.get('/:id', async (req, res) => {
-    return res.send(customResponseExito(await getAllPagosByVenta()))
-})
+//-->Trae todos los pagos de una venta
+route.get('/:ventaID', async (req, res) => {
+    const { ventaID } = req.params
 
+    return res.send(customResponseExito(await getAllPagosVentaByID_V(ventaID)))
+});
+
+//-->trae todos los pagos de un Cliente
+route.get('/all/:clienteID', async (req, res) => {
+    const { clienteID } = req.params
+    return res.send(customResponseExito(await getAllPagosVentaByID_C(clienteID)))
+});
+
+//-->Crear pago de una venta
 route.post('/', async (req, res) => {
-    if(await crearPagoVenta(req.body)){
-        return res.status(201).send(customResponseExito("Pago de venta agregado con éxito"));
+
+    if(!req.body){
+        return res.status(400).send(customResponseError("Se necesita información para crear el pago", 400));
     }
+
+    if(await crearPagoVenta(req.body)){
+        return res.status(201).send(customResponseExito("Pago creado con éxito"));
+    }
+    return res.status(400).send(customResponseError("Error al crear pago", 400));
 })
 
+//--> eliminar el pago de una venta
 route.delete('/', async (req, res) => {
-    const { pagoVenta_id } = req.body
+    const { pv_id } = req.body
 
     try {
-        if(!pagoVenta_id){
+        if(!pv_id){
             return res.status(400).send(customResponseError("Se necesita información para procesar la solicitud", 400));
         }
 
-        if (!Number.isInteger(parseInt(pagoVenta_id))) {
-            return res.status(400).send(customResponseError("El id del Pago debe ser un número entero", 400));
+        if (!Number.isInteger(parseInt(pv_id))) {
+            return res.status(400).send(customResponseError("El id del pago debe ser un número entero", 400));
         }
         
-        if(await eliminarPagoVenta(pagoVenta_id)){
-            return res.status(200).send(customResponseExito("Pago de Venta eliminado con éxito"));
+        if(await eliminarPagoVenta(pv_id)){
+            return res.status(200).send(customResponseExito("Pago eliminado con éxito"));
         }
-        return res.status(400).send(customResponseError("Error al eliminar el Pago", 400));
+        return res.status(400).send(customResponseError("Error al eliminar pago", 400));
     } catch (error) {
         return res.status(400).send(customResponseError("Error, compruebe que el id que desea buscar es correcto.", 400));
     }

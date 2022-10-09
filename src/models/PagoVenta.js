@@ -1,15 +1,11 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-  sequelize.define('pago_venta', {
+  sequelize.define('pagoVenta', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
-    },
-    cliente:  {
-        type: DataTypes.STRING,
-        allowNull: true,
     },
     fecha:  {
         type: DataTypes.STRING,
@@ -23,7 +19,11 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    venta_id:  {
+    clienteID:  {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
+    ventaID:  {
       type: DataTypes.INTEGER,
       allowNull: true,
     }

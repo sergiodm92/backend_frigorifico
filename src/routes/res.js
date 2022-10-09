@@ -7,7 +7,8 @@ const {
     getAllResesPorCorrelativo,
     getAllResesEnStock,
     eliminarRes,
-    actualizarCostoByKg
+    actualizarCostoByKg,
+    actualizarStock
 } = require("../services/res.service");
 
 const {
@@ -76,7 +77,6 @@ route.delete('/', async (req, res) => {
 
 route.put('/', (req, res) => {
     let { precio_kg, tropa, categoria } = req.body
-
     try {
         if(!precio_kg || !tropa || !categoria ){
             return res.status(400).send(customResponseError("Se necesita información para procesar la solicitud", 400));
@@ -90,23 +90,19 @@ route.put('/', (req, res) => {
     }
 }) 
 
-// route.put('/', async (req, res) => {    
-//         try {
-//             let{ precio_kg, id } = req.body;
-//             await Res.update(
-//                 { precio_kg },
-//                 {
-//                     where:{
-//                         id
-//                     }
-//                 }
-//             )
-//             return res.status(200).send(customResponseExito("Costo/kg de Res actualizado con éxito"));
-//         } catch (error) {
-//             return res.status(400).send(customResponseError("Error, compruebe que el id que desea buscar es correcto o verifique que el saldo esté escrito correctamente.", 400));
-//         }
-//     }) 
-
-
+route.put('/stock', (req, res) => {
+    let { correlativo, stock } = req.body
+    try {
+        if(!correlativo || !stock ){
+            return res.status(400).send(customResponseError("Se necesita información para procesar la solicitud", 400));
+        }
+        if(actualizarStock(correlativo, stock)){
+            return res.status(200).send(customResponseExito("Stock de Res actualizado con éxito"));
+        }
+        return res.status(400).send(customResponseError("Error al actualizar el saldo de la Res", 400));
+    } catch (error) {
+        return res.status(400).send(customResponseError("Error, compruebe que el id que desea buscar es correcto o verifique que el saldo esté escrito correctamente.", 400));
+    }
+})
 
 module.exports = route;

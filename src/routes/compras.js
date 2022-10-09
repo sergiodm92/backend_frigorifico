@@ -6,7 +6,7 @@ const {
     getComprasPorProveedor,
     crearCompra,
     eliminarCompra
-} = require("../services/compra_venta_pagos.service");
+} = require("../services/compra_venta.service.js");
 
 const {
     customResponseError,

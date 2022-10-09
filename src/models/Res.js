@@ -39,7 +39,7 @@ module.exports = (sequelize) => {
       type: DataTypes.BOOLEAN,
       allowNull: true,
     },
-    id_v: {
+    ventaID: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
