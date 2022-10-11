@@ -83,14 +83,35 @@ const eliminarProveedor = async (proveedor_id) => {
 };
 
 
-const actualizarSaldoCompra = async (proveedor_id, saldo) => {
-    try{
-        const proveedor = await Proveedor.findByPk(proveedor_id);
-        proveedor.saldo = saldo;
-        await proveedor.save();
+const actualizarSaldoCliente = async (id, saldo) => {
+    try {
+        await Cliente.update(
+            { saldo },
+                {
+                    where:{
+                        id
+                    }
+                }
+            )
         return true;
+    } catch (e) {
+        console.log(e);
+        return false;
     }
-    catch (e) {
+};
+
+const actualizarSaldoProveedor = async (id, saldo) => {
+    try {
+        await Proveedor.update(
+            { saldo },
+                {
+                    where:{
+                        id
+                    }
+                }
+            )
+        return true;
+    } catch (e) {
         console.log(e);
         return false;
     }
@@ -105,6 +126,7 @@ module.exports = {
     getAllProveedores,
     getProveedor,
     crearProveedor,
-    actualizarSaldoCompra,
+    actualizarSaldoCliente,
+    actualizarSaldoProveedor,
     eliminarProveedor
 }

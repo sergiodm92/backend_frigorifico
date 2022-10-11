@@ -64,21 +64,23 @@ const eliminarFaena = async (faena_id) => {
     }
 };
 
-const actualizarSaldoFaena = async (faena_id, compraId, saldo) => {
-    try {
-        const faena = await Faena.findByPk(faena_id);
-        const compra = await Compra.findByPk(compraId);
-        faena.saldo = saldo;
-        faena.compraId = compra;
-        faena.setCompra(compra);
-        await faena.save();
-        return true;
-    }
-    catch (e) {
-        console.log(e);
-        throw e;
-    }
-};
+
+    const actualizarSaldoFaena = async (id, saldo) => {
+        try {
+            await Faena.update(
+                { saldo },
+                    {
+                        where:{
+                            id
+                        }
+                    }
+                )
+            return true;
+        } catch (e) {
+            console.log(e);
+            return false;
+        }
+    };
 
 module.exports = {
     getAllStock,

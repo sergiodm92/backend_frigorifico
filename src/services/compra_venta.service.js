@@ -60,23 +60,38 @@ const eliminarVenta = async (venta_id) => {
     }
 };
 
-const actualizarSaldoVenta = async (venta_id, client_id, saldo) => {
-    try{
-        const venta = await Venta.findOne({
-            where:{
-                id: venta_id,
-                clienteID: client_id,
-            }
-        });
-        venta.saldo = saldo;
-        await venta.save();
-        return true
-    }
-    catch (e) {
-        console.log(e);
-        return false;
-    }
-};
+    const actualizarSaldoVenta = async (id, saldo) => {
+        try {
+            await Venta.update(
+                { saldo },
+                    {
+                        where:{
+                            id
+                        }
+                    }
+                )
+            return true;
+        } catch (e) {
+            console.log(e);
+            return false;
+        }
+    };
+    const actualizarSaldoCompra = async (id, saldo) => {
+        try {
+            await Compra.update(
+                { saldo },
+                    {
+                        where:{
+                            id
+                        }
+                    }
+                )
+            return true;
+        } catch (e) {
+            console.log(e);
+            return false;
+        }
+    };
 
 const getAllCompras = async () => {
     let allCompras = await Compra.findAll();
@@ -168,5 +183,6 @@ module.exports = {
     getAllVentasPorIDCliente,
     crearVenta,
     eliminarVenta,
-    actualizarSaldoVenta
+    actualizarSaldoVenta,
+    actualizarSaldoCompra
 };

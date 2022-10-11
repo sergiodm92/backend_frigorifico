@@ -70,24 +70,18 @@ route.post('/', async(req, res) => {
     return res.status(400).send(customResponseError("Error al crear la venta", 400));
 })
 
-route.put('/', async(req, res) => {
-    const { venta_id, client_id, saldo } = req.body
-
+route.put('/saldo', async (req, res) => {
+    const { id, saldo } = req.body
     try {
-        if(!saldo || !client_id){
+        if(!id || !saldo){
             return res.status(400).send(customResponseError("Se necesita información para procesar la solicitud", 400));
         }
-
-        if (!Number.isInteger(parseInt(client_id))) {
-            return res.status(400).send(customResponseError("El id del cliente debe ser un número entero", 400));
+        if(await actualizarSaldoVenta(id, saldo)){
+            return res.status(200).send(customResponseExito("Saldo de Venta actualizado con éxito"));
         }
-
-        if(await actualizarSaldoVenta(venta_id, client_id, saldo)){
-            return res.status(201).send(customResponseExito("Saldo de venta actualizado con éxito"));
-        }
-        return res.status(400).send(customResponseError("Error al actualizar el saldo de la venta", 400));
+        return res.status(400).send(customResponseError("Error al actualizar el saldo de Venta", 400));
     } catch (error) {
-        return res.status(400).send(customResponseError("Error, compruebe que el id que desea buscar es correcto o verifique que el saldo.", 400));
+        return res.status(400).send(customResponseError("Error, compruebe que el id que desea buscar es correcto o verifique que el saldo esté escrito correctamente.", 400));
     }
 })
 

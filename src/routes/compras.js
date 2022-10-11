@@ -5,7 +5,8 @@ const {
     getAllCompras,
     getComprasPorProveedor,
     crearCompra,
-    eliminarCompra
+    eliminarCompra,
+    actualizarSaldoCompra
 } = require("../services/compra_venta.service.js");
 
 const {
@@ -85,6 +86,21 @@ route.delete('/', async (req, res) => {
         return res.status(400).send(customResponseError("Error al eliminar la Compra", 400));
     } catch (error) {
         return res.status(400).send(customResponseError("Error, compruebe que el id que desea buscar es correcto.", 400));
+    }
+})
+
+route.put('/saldo', async (req, res) => {
+    const { id, saldo } = req.body
+    try {
+        if(!id || !saldo){
+            return res.status(400).send(customResponseError("Se necesita información para procesar la solicitud", 400));
+        }
+        if(await actualizarSaldoCompra(id, saldo)){
+            return res.status(200).send(customResponseExito("Saldo de Compra actualizado con éxito"));
+        }
+        return res.status(400).send(customResponseError("Error al actualizar el saldo de Compra", 400));
+    } catch (error) {
+        return res.status(400).send(customResponseError("Error, compruebe que el id que desea buscar es correcto o verifique que el saldo esté escrito correctamente.", 400));
     }
 })
 
