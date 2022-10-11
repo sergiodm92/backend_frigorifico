@@ -32,13 +32,13 @@ const getAllPagosCompraByID_C = async (compraID) => {
 };
 
 //-->crear un nuevo pago
-const crearPagoCompra = async ({ fecha, monto, formaDePago, proveedorID, compraID }) => {
+const crearPagoCompra = async ({ fecha, monto, formaDePago, proveedor, compraID }) => {
     try {
         await PagoCompra.create({
             fecha,
             monto,
             formaDePago,
-            proveedorID,
+            proveedor,
             compraID
         })
         return true;
@@ -145,13 +145,13 @@ const getAllPagosVentaByID_V = async (ventaID) => {
 };
 
 //-->crear un nuevo pago de una venta
-const crearPagoVenta = async ({ fecha, monto, formaDePago, clienteID, ventaID }) => {
+const crearPagoVenta = async ({ fecha, monto, formaDePago, cliente, ventaID }) => {
     try {
         await PagoVenta.create({
             fecha,
             monto,
             formaDePago,
-            clienteID,
+            cliente,
             ventaID
         })
         return true;

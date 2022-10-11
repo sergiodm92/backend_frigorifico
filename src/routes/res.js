@@ -8,7 +8,8 @@ const {
     getAllResesEnStock,
     eliminarRes,
     actualizarCostoByKg,
-    actualizarStock
+    actualizarStock,
+    actualizarCuartoRes
 } = require("../services/res.service");
 
 const {
@@ -104,5 +105,21 @@ route.put('/stock', (req, res) => {
         return res.status(400).send(customResponseError("Error, compruebe que el id que desea buscar es correcto o verifique que el saldo esté escrito correctamente.", 400));
     }
 })
+
+route.put('/cuartoRes', (req, res) => {
+    let { id, kg, correlativo } = req.body
+    try {
+        if(!id || !kg || !correlativo ){
+            return res.status(400).send(customResponseError("Se necesita información para procesar la solicitud", 400));
+        }
+        if(actualizarCuartoRes(id, kg, correlativo)){
+            return res.status(200).send(customResponseExito("Res actualizada con éxito"));
+        }
+        return res.status(400).send(customResponseError("Error al actualizar el saldo de la Res", 400));
+    } catch (error) {
+        return res.status(400).send(customResponseError("Error, compruebe que el id que desea buscar es correcto.", 400));
+    }
+})
+
 
 module.exports = route;

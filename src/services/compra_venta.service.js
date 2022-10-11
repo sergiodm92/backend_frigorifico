@@ -20,19 +20,12 @@ const getAllVentasPorIDCliente = async (client_id) => {
     return ventas;
 };
 
-const crearVenta = async ({ cliente, detalle, cant, kg_total, precio_kg_prom, total, margen_kg, margen_venta, margen_porciento, saldo }) => {
+const crearVenta = async ({ fecha, cliente, detalle, saldo }) => {
     try {
         const venta = await Venta.create({
-            fecha: new Date(),
+            fecha,
             cliente,
             detalle,
-            cant,
-            kg_total,
-            precio_kg_prom,
-            total,
-            margen_kg,
-            margen_venta,
-            margen_porciento,
             saldo
         })
 
