@@ -52,6 +52,8 @@ const authLogin = async (data) => {
         id: user.id
     }, process.env.TOKEN_SECRET);
 
+
+
     console.log(token)
     return token;
     
