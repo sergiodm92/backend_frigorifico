@@ -2,7 +2,7 @@ const { Router } = require('express');
 
 const {
     getAllPagosCompras,
-    getAllPagosCompraByID_P,
+    getAllPagosCompraByP,
     getAllPagosCompraByID_C,
     crearPagoCompra,
     eliminarPagoCompra
@@ -28,9 +28,9 @@ route.get('/:compraID', async (req, res) => {
 });
 
 //-->trae todos los pagos de un Proveedor
-route.get('/all/:proveedorID', async (req, res) => {
-    const { proveedorID } = req.params
-    return res.send(customResponseExito(await getAllPagosCompraByID_P(proveedorID)))
+route.get('/all/:proveedor', async (req, res) => {
+    const { proveedor } = req.params
+    return res.send(customResponseExito(await getAllPagosCompraByP(proveedor)))
 });
 
 //-->Crear pago de una compra

@@ -12,10 +12,10 @@ const getAllPagosCompras = async () => {
 };
 
 //-->Tae todos los pagos de todas las compras de un proveedor
-const getAllPagosCompraByID_P = async (proveedorID) => {
+const getAllPagosCompraByP = async (proveedor) => {
     let pagos = await PagoCompra.findAll({
         where: {
-            proveedorID
+            proveedor
         }
     });
     return pagos;
@@ -83,6 +83,16 @@ const getAllPagosFaenaByID_F = async (faenaID) => {
     return pagos;
 };
 
+//-->Tae todos los pagos de todas las faenas de un frigorifico
+const getAllPagosFaenasByF = async (frigorifico) => {
+    let pagos = await PagoFaena.findAll({
+        where: {
+            frigorifico
+        }
+    });
+    return pagos;
+};
+
 //-->crear un nuevo pago
 const crearPagoFaena = async ({ fecha, monto, formaDePago, faenaID, frigorifico }) => {
     try {
@@ -125,10 +135,10 @@ const getAllPagosVentas = async () => {
 };
 
 //-->Tae todos los pagos de todas las ventas de un cliente
-const getAllPagosVentaByID_C = async (clienteID) => {
+const getAllPagosVentaByC = async (cliente) => {
     let pagos = await PagoVenta.findAll({
         where: {
-            clienteID
+            cliente
         }
     });
     return pagos;
@@ -181,16 +191,17 @@ const eliminarPagoVenta = async (id) => {
 
 module.exports = {
     getAllPagosCompras,
-    getAllPagosCompraByID_P,
+    getAllPagosCompraByP,
     crearPagoCompra,
     getAllPagosCompraByID_C,
     eliminarPagoCompra,
     getAllPagosFaenas,
     getAllPagosFaenaByID_F,
+    getAllPagosFaenasByF,
     crearPagoFaena,
     eliminarPagoFaena,
     getAllPagosVentas,
-    getAllPagosVentaByID_C,
+    getAllPagosVentaByC,
     getAllPagosVentaByID_V,
     crearPagoVenta,
     eliminarPagoVenta

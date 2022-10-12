@@ -3,6 +3,7 @@ const { Router } = require('express');
 const {
     getAllPagosFaenas,
     crearPagoFaena,
+    getAllPagosFaenasByF,
     getAllPagosFaenaByID_F,
     eliminarPagoFaena
 } = require("../services/pagos.service");
@@ -24,6 +25,12 @@ route.get('/:faenaID', async (req, res) => {
     const { faenaID } = req.params
 
     return res.send(customResponseExito(await getAllPagosFaenaByID_F(faenaID)))
+});
+
+//-->trae todos los pagos de un Frigorifico
+route.get('/all/:frigorifico', async (req, res) => {
+    const { frigorifico } = req.params
+    return res.send(customResponseExito(await getAllPagosFaenasByF(frigorifico)))
 });
 
 //-->Crear pago de una faena
