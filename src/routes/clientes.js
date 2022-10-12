@@ -16,7 +16,12 @@ const {
 const route = Router();
 
 route.get('/all', async (req, res) => {
+    try{
     return res.send(customResponseExito(await getAllClientes()))
+    }
+    catch{
+        return res.send("Error al traer los clientes");
+    }
 })
 
 route.get('/:id', async (req, res) => {
@@ -40,6 +45,7 @@ route.get('/:id', async (req, res) => {
 })
 
 route.post('/', async(req, res) => {
+    try{
     if(!req.body){
         return res.status(400).send(customResponseError("Se necesita información para crear el cliente", 400));
     }
@@ -48,6 +54,10 @@ route.post('/', async(req, res) => {
         return res.status(201).send(customResponseExito("Cliente creada con éxito"));
     }
     return res.status(400).send(customResponseError("Error al crear el cliente", 400));
+    }
+    catch{
+        return res.status(400).send(customResponseError("Error al crear el cliente", 400));
+    }
 })
 
 route.delete('/', async (req, res) => {

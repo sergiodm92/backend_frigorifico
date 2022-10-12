@@ -41,6 +41,7 @@ route.get('/:id', async (req, res) => {
 })
 
 route.post('/', async(req, res) => {
+    try{
     if(!req.body){
         return res.status(400).send(customResponseError("Se necesita información para crear el proveedor", 400));
     }
@@ -50,6 +51,10 @@ route.post('/', async(req, res) => {
         return res.status(201).send(customResponseExito("Proveedor creado con éxito"));
     }
     return res.status(400).send(customResponseError("Error al crear el proveedor", 400));
+    }
+    catch{
+        return res.send("error")
+    }
 })
 
 route.put('/', async(req, res) => {
