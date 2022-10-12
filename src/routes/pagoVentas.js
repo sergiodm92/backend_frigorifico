@@ -17,25 +17,39 @@ const route = Router();
 
 //-->trae todos los pagos de ventas
 route.get('/all', async (req, res) => {
+    try{
     return res.send(customResponseExito(await getAllPagosVentas()))
+    }
+    catch{
+        return res.send("error")
+    }
 });
 
 //-->Trae todos los pagos de una venta
 route.get('/:ventaID', async (req, res) => {
     const { ventaID } = req.params
-
+    try{
     return res.send(customResponseExito(await getAllPagosVentaByID_V(ventaID)))
+    }
+    catch{
+        return res.send("error")
+    }
 });
 
 //-->trae todos los pagos de un Cliente
 route.get('/all/:cliente', async (req, res) => {
     const { cliente } = req.params
+    try{
     return res.send(customResponseExito(await getAllPagosVentaByC(cliente)))
+    }
+    catch{
+        return res.send("error")
+    }
 });
 
 //-->Crear pago de una venta
 route.post('/', async (req, res) => {
-
+    try{
     if(!req.body){
         return res.status(400).send(customResponseError("Se necesita información para crear el pago", 400));
     }
@@ -44,6 +58,10 @@ route.post('/', async (req, res) => {
         return res.status(201).send(customResponseExito("Pago creado con éxito"));
     }
     return res.status(400).send(customResponseError("Error al crear pago", 400));
+    }
+    catch{
+        return res.send("error")
+    }
 })
 
 //--> eliminar el pago de una venta

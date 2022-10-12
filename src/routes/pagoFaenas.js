@@ -17,25 +17,40 @@ const route = Router();
 
 //-->trae todos los pagos de faenas
 route.get('/all', async (req, res) => {
+    try{
     return res.send(customResponseExito(await getAllPagosFaenas()))
+    }
+    catch{
+        return res.send("error")
+    }
 });
 
 //-->Trae todos los pagos de una faena
 route.get('/:faenaID', async (req, res) => {
     const { faenaID } = req.params
-
+    try{
     return res.send(customResponseExito(await getAllPagosFaenaByID_F(faenaID)))
+    }
+    catch{
+        return res.send("error")
+    }
 });
 
 //-->trae todos los pagos de un Frigorifico
 route.get('/all/:frigorifico', async (req, res) => {
     const { frigorifico } = req.params
+    try{
     return res.send(customResponseExito(await getAllPagosFaenasByF(frigorifico)))
+    }
+    catch{
+        return res.send("error")
+    }
+
 });
 
 //-->Crear pago de una faena
 route.post('/', async (req, res) => {
-
+    try{
     if(!req.body){
         return res.status(400).send(customResponseError("Se necesita información para crear el pago", 400));
     }
@@ -44,6 +59,10 @@ route.post('/', async (req, res) => {
         return res.status(201).send(customResponseExito("Pago creado con éxito"));
     }
     return res.status(400).send(customResponseError("Error al crear el pago", 400));
+    }
+    catch{
+        return res.send("error")
+    }
 })
 
 //--> eliminar el pago de una faena

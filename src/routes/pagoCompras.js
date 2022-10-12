@@ -17,25 +17,40 @@ const route = Router();
 
 //-->trae todos los pagos de compras
 route.get('/all', async (req, res) => {
+    try{
     return res.send(customResponseExito(await getAllPagosCompras()))
+    }
+    catch{
+        return res.send("error")
+    }
 });
 
 //-->Trae todos los pagos de una compra
 route.get('/:compraID', async (req, res) => {
     const { compraID } = req.params
-
+    try{
     return res.send(customResponseExito(await getAllPagosCompraByID_C(compraID)))
+    }
+    catch{
+        return res.send("error")
+    }
 });
 
 //-->trae todos los pagos de un Proveedor
 route.get('/all/:proveedor', async (req, res) => {
     const { proveedor } = req.params
+    try{
     return res.send(customResponseExito(await getAllPagosCompraByP(proveedor)))
+    }
+    catch{
+        return res.send("error")
+    }
 });
 
 //-->Crear pago de una compra
 route.post('/', async (req, res) => {
-
+  
+    try{
     if(!req.body){
         return res.status(400).send(customResponseError("Se necesita información para crear el pago", 400));
     }
@@ -44,6 +59,10 @@ route.post('/', async (req, res) => {
         return res.status(201).send(customResponseExito("Pago creado con éxito"));
     }
     return res.status(400).send(customResponseError("Error al crear pago", 400));
+    }
+    catch{
+        return res.send("error")
+    }
 })
 
 //--> eliminar el pago de una compra

@@ -36,6 +36,7 @@ route.get('/:tropa', async (req, res) => {
 })
 
 route.post('/', async (req, res) => {
+    try{
     if(!req.body){
         return res.status(400).send(customResponseError("Se necesita información para crear la faena", 400));
     }
@@ -43,6 +44,10 @@ route.post('/', async (req, res) => {
         return res.status(201).send(customResponseExito("Faena creada con éxito"));
     }
     else return res.status(400).send(customResponseError("tropa repetida", 400));
+    }
+    catch{
+        return res.status(400).send(customResponseError("tropa repetida", 400));
+    }
  
 })
 

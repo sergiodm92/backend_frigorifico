@@ -44,6 +44,7 @@ route.get('/:correlativo', async (req, res) => {
 });
 
 route.post('/', async (req, res) => {
+    try{
     if(!req.body){
         return res.status(400).send(customResponseError("Se necesita información para crear la res", 400));
     }
@@ -52,6 +53,10 @@ route.post('/', async (req, res) => {
         return res.status(201).send(customResponseExito("Res creada con éxito"));
     }
     return res.status(400).send(customResponseError("Error al crear la res", 400));
+    }
+    catch{
+        return res.status(400).send(customResponseError("Error al crear la res", 400));
+    }
 })
 
 route.delete('/', async (req, res) => {
