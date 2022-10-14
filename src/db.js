@@ -61,6 +61,7 @@ const {
   Stock,
   User,
   Venta,
+  VentaAchura,
   PagoCompra,
   PagoVenta,
   PagoFaena

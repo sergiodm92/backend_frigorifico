@@ -10,6 +10,7 @@ const res = require('./res');
 const stock = require('./stock');
 const user = require('./user');
 const ventas = require('./ventas');
+const ventaAchuras = require('./ventaAchuras')
 const verifyToken = require('../middlewares/verify-token');
 
 const router = Router();
@@ -25,5 +26,6 @@ router.use('/res', verifyToken, res);
 router.use('/stock', verifyToken, stock);
 router.use('/user', user);
 router.use('/ventas', verifyToken, ventas);
+router.use('/ventaAchuras', verifyToken, ventaAchuras);
 
 module.exports = router;

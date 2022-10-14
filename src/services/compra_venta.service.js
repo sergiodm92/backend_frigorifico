@@ -76,6 +76,11 @@ const eliminarVenta = async (venta_id) => {
             return false;
         }
     };
+
+//--------------------------------
+
+//-------------------------
+
     const actualizarSaldoCompra = async (id, saldo) => {
         try {
             await Compra.update(
