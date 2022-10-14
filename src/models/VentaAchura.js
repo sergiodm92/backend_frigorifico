@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-  sequelize.define('ventadeachura', {
+  sequelize.define('ventaAchura', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -11,18 +11,26 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    cliente: {
+    clien: {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    detalle: {
-      type: DataTypes.ARRAY(DataTypes.JSON),
+    cantidad: {
+      type: DataTypes.INTEGER,
       allowNull: true,
     },
-    saldo: {
+    precioUnitario: {
       type: DataTypes.FLOAT,
       allowNull: true,
     },
+    total: {
+      type: DataTypes.FLOAT,
+      allowNull: true,
+    },
+    saldo: {
+        type: DataTypes.FLOAT,
+        allowNull: true,
+    }
   },{
     timestamps:false
   });
