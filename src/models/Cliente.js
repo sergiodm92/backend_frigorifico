@@ -24,7 +24,11 @@ module.exports = (sequelize) => {
       allowNull: true,
     },
     ultima_venta: {
-      type: DataTypes.DATE,
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    cuil:{
+      type: DataTypes.STRING,
       allowNull: true,
     },
     saldo: {
