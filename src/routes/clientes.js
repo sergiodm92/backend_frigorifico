@@ -45,6 +45,7 @@ route.get('/:id', async (req, res) => {
 })
 
 route.post('/', async(req, res) => {
+    //cargando cuil
     try{
     if(!req.body){
         return res.status(400).send(customResponseError("Se necesita información para crear el cliente", 400));
