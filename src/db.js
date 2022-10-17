@@ -64,7 +64,8 @@ const {
   VentaAchura,
   PagoCompra,
   PagoVenta,
-  PagoFaena
+  PagoFaena,
+  PagoVentaAchura
 } = sequelize.models;
 
 // Aca vendrian las relaciones
