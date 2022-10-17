@@ -11,13 +11,14 @@ const getCliente = async (id) => {
     return venta;
 };
 
-const crearCliente = async ({ nombre, telefono, email, direccion }) => {
+const crearCliente = async ({ nombre, telefono, email, direccion, cuil}) => {
     try {
         await Cliente.create({
             nombre,
             telefono,
             email,
-            direccion
+            direccion,
+            cuil
         })
         return true;
     } catch (e) {
@@ -51,13 +52,14 @@ const getProveedor = async (id) => {
     return proveedor;
 };
 
-const crearProveedor = async ({ saldo, nombre, telefono, email, direccion }) => {
+const crearProveedor = async ({ saldo, nombre, telefono, email, direccion, cuil }) => {
     try {
         await Proveedor.create({
             nombre,
             telefono,
             email,
             direccion,
+            cuil,
             saldo
         })
         return true;
