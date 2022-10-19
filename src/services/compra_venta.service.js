@@ -117,35 +117,26 @@ const getComprasPorProveedor = async (proveedor) => {
     return compras;
 };
 
-const crearCompra = async ({ fecha, proveedor, lugar, n_dte, categoria, cant, kgv_brutos, desbaste, kg_desbaste, kgv_netos, precio_kgv_netos, n_tropa, kg_carne, cant_achuras, precio_venta_achuras, recupero_precio_kg, costo_hac, costo_faena_kg, comision, costo_flete, costo_veps, costo_faena, costo_total, costo_kg, rinde, saldo}) => {
+const crearCompra = async ({ fecha, proveedor, lugar, n_dte,cant_total,kgv_brutos_totales,kgv_netos_totales,kg_carne_totales, cant_achuras,precio_venta_achuras_unit,recupero_precio_kg,costo_total_hac, comision, costo_flete,costo_veps_unit, saldo,grupos}) => {
     try {
         const compra = await Compra.create({
             fecha,
             proveedor,
             lugar,
             n_dte,
-            categoria,
-            cant,
-            kgv_brutos,
-            desbaste,
-            kg_desbaste,
-            kgv_netos,
-            precio_kgv_netos,
-            n_tropa,
-            kg_carne,
+            cant_total,
+            kgv_brutos_totales,
+            saldo,
+            kgv_netos_totales,
+            kg_carne_totales,
             cant_achuras,
-            precio_venta_achuras,
+            precio_venta_achuras_unit,
             recupero_precio_kg,
-            costo_hac,
-            costo_faena_kg,
+            costo_total_hac,
             comision,
             costo_flete,
-            costo_veps,
-            costo_faena,
-            costo_total,
-            costo_kg,
-            rinde,
-            saldo
+            costo_veps_unit,
+            grupos
         })
         let proveedor_db = await Proveedor.findOne({
             where: {

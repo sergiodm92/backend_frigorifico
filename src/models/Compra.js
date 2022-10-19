@@ -23,15 +23,11 @@ module.exports = (sequelize) => {
     type: DataTypes.STRING,
     allowNull: true,
   },
-  categoria: {
-    type: DataTypes.STRING,
-    allowNull: true,
-  },
-  cant: {
+  cant_total: {
     type: DataTypes.INTEGER,
     allowNull: true,
   },
-  kgv_brutos: {
+  kgv_brutos_totales: {
     type: DataTypes.FLOAT,
     allowNull: true,
   },
@@ -39,31 +35,11 @@ module.exports = (sequelize) => {
     type: DataTypes.FLOAT,
     allowNull: true,
   },
-  desbaste: {
+  kgv_netos_totales: {
     type: DataTypes.FLOAT,
     allowNull: true,
   },
-  kg_desbaste: {
-    type: DataTypes.FLOAT,
-    allowNull: true,
-  },
-  kgv_netos: {
-    type: DataTypes.FLOAT,
-    allowNull: true,
-  },
-  precio_kgv_netos: {
-    type: DataTypes.FLOAT,
-    allowNull: true,
-  },
-  n_tropa: {
-    type: DataTypes.STRING,
-    allowNull: true,
-  },
-  kg_carne: {
-    type: DataTypes.FLOAT,
-    allowNull: true,
-  },
-  rinde: {
+  kg_carne_totales: {
     type: DataTypes.FLOAT,
     allowNull: true,
   },
@@ -71,7 +47,7 @@ module.exports = (sequelize) => {
     type: DataTypes.INTEGER,
     allowNull: true,
   },
-  precio_venta_achuras: {
+  precio_venta_achuras_unit: {
     type: DataTypes.FLOAT,
     allowNull: true,
   },
@@ -79,7 +55,7 @@ module.exports = (sequelize) => {
     type: DataTypes.FLOAT,
     allowNull: true,
   },
-  costo_hac: {
+  costo_total_hac: {
     type: DataTypes.FLOAT,
     allowNull: true,
   },
@@ -91,20 +67,12 @@ module.exports = (sequelize) => {
     type: DataTypes.FLOAT,
     allowNull: true,
   },
-  costo_veps: {
+  costo_veps_unit: {
     type: DataTypes.FLOAT,
     allowNull: true,
   },
-  costo_faena: {
-    type: DataTypes.FLOAT,
-    allowNull: true,
-  },
-  costo_total: {
-    type: DataTypes.FLOAT,
-    allowNull: true,
-  },
-  costo_kg: {
-    type: DataTypes.FLOAT,
+  grupos: {
+    type: DataTypes.ARRAY(DataTypes.JSON),
     allowNull: true,
   }
   },{
