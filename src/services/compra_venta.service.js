@@ -117,7 +117,7 @@ const getComprasPorProveedor = async (proveedor) => {
     return compras;
 };
 
-const crearCompra = async ({ fecha, proveedor, lugar, n_dte,cant_total,kgv_brutos_totales,kgv_netos_totales,kg_carne_totales, cant_achuras,precio_venta_achuras_unit,recupero_precio_kg,costo_total_hac, comision, costo_flete,costo_veps_unit, saldo,grupos}) => {
+const crearCompra = async ({ fecha, proveedor, lugar, n_dte,cant_total,kgv_brutos_totales,kgv_netos_totales,kg_carne_totales, cant_achuras,precio_venta_achuras_unit,recupero_precio_kg,costo_total_hac, costo_flete,costo_veps_unit, saldo,grupos}) => {
     try {
         const compra = await Compra.create({
             fecha,
@@ -133,7 +133,6 @@ const crearCompra = async ({ fecha, proveedor, lugar, n_dte,cant_total,kgv_bruto
             precio_venta_achuras_unit,
             recupero_precio_kg,
             costo_total_hac,
-            comision,
             costo_flete,
             costo_veps_unit,
             grupos

@@ -59,10 +59,6 @@ module.exports = (sequelize) => {
     type: DataTypes.FLOAT,
     allowNull: true,
   },
-  comision: {
-    type: DataTypes.FLOAT,
-    allowNull: true,
-  },
   costo_flete: {
     type: DataTypes.FLOAT,
     allowNull: true,
