@@ -69,8 +69,8 @@ route.put('/', async(req, res) => {
             return res.status(400).send(customResponseError("El id del proveedor debe ser un número entero", 400));
         }
 
-        if(await actualizarSaldoCompra(proveedor_id, saldo)){
-            return res.status(201).send(customResponseExito("Saldo de compra actualizado con éxito"));
+        if(await actualizarSaldoProveedor(proveedor_id, saldo)){
+            return res.status(201).send(customResponseExito("Saldo de proveedor actualizado con éxito"));
         }
         return res.status(400).send(customResponseError("Error al actualizar el saldo", 400));
     } catch (error) {
