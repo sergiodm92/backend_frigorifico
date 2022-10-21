@@ -1,5 +1,5 @@
 const e = require("express");
-const { Cliente, Proveedor, Compra } = require("../db");
+const { Cliente, Proveedor, Compra, Venta } = require("../db");
 
 
 const getAllClientes = async () => {
@@ -103,23 +103,6 @@ const actualizarSaldoCliente = async (id, saldo) => {
     }
 };
 
-const actualizarSaldoProveedor = async (id, saldo) => {
-    try {
-        await Proveedor.update(
-            { saldo },
-                {
-                    where:{
-                        id
-                    }
-                }
-            )
-        return true;
-    } catch (e) {
-        console.log(e);
-        return false;
-    }
-};
-
 const saldoProveedor = async (proveedor) => {
 try{
     let saldo = 0
@@ -134,6 +117,20 @@ catch(e){
 }
 };
 
+const saldoCliente = async (cliente) => {
+    try{
+        let saldo = 0
+        let allVentas = await Venta.findAll();
+        allVentas.map((a)=>{if(a.cliente==cliente){
+            saldo +=a.saldo
+            }})
+        return saldo;
+    }
+    catch(e){
+        console.log(e)
+    }
+    };
+
 
 module.exports = {
     getAllClientes,
@@ -144,7 +141,6 @@ module.exports = {
     getAllProveedores,
     getProveedor,
     crearProveedor,
-    actualizarSaldoCliente,
-    actualizarSaldoProveedor,
+    saldoCliente,
     eliminarProveedor
 }
