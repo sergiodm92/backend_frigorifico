@@ -5,7 +5,7 @@ const {
     getAllClientes,
     crearCliente,
     eliminarCliente,
-    actualizarSaldoCliente
+    saldoCliente
 } = require("../services/cliente_proveedor.service");
 
 const {
@@ -82,18 +82,15 @@ route.delete('/', async (req, res) => {
     }
 })
 
-route.put('/saldo', async (req, res) => {
-    const { id, saldo } = req.body
+route.get('/saldo/:cliente', async (req, res) => {
+    const { cliente } = req.params;
     try {
-        if(!id || !saldo){
-            return res.status(400).send(customResponseError("Se necesita información para procesar la solicitud", 400));
-        }
-        if(await actualizarSaldoCliente(id, saldo)){
-            return res.status(200).send(customResponseExito("Saldo de Cliente actualizado con éxito"));
-        }
-        return res.status(400).send(customResponseError("Error al actualizar el saldo de Cliente", 400));
+        let saldo = await saldoCliente(cliente);
+        
+        return res.json(customResponseExito(saldo));
+        
     } catch (error) {
-        return res.status(400).send(customResponseError("Error, compruebe que el id que desea buscar es correcto o verifique que el saldo esté escrito correctamente.", 400));
+        return res.status(400).send(customResponseError("Error, compruebe que el cliente que desea buscar es correcto o verifique que el saldo esté escrito correctamente.", 400));
     }
 })
 

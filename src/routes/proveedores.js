@@ -5,7 +5,6 @@ const {
     getProveedor,
     getAllProveedores,
     crearProveedor,
-    actualizarSaldoProveedor,
     eliminarProveedor,
     saldoProveedor
 } = require("../services/cliente_proveedor.service");
@@ -98,21 +97,6 @@ route.delete('/', async (req, res) => {
     }
 })
 
-// route.put('/saldo', async (req, res) => {
-//    const { id } = req.params;
-//     try {
-//         if(await actualizarSaldoProveedor(id, saldo)){
-//             return res.status(200).send(customResponseExito("Saldo de Proveedor actualizado con éxito"));
-//         }
-//         if(!id || !saldo){
-//             return res.status(400).send(customResponseError("Se necesita información para procesar la solicitud", 400));
-//         }
-//         return res.status(400).send(customResponseError("Error al actualizar el saldo de Proveedor", 400));
-//     } catch (error) {
-//         return res.status(400).send(customResponseError("Error, compruebe que el id que desea buscar es correcto o verifique que el saldo esté escrito correctamente.", 400));
-//     }
-// })
-
 route.get('/saldo/:proveedor', async (req, res) => {
     const { proveedor } = req.params;
     try {
@@ -120,7 +104,6 @@ route.get('/saldo/:proveedor', async (req, res) => {
         
         return res.json(customResponseExito(saldo));
         
-        // return res.status(400).send(customResponseError("Error al actualizar el saldo de Proveedor", 400));
     } catch (error) {
         return res.status(400).send(customResponseError("Error, compruebe que el id que desea buscar es correcto o verifique que el saldo esté escrito correctamente.", 400));
     }
