@@ -1,3 +1,4 @@
+const e = require("express");
 const { Cliente, Proveedor, Compra } = require("../db");
 
 
@@ -119,12 +120,27 @@ const actualizarSaldoProveedor = async (id, saldo) => {
     }
 };
 
+const saldoProveedor = async (proveedor) => {
+try{
+    let saldo = 0
+    let allCompras = await Compra.findAll();
+    allCompras.map((a)=>{if(a.proveedor==proveedor){
+        saldo +=a.saldo
+        }})
+    return saldo;
+}
+catch(e){
+    console.log(e)
+}
+};
+
+
 module.exports = {
     getAllClientes,
     getCliente,
     crearCliente,
     eliminarCliente,
-
+    saldoProveedor,
     getAllProveedores,
     getProveedor,
     crearProveedor,

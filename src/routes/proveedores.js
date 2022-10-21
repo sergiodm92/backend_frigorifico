@@ -6,7 +6,8 @@ const {
     getAllProveedores,
     crearProveedor,
     actualizarSaldoProveedor,
-    eliminarProveedor
+    eliminarProveedor,
+    saldoProveedor
 } = require("../services/cliente_proveedor.service");
 
 const {
@@ -42,14 +43,14 @@ route.get('/:id', async (req, res) => {
 
 route.post('/', async(req, res) => {
     try{
-    if(!req.body){
-        return res.status(400).send(customResponseError("Se necesita información para crear el proveedor", 400));
-    }
+        if(await crearProveedor(req.body)){
+            
+                return res.status(201).send(customResponseExito("Proveedor creado con éxito"));
+            }
+        if(!req.body){
+            return res.status(400).send(customResponseError("Se necesita información para crear el proveedor", 400));
+        }
 
-    if(await crearProveedor(req.body)){
-        
-        return res.status(201).send(customResponseExito("Proveedor creado con éxito"));
-    }
     return res.status(400).send(customResponseError("Error al crear el proveedor", 400));
     }
     catch{
@@ -61,16 +62,15 @@ route.put('/', async(req, res) => {
     const { proveedor_id, saldo } = req.body
 
     try {
+        if(await actualizarSaldoProveedor(proveedor_id, saldo)){
+            return res.status(201).send(customResponseExito("Saldo de proveedor actualizado con éxito"));
+        }
         if(!saldo || !proveedor_id){
             return res.status(400).send(customResponseError("Se necesita información para procesar la solicitud", 400));
         }
 
         if (!Number.isInteger(parseInt(proveedor_id))) {
             return res.status(400).send(customResponseError("El id del proveedor debe ser un número entero", 400));
-        }
-
-        if(await actualizarSaldoProveedor(proveedor_id, saldo)){
-            return res.status(201).send(customResponseExito("Saldo de proveedor actualizado con éxito"));
         }
         return res.status(400).send(customResponseError("Error al actualizar el saldo", 400));
     } catch (error) {
@@ -82,6 +82,9 @@ route.delete('/', async (req, res) => {
     const { proveedor_id } = req.body
 
     try {
+        if(await eliminarProveedor(proveedor_id)){
+            return res.status(200).send(customResponseExito("Proveedor eliminado con éxito"));
+        }
         if(!proveedor_id){
             return res.status(400).send(customResponseError("Se necesita información para procesar la solicitud", 400));
         }
@@ -89,30 +92,38 @@ route.delete('/', async (req, res) => {
         if (!Number.isInteger(parseInt(proveedor_id))) {
             return res.status(400).send(customResponseError("El id del Proveedor debe ser un número entero", 400));
         }
-        
-        if(await eliminarProveedor(proveedor_id)){
-            return res.status(200).send(customResponseExito("Proveedor eliminado con éxito"));
-        }
         return res.status(400).send(customResponseError("Error al eliminar el Proveedor", 400));
     } catch (error) {
         return res.status(400).send(customResponseError("Error, compruebe que el id que desea buscar es correcto.", 400));
     }
 })
 
-route.put('/saldo', async (req, res) => {
-    const { id, saldo } = req.body
+// route.put('/saldo', async (req, res) => {
+//    const { id } = req.params;
+//     try {
+//         if(await actualizarSaldoProveedor(id, saldo)){
+//             return res.status(200).send(customResponseExito("Saldo de Proveedor actualizado con éxito"));
+//         }
+//         if(!id || !saldo){
+//             return res.status(400).send(customResponseError("Se necesita información para procesar la solicitud", 400));
+//         }
+//         return res.status(400).send(customResponseError("Error al actualizar el saldo de Proveedor", 400));
+//     } catch (error) {
+//         return res.status(400).send(customResponseError("Error, compruebe que el id que desea buscar es correcto o verifique que el saldo esté escrito correctamente.", 400));
+//     }
+// })
+
+route.get('/saldo/:proveedor', async (req, res) => {
+    const { proveedor } = req.params;
     try {
-        if(!id || !saldo){
-            return res.status(400).send(customResponseError("Se necesita información para procesar la solicitud", 400));
-        }
-        if(await actualizarSaldoProveedor(id, saldo)){
-            return res.status(200).send(customResponseExito("Saldo de Proveedor actualizado con éxito"));
-        }
-        return res.status(400).send(customResponseError("Error al actualizar el saldo de Proveedor", 400));
+        let saldo = await saldoProveedor(proveedor);
+        
+        return res.json(customResponseExito(saldo));
+        
+        // return res.status(400).send(customResponseError("Error al actualizar el saldo de Proveedor", 400));
     } catch (error) {
         return res.status(400).send(customResponseError("Error, compruebe que el id que desea buscar es correcto o verifique que el saldo esté escrito correctamente.", 400));
     }
 })
-
 
 module.exports = route;
