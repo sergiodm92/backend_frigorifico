@@ -84,13 +84,10 @@ route.delete('/', async (req, res) => {
 route.put('/', (req, res) => {
     let { precio_kg, tropa, categoria } = req.body
     try {
-        if(!precio_kg || !tropa || !categoria ){
-            return res.status(400).send(customResponseError("Se necesita información para procesar la solicitud", 400));
-        }
         if(actualizarCostoByKg(precio_kg, tropa, categoria)){
             return res.status(200).send(customResponseExito("Costo/kg de Res actualizado con éxito"));
         }
-        return res.status(400).send(customResponseError("Error al actualizar el saldo de la Res", 400));
+
     } catch (error) {
         return res.status(400).send(customResponseError("Error, compruebe que el id que desea buscar es correcto o verifique que el saldo esté escrito correctamente.", 400));
     }

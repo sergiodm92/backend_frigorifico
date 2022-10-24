@@ -1,5 +1,5 @@
 const e = require("express");
-const { Cliente, Proveedor, Compra, Venta } = require("../db");
+const { Cliente, Proveedor, Compra, Venta, VentaAchura } = require("../db");
 
 
 const getAllClientes = async () => {
@@ -119,11 +119,17 @@ catch(e){
 
 const saldoCliente = async (cliente) => {
     try{
-        let saldo = 0
+        let saldo1 = 0
+        let saldo2 = 0
         let allVentas = await Venta.findAll();
         allVentas.map((a)=>{if(a.cliente==cliente){
-            saldo +=a.saldo
+            saldo1 +=a.saldo
             }})
+        let allVentaAchuras = await VentaAchura.findAll();
+        allVentaAchuras.map((a)=>{if(a.clien==cliente){
+            saldo2 +=a.saldo
+            }})
+            let saldo=saldo1+saldo2
         return saldo;
     }
     catch(e){

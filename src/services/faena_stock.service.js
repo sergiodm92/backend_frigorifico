@@ -25,7 +25,7 @@ const getAllFaenasPorNTropa = async (nTropa) => {
     return faena;
 };
 
-const crearFaena = async ({ tropa, frigorifico, proveedor, detalle, total_kg, total_medias, costo_total, saldo, fecha}) => {
+const crearFaena = async ({ tropa, frigorifico, proveedor, detalle,costo_faena_kg, total_kg, total_medias, costo_total, saldo, fecha, estado_compra}) => {
 
     try {
             await Faena.create({
@@ -37,7 +37,9 @@ const crearFaena = async ({ tropa, frigorifico, proveedor, detalle, total_kg, to
                 total_kg,
                 total_medias,
                 costo_total,
-                saldo
+                saldo,
+                estado_compra,
+                costo_faena_kg
             })
             return true;
 
@@ -82,12 +84,29 @@ const eliminarFaena = async (faena_id) => {
         }
     };
 
+    const actualizarEstadoCompraFaena = async (tropa, estado_compra) => {
+        try {
+            await Faena.update(
+                { estado_compra },
+                    {
+                        where:{
+                            tropa
+                        }
+                    }
+                )
+            return true;
+        } catch (e) {
+            console.log(e);
+            return false;
+        }
+    };
+
 module.exports = {
     getAllStock,
-
     getAllFaenas,
     getAllFaenasPorNTropa,
     crearFaena,
     eliminarFaena,
-    actualizarSaldoFaena
+    actualizarSaldoFaena,
+    actualizarEstadoCompraFaena
 }
