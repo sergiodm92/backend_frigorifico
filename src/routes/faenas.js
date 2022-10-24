@@ -6,6 +6,7 @@ const {
     crearFaena,
     eliminarFaena,
     actualizarSaldoFaena,
+    actualizarEstadoCompraFaena
 } = require("../services/faena_stock.service");
 
 const {
@@ -59,6 +60,18 @@ route.put('/saldo', async (req, res) => {
         }
         if(await actualizarSaldoFaena(id, saldo)){
             return res.status(200).send(customResponseExito("Saldo de Faena actualizado con éxito"));
+        }
+        return res.status(400).send(customResponseError("Error al actualizar el saldo de Faena", 400));
+    } catch (error) {
+        return res.status(400).send(customResponseError("Error, compruebe que el id que desea buscar es correcto o verifique que el saldo esté escrito correctamente.", 400));
+    }
+})
+
+route.put('/estadoCompra', async (req, res) => {
+    const { tropa, estado_compra } = req.body
+    try {
+        if(await actualizarEstadoCompraFaena(tropa, estado_compra)){
+            return res.status(200).send(customResponseExito("Estado de Compra de Faena actualizado con éxito"));
         }
         return res.status(400).send(customResponseError("Error al actualizar el saldo de Faena", 400));
     } catch (error) {

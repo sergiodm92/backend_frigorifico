@@ -23,6 +23,10 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
+    costo_faena_kg: {
+      type: DataTypes.FLOAT,
+      allowNull: true,    
+    },
     detalle: {
       type: DataTypes.ARRAY(DataTypes.JSON),
       allowNull: true,
@@ -41,6 +45,10 @@ module.exports = (sequelize) => {
     },
     saldo: {
       type: DataTypes.FLOAT,
+      allowNull: true,
+    },
+    estado_compra:{
+      type: DataTypes.BOOLEAN,
       allowNull: true,
     }
   },{
