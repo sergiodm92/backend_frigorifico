@@ -6,6 +6,8 @@ const pagoCompras = require('./pagoCompras');
 const pagoFaenas = require('./pagoFaenas');
 const pagoVentas = require('./pagoVentas');
 const pagoVentaAchuras = require('./pagoVentaAchura');
+const pagoExtras = require('./pagoExtra')
+const ingresoExtras = require('./ingresoExtra')
 const proveedores = require('./proveedores');
 const res = require('./res');
 const stock = require('./stock');
@@ -23,6 +25,8 @@ router.use('/pagoCompras', verifyToken, pagoCompras);
 router.use('/pagoFaenas', verifyToken, pagoFaenas);
 router.use('/pagoVentas', verifyToken, pagoVentas);
 router.use('/pagoVentaAchuras', verifyToken, pagoVentaAchuras);
+router.use('/pagoExtras', verifyToken, pagoExtras);
+router.use('/ingresoExtras', verifyToken, ingresoExtras);
 router.use('/proveedores', verifyToken, proveedores);
 router.use('/res', verifyToken, res);
 router.use('/stock', verifyToken, stock);

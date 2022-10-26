@@ -37,7 +37,7 @@ const crearVentaAchuras = async ({ fecha, clien, cantidad, precioUnitario, total
 
         let cliente_db = await Cliente.findOne({
             where: {
-                nombre: cliente
+                nombre: clien
             }
         })
 
