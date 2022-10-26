@@ -9,7 +9,8 @@ const {
     eliminarRes,
     actualizarCostoByKg,
     actualizarStock,
-    actualizarCuartoRes
+    actualizarCuartoRes,
+    actualizarKg
 } = require("../services/res.service");
 
 const {
@@ -120,6 +121,18 @@ route.put('/cuartoRes', (req, res) => {
         return res.status(400).send(customResponseError("Error al actualizar el saldo de la Res", 400));
     } catch (error) {
         return res.status(400).send(customResponseError("Error, compruebe que el id que desea buscar es correcto.", 400));
+    }
+})
+
+route.put('/kg', (req, res) => {
+    let { correlativo, kg } = req.body
+    try {
+        if(actualizarKg(correlativo, kg)){
+            return res.status(200).send(customResponseExito("Res actualizada con éxito"));
+        }
+        else return res.status(400).send(customResponseError("Error al actualizar kg de la Res", 400));
+    } catch (error) {
+        return res.status(400).send(customResponseError("Error, compruebe que el correlativo que desea buscar es correcto.", 400));
     }
 })
 

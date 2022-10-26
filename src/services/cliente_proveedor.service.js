@@ -86,22 +86,22 @@ const eliminarProveedor = async (proveedor_id) => {
 };
 
 
-const actualizarSaldoCliente = async (id, saldo) => {
-    try {
-        await Cliente.update(
-            { saldo },
-                {
-                    where:{
-                        id
-                    }
-                }
-            )
-        return true;
-    } catch (e) {
-        console.log(e);
-        return false;
-    }
-};
+// const actualizarSaldoCliente = async (id, saldo) => {
+//     try {
+//         await Cliente.update(
+//             { saldo },
+//                 {
+//                     where:{
+//                         id
+//                     }
+//                 }
+//             )
+//         return true;
+//     } catch (e) {
+//         console.log(e);
+//         return false;
+//     }
+// };
 
 const saldoProveedor = async (proveedor) => {
 try{
@@ -137,6 +137,52 @@ const saldoCliente = async (cliente) => {
     }
     };
 
+    const editarCliente = async (id, nombre, telefono, email, direccion, cuil) => {
+        try {
+            await Cliente.update(
+                {   
+                    nombre,
+                    telefono,
+                    email,
+                    direccion,
+                    cuil
+                },
+                    {
+                        where:{
+                            id
+                        }
+                    }
+                )
+            return true;
+        } catch (e) {
+            console.log(e);
+            return false;
+        }
+    };
+
+    const editarProveedor = async (id, nombre, telefono, email, direccion, cuil) => {
+        try {
+            await Proveedor.update(
+                {   
+                    nombre,
+                    telefono,
+                    email,
+                    direccion,
+                    cuil
+                },
+                    {
+                        where:{
+                            id
+                        }
+                    }
+                )
+            return true;
+        } catch (e) {
+            console.log(e);
+            return false;
+        }
+    };
+
 
 module.exports = {
     getAllClientes,
@@ -148,5 +194,7 @@ module.exports = {
     getProveedor,
     crearProveedor,
     saldoCliente,
-    eliminarProveedor
+    eliminarProveedor,
+    editarCliente,
+    editarProveedor
 }

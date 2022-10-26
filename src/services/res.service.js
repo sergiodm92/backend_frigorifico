@@ -94,6 +94,23 @@ const actualizarStock = async (correlativo, stock) => {
     }
 };
 
+const actualizarKg = async (correlativo, kg) => {
+    try {
+        await Res.update(
+            { kg },
+                {
+                    where:{
+                        correlativo
+                    }
+                }
+            )
+        return true;
+    } catch (e) {
+        console.log(e);
+        return false;
+    }
+};
+
 const actualizarCuartoRes = async (id, kg, correlativo) => {
     try {
         await Res.update(
@@ -136,5 +153,6 @@ module.exports = {
     getAllResesEnStock,
     actualizarCostoByKg,
     actualizarStock,
-    actualizarCuartoRes
+    actualizarCuartoRes,
+    actualizarKg
 }

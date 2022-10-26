@@ -109,7 +109,8 @@ const getCompra = async (id) => {
 };
 
 const getComprasPorProveedor = async (proveedor) => {
-    let compras = await Compra.findAll({
+    let compras=[]
+    compras = await Compra.findAll({
         where: {
             proveedor: proveedor
         }
