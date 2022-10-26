@@ -60,13 +60,13 @@ route.get('/all/:client_id', async (req, res) => {
 })
 
 route.post('/', async(req, res) => {
+    if(await crearVentaAchuras(req.body)){
+        return res.status(201).send(customResponseExito("Venta creada con éxito"));
+    }
     if(!req.body){
         return res.status(400).send(customResponseError("Se necesita información para crear la venta", 400));
     }
 
-    if(await crearVentaAchuras(req.body)){
-        return res.status(201).send(customResponseExito("Venta creada con éxito"));
-    }
     return res.status(400).send(customResponseError("Error al crear la venta", 400));
 })
 
@@ -89,16 +89,14 @@ route.delete('/', async (req, res) => {
     const { venta_id } = req.body
 
     try {
+        if(await eliminarVentaAchuras(venta_id)){
+            return res.status(200).send(customResponseExito("Venta eliminada con éxito"));
+        }
         if(!venta_id){
             return res.status(400).send(customResponseError("Se necesita información para procesar la solicitud", 400));
         }
-
         if (!Number.isInteger(parseInt(venta_id))) {
             return res.status(400).send(customResponseError("El id de la Venta debe ser un número entero", 400));
-        }
-        
-        if(await eliminarVentaAchuras(venta_id)){
-            return res.status(200).send(customResponseExito("Venta eliminada con éxito"));
         }
         return res.status(400).send(customResponseError("Error al eliminar la Venta", 400));
     } catch (error) {
