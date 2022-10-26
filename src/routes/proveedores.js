@@ -6,7 +6,8 @@ const {
     getAllProveedores,
     crearProveedor,
     eliminarProveedor,
-    saldoProveedor
+    saldoProveedor,
+    editarProveedor
 } = require("../services/cliente_proveedor.service");
 
 const {
@@ -57,25 +58,6 @@ route.post('/', async(req, res) => {
     }
 })
 
-route.put('/', async(req, res) => {
-    const { proveedor_id, saldo } = req.body
-
-    try {
-        if(await actualizarSaldoProveedor(proveedor_id, saldo)){
-            return res.status(201).send(customResponseExito("Saldo de proveedor actualizado con éxito"));
-        }
-        if(!saldo || !proveedor_id){
-            return res.status(400).send(customResponseError("Se necesita información para procesar la solicitud", 400));
-        }
-
-        if (!Number.isInteger(parseInt(proveedor_id))) {
-            return res.status(400).send(customResponseError("El id del proveedor debe ser un número entero", 400));
-        }
-        return res.status(400).send(customResponseError("Error al actualizar el saldo", 400));
-    } catch (error) {
-        return res.status(400).send(customResponseError("Error, compruebe que el id que desea buscar es correcto o verifique que el saldo.", 400));
-    }
-})
 
 route.delete('/', async (req, res) => {
     const { proveedor_id } = req.body
@@ -104,6 +86,19 @@ route.get('/saldo/:proveedor', async (req, res) => {
         
         return res.json(customResponseExito(saldo));
         
+    } catch (error) {
+        return res.status(400).send(customResponseError("Error, compruebe que el id que desea buscar es correcto o verifique que el saldo esté escrito correctamente.", 400));
+    }
+})
+
+route.put('/', async (req, res) => {
+    const { id, nombre, telefono, email, direccion, cuil } = req.body
+    console.log(req.body)
+    try {
+        if(await editarProveedor(id, nombre, telefono, email, direccion, cuil)){
+            return res.status(200).send(customResponseExito("Saldo de Compra actualizado con éxito"));
+        }
+        else return res.status(400).send(customResponseError("Error al actualizar el saldo de Compra", 400));
     } catch (error) {
         return res.status(400).send(customResponseError("Error, compruebe que el id que desea buscar es correcto o verifique que el saldo esté escrito correctamente.", 400));
     }
