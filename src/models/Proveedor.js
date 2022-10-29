@@ -27,14 +27,6 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
-       ultima_compra:{
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    saldo: {
-      type: DataTypes.FLOAT,
-      allowNull: true,
-    },
   },{
     timestamps:false
   });
