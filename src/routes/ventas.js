@@ -11,13 +11,21 @@ const {
     getAllVentasPorIDCliente,
     crearVenta,
     actualizarSaldoVenta,
-    eliminarVenta
+    eliminarVenta,
+    getAllVentasUltimos30Dias,
+    getAllVentasbyName
 } = require("../services/compra_venta.service.js")
 
 const route = Router();
 
 route.get('/all', async (req, res) => {
+    try {
+
     return res.send(customResponseExito(await getAllVentas()))
+    }
+    catch{
+        return res.status(400).send(customResponseError("Error, compruebe que el id que desea buscar es correcto.", 400));
+    }
 })
 
 route.get('/:id', async (req, res) => {
@@ -45,18 +53,34 @@ route.get('/all/:client_id', async (req, res) => {
 
     try {
         if (!Number.isInteger(parseInt(client_id))) {
-            return res.status(400).send(customResponseError("El id debe ser un número entero", 400));
-        }
-    
-        const ventas = await getAllVentasPorIDCliente(client_id);
-        
-        if (ventas.length > 0) {
-            return res.send(customResponseExito(ventas));
+            const ventas = await getAllVentasPorIDCliente(client_id);
+            return res.send(customResponseExito(ventas))
         }
         return res.status(400).send(customResponseError("No se han encontrado ventas", 404));
     } catch (error) {
         return res.status(400).send(customResponseError("Error, compruebe que el id que desea buscar es correcto.", 400));
     }
+})
+
+route.get('/all/name/:clientName', async (req, res) => {
+    const { clientName } = req.params;
+
+    try {
+            let ventas = await getAllVentasbyName(clientName);
+            return res.send(customResponseExito(ventas))
+    } catch (error) {
+        return res.status(400).send(customResponseError("Error, compruebe que el id que desea buscar es correcto.", 400));
+    }
+})
+
+route.get('/ultimos30dias/all', async (req, res) => {
+
+    try {
+        return res.send(customResponseExito(await getAllVentasUltimos30Dias()))
+        }
+        catch (error) {
+        return res.status(400).send(customResponseError("Error, compruebe que el id que desea buscar es correcto.", 400));
+        }
 })
 
 route.post('/', async(req, res) => {
@@ -85,22 +109,13 @@ route.put('/saldo', async (req, res) => {
     }
 })
 
-route.delete('/', async (req, res) => {
-    const { venta_id } = req.body
+route.delete('/:venta_id', async (req, res) => {
+    const { venta_id } = req.params
 
     try {
-        if(!venta_id){
-            return res.status(400).send(customResponseError("Se necesita información para procesar la solicitud", 400));
-        }
-
-        if (!Number.isInteger(parseInt(venta_id))) {
-            return res.status(400).send(customResponseError("El id de la Venta debe ser un número entero", 400));
-        }
-        
         if(await eliminarVenta(venta_id)){
             return res.status(200).send(customResponseExito("Venta eliminada con éxito"));
         }
-        return res.status(400).send(customResponseError("Error al eliminar la Venta", 400));
     } catch (error) {
         return res.status(400).send(customResponseError("Error, compruebe que el id que desea buscar es correcto.", 400));
     }

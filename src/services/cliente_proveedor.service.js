@@ -189,11 +189,9 @@ module.exports = {
     getCliente,
     crearCliente,
     eliminarCliente,
-    saldoProveedor,
     getAllProveedores,
     getProveedor,
     crearProveedor,
-    saldoCliente,
     eliminarProveedor,
     editarCliente,
     editarProveedor
