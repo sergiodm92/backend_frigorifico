@@ -51,6 +51,15 @@ const crearVentaAchuras = async ({ fecha, clien, cantidad, precioUnitario, total
     }
 };
 
+const getAllVentasAchurasbyName = async (clientName) => {
+    let ventas = await VentaAchura.findAll({
+        where: {
+            clien: clientName
+        }
+    });
+    return ventas;
+};
+
 const eliminarVentaAchuras = async (venta_id) => {
     try {
         await VentaAchura.destroy({
@@ -87,6 +96,7 @@ const eliminarVentaAchuras = async (venta_id) => {
         getVentaAchuras,
         getAllVentasAchuras,
         getAllVentasAchurasPorIDCliente,
+        getAllVentasAchurasbyName,
         crearVentaAchuras,
         actualizarSaldoVentaAchuras,
         eliminarVentaAchuras

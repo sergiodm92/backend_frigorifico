@@ -5,7 +5,6 @@ const {
     getAllClientes,
     crearCliente,
     eliminarCliente,
-    saldoCliente,
     editarCliente
 } = require("../services/cliente_proveedor.service");
 
@@ -42,7 +41,6 @@ route.get('/:id', async (req, res) => {
 })
 
 route.post('/', async(req, res) => {
-    //cargando cuil
     try{
     if(await crearCliente(req.body)){
         return res.status(201).send(customResponseExito("Cliente creada con éxito"));
@@ -64,18 +62,6 @@ route.delete('/', async (req, res) => {
         else return res.status(400).send(customResponseError("Error al eliminar el Cliente", 400));
     } catch (error) {
         return res.status(400).send(customResponseError("Error, compruebe que el id que desea buscar es correcto.", 400));
-    }
-})
-
-route.get('/saldo/:cliente', async (req, res) => {
-    const { cliente } = req.params;
-    try {
-        let saldo = await saldoCliente(cliente);
-        
-        return res.json(customResponseExito(saldo));
-        
-    } catch (error) {
-        return res.status(400).send(customResponseError("Error, compruebe que el cliente que desea buscar es correcto o verifique que el saldo esté escrito correctamente.", 400));
     }
 })
 

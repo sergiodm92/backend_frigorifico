@@ -2,9 +2,57 @@ const { Compra, Venta, Cliente, Proveedor} = require("../db");
 
 
 const getAllVentas = async () => {
-    let allVentas = await Venta.findAll();
-    return allVentas;
-};
+    try {
+    let ventas = await Venta.findAll();
+        ventas.map(e=>{
+            e.dataValues.cant=0
+            e.dataValues.kg_total=0
+            e.dataValues.total=0
+            e.dataValues.margen=0
+            e.dataValues.detalle.map(a=>{
+                if(a.total_media=="total")e.dataValues.cant++
+                if(a.total_media!=="total")e.dataValues.cant+=0.5
+                e.dataValues.kg_total+=a.kg
+                e.dataValues.total+=a.kg*a.precio_kg
+                e.dataValues.margen+=a.precio_kg*a.kg-a.costo_kg*a.kg
+                })
+        })
+        
+        return ventas;
+    }
+    catch (e) {
+        console.log(e);
+        return false;
+    }
+    }
+
+const getAllVentasUltimos30Dias = async () => {
+    try {
+        let allVentas = await getAllVentas()
+        const fecha = new Date()
+        let ventasUltimos30Dias=[]
+        if(allVentas.length>0){
+            allVentas.map(e=>{
+                if(e.dataValues.fecha.split("-")[2]==fecha.getFullYear() 
+                && e.dataValues.fecha.split("-")[1]>(fecha.getMonth()-1) 
+                && e.dataValues.fecha.split("-")[0]>=fecha.getDate()){
+                ventasUltimos30Dias.push(e)
+                }
+                if(e.dataValues.fecha.split("-")[2]==fecha.getFullYear() 
+                && e.dataValues.fecha.split("-")[1]==(fecha.getMonth()+1)){
+                ventasUltimos30Dias.push(e)
+                }
+            })
+        }
+
+            return ventasUltimos30Dias;
+    }
+    catch (e) {
+        console.log(e);
+        return false;
+    }
+    }
+
 
 const getVenta = async (id) => {
     let venta = await Venta.findByPk(id);
@@ -17,6 +65,41 @@ const getAllVentasPorIDCliente = async (client_id) => {
             id_cliente: client_id
         }
     });
+    ventas.map(e=>{
+        e.dataValues.cant=0
+        e.dataValues.kg_total=0
+        e.dataValues.total=0
+        e.dataValues.margen=0
+        e.dataValues.detalle.map(a=>{
+            if(a.total_media=="total")e.dataValues.cant++
+            if(a.total_media!=="total")e.dataValues.cant+=0.5
+            e.dataValues.kg_total+=a.kg
+            e.dataValues.total+=a.kg*a.precio_kg
+            e.dataValues.margen+=a.precio_kg*a.kg-a.costo_kg*a.kg
+            })
+    })
+    return ventas;
+};
+
+const getAllVentasbyName = async (clientName) => {
+    let ventas = await Venta.findAll({
+        where: {
+            cliente: clientName
+        }
+    });
+    ventas.map(e=>{
+        e.dataValues.cant=0
+        e.dataValues.kg_total=0
+        e.dataValues.total=0
+        e.dataValues.margen=0
+        e.dataValues.detalle.map(a=>{
+            if(a.total_media=="total")e.dataValues.cant++
+            if(a.total_media!=="total")e.dataValues.cant+=0.5
+            e.dataValues.kg_total+=a.kg
+            e.dataValues.total+=a.kg*a.precio_kg
+            e.dataValues.margen+=a.precio_kg*a.kg-a.costo_kg*a.kg
+            })
+    })
     return ventas;
 };
 
@@ -180,5 +263,7 @@ module.exports = {
     crearVenta,
     eliminarVenta,
     actualizarSaldoVenta,
-    actualizarSaldoCompra
+    actualizarSaldoCompra,
+    getAllVentasUltimos30Dias,
+    getAllVentasbyName
 };

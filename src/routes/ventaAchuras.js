@@ -9,6 +9,7 @@ const {
     getVentaAchuras,
     getAllVentasAchuras,
     getAllVentasAchurasPorIDCliente,
+    getAllVentasAchurasbyName,
     crearVentaAchuras,
     actualizarSaldoVentaAchuras,
     eliminarVentaAchuras
@@ -59,6 +60,17 @@ route.get('/all/:client_id', async (req, res) => {
     }
 })
 
+route.get('/all/name/:clientName', async (req, res) => {
+    const { clientName } = req.params;
+
+    try {
+            let ventas = await getAllVentasAchurasbyName(clientName);
+            return res.send(customResponseExito(ventas))
+    } catch (error) {
+        return res.status(400).send(customResponseError("Error, compruebe que el id que desea buscar es correcto.", 400));
+    }
+})
+
 route.post('/', async(req, res) => {
     if(await crearVentaAchuras(req.body)){
         return res.status(201).send(customResponseExito("Venta creada con éxito"));
@@ -85,18 +97,12 @@ route.put('/saldo', async (req, res) => {
     }
 })
 
-route.delete('/', async (req, res) => {
-    const { venta_id } = req.body
+route.delete('/:venta_id', async (req, res) => {
+    const { venta_id } = req.params
 
     try {
         if(await eliminarVentaAchuras(venta_id)){
             return res.status(200).send(customResponseExito("Venta eliminada con éxito"));
-        }
-        if(!venta_id){
-            return res.status(400).send(customResponseError("Se necesita información para procesar la solicitud", 400));
-        }
-        if (!Number.isInteger(parseInt(venta_id))) {
-            return res.status(400).send(customResponseError("El id de la Venta debe ser un número entero", 400));
         }
         return res.status(400).send(customResponseError("Error al eliminar la Venta", 400));
     } catch (error) {

@@ -6,7 +6,6 @@ const {
     getAllProveedores,
     crearProveedor,
     eliminarProveedor,
-    saldoProveedor,
     editarProveedor
 } = require("../services/cliente_proveedor.service");
 
@@ -79,21 +78,8 @@ route.delete('/', async (req, res) => {
     }
 })
 
-route.get('/saldo/:proveedor', async (req, res) => {
-    const { proveedor } = req.params;
-    try {
-        let saldo = await saldoProveedor(proveedor);
-        
-        return res.json(customResponseExito(saldo));
-        
-    } catch (error) {
-        return res.status(400).send(customResponseError("Error, compruebe que el id que desea buscar es correcto o verifique que el saldo esté escrito correctamente.", 400));
-    }
-})
-
 route.put('/', async (req, res) => {
     const { id, nombre, telefono, email, direccion, cuil } = req.body
-    console.log(req.body)
     try {
         if(await editarProveedor(id, nombre, telefono, email, direccion, cuil)){
             return res.status(200).send(customResponseExito("Saldo de Compra actualizado con éxito"));
