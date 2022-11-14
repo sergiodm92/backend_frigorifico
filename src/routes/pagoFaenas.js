@@ -51,14 +51,9 @@ route.get('/all/:frigorifico', async (req, res) => {
 //-->Crear pago de una faena
 route.post('/', async (req, res) => {
     try{
-    if(!req.body){
-        return res.status(400).send(customResponseError("Se necesita información para crear el pago", 400));
-    }
-
     if(await crearPagoFaena(req.body)){
         return res.status(201).send(customResponseExito("Pago creado con éxito"));
     }
-    return res.status(400).send(customResponseError("Error al crear el pago", 400));
     }
     catch{
         return res.send("error")
@@ -70,18 +65,9 @@ route.delete('/', async (req, res) => {
     const { pf_id } = req.body
 
     try {
-        if(!pf_id){
-            return res.status(400).send(customResponseError("Se necesita información para procesar la solicitud", 400));
-        }
-
-        if (!Number.isInteger(parseInt(pf_id))) {
-            return res.status(400).send(customResponseError("El id del pago debe ser un número entero", 400));
-        }
-        
         if(await eliminarPagoFaena(pf_id)){
             return res.status(200).send(customResponseExito("Pago eliminado con éxito"));
         }
-        return res.status(400).send(customResponseError("Error al eliminar pago", 400));
     } catch (error) {
         return res.status(400).send(customResponseError("Error, compruebe que el id que desea buscar es correcto.", 400));
     }

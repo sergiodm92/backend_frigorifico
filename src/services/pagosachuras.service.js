@@ -27,14 +27,15 @@ const getAllPagosVentaAchurasByID_V = async (ventaID) => {
 };
 
 //-->crear un nuevo pago de una venta
-const crearPagoVentaAchuras = async ({ fecha, monto, formaDePago, clien, ventaID }) => {
+const crearPagoVentaAchuras = async ({ fecha, monto, formaDePago, clien, ventaID, img_comp }) => {
     try {
         await PagoVentaAchura.create({
             fecha,
             monto,
             formaDePago,
             clien,
-            ventaID
+            ventaID,
+            img_comp
         })
         return true;
     } catch (e) {

@@ -7,13 +7,14 @@ const getAllIngresosExtras = async () => {
 };
 
 //-->crear un nuevo pago de una venta
-const crearIngresoExtra = async ({ fecha, monto, formaDePago, concepto }) => {
+const crearIngresoExtra = async ({ fecha, monto, formaDePago, concepto, img_comp }) => {
     try {
         await IngresoExtra.create({
             fecha,
             concepto,
             monto,
-            formaDePago
+            formaDePago,
+            img_comp
         })
         return true;
     } catch (e) {

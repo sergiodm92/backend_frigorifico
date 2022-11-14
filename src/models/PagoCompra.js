@@ -26,6 +26,10 @@ module.exports = (sequelize) => {
     compraID: {
       type: DataTypes.INTEGER,
       allowNull: true,
+    },
+    img_comp:{
+      type: DataTypes.JSON,
+      allowNull: true,
     }
 
   },{

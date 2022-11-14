@@ -29,22 +29,13 @@ const getAllVentas = async () => {
 const getAllVentasUltimos30Dias = async () => {
     try {
         let allVentas = await getAllVentas()
-        const fecha = new Date()
+        const fecha = Date.now()-(30*24*3600*1000)
         let ventasUltimos30Dias=[]
         if(allVentas.length>0){
             allVentas.map(e=>{
-                if(e.dataValues.fecha.split("-")[2]==fecha.getFullYear() 
-                && e.dataValues.fecha.split("-")[1]>(fecha.getMonth()-1) 
-                && e.dataValues.fecha.split("-")[0]>=fecha.getDate()){
-                ventasUltimos30Dias.push(e)
-                }
-                if(e.dataValues.fecha.split("-")[2]==fecha.getFullYear() 
-                && e.dataValues.fecha.split("-")[1]==(fecha.getMonth()+1)){
-                ventasUltimos30Dias.push(e)
-                }
+                if(e.dataValues.fecha>fecha)ventasUltimos30Dias.push(e)
             })
         }
-
             return ventasUltimos30Dias;
     }
     catch (e) {
