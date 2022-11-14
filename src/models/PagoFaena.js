@@ -26,6 +26,10 @@ module.exports = (sequelize) => {
     faenaID:  {
       type: DataTypes.INTEGER,
       allowNull: true,
+    },
+    img_comp:{
+      type: DataTypes.JSON,
+      allowNull: true,
     }
   },{
     timestamps:false

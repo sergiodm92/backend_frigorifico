@@ -32,14 +32,15 @@ const getAllPagosCompraByID_C = async (compraID) => {
 };
 
 //-->crear un nuevo pago
-const crearPagoCompra = async ({ fecha, monto, formaDePago, proveedor, compraID }) => {
+const crearPagoCompra = async ({ fecha, monto, formaDePago, proveedor, compraID, img_comp }) => {
     try {
         await PagoCompra.create({
             fecha,
             monto,
             formaDePago,
             proveedor,
-            compraID
+            compraID,
+            img_comp
         })
         return true;
     } catch (e) {
@@ -94,14 +95,15 @@ const getAllPagosFaenasByF = async (frigorifico) => {
 };
 
 //-->crear un nuevo pago
-const crearPagoFaena = async ({ fecha, monto, formaDePago, faenaID, frigorifico }) => {
+const crearPagoFaena = async ({ fecha, monto, formaDePago, faenaID, frigorifico, img_comp }) => {
     try {
         await PagoFaena.create({
             fecha,
             monto,
             formaDePago,
             frigorifico,
-            faenaID
+            faenaID,
+            img_comp
         })
         return true;
     } catch (e) {
@@ -155,14 +157,15 @@ const getAllPagosVentaByID_V = async (ventaID) => {
 };
 
 //-->crear un nuevo pago de una venta
-const crearPagoVenta = async ({ fecha, monto, formaDePago, cliente, ventaID }) => {
+const crearPagoVenta = async ({ fecha, monto, formaDePago, cliente, ventaID, img_comp }) => {
     try {
         await PagoVenta.create({
             fecha,
             monto,
             formaDePago,
             cliente,
-            ventaID
+            ventaID,
+            img_comp
         })
         return true;
     } catch (e) {

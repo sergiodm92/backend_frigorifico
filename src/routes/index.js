@@ -10,7 +10,6 @@ const pagoExtras = require('./pagoExtra')
 const ingresoExtras = require('./ingresoExtra')
 const proveedores = require('./proveedores');
 const res = require('./res');
-const stock = require('./stock');
 const user = require('./user');
 const ventas = require('./ventas');
 const ventaAchuras = require('./ventaAchuras')
@@ -29,7 +28,6 @@ router.use('/pagoExtras', verifyToken, pagoExtras);
 router.use('/ingresoExtras', verifyToken, ingresoExtras);
 router.use('/proveedores', verifyToken, proveedores);
 router.use('/res', verifyToken, res);
-router.use('/stock', verifyToken, stock);
 router.use('/user', user);
 router.use('/ventas', verifyToken, ventas);
 router.use('/ventaAchuras', verifyToken, ventaAchuras);

@@ -7,13 +7,14 @@ const getAllPagosExtras = async () => {
 };
 
 //-->crear un nuevo pago de una venta
-const crearPagoExtra = async ({ fecha, monto, formaDePago, concepto }) => {
+const crearPagoExtra = async ({ fecha, monto, formaDePago, concepto, img_comp }) => {
     try {
         await PagoExtra.create({
             fecha,
             concepto,
             monto,
-            formaDePago
+            formaDePago,
+            img_comp
         })
         return true;
     } catch (e) {

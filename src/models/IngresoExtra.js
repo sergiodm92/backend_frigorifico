@@ -22,6 +22,10 @@ module.exports = (sequelize) => {
     formaDePago: {
       type: DataTypes.STRING,
       allowNull: true,
+    },
+    img_comp:{
+      type: DataTypes.JSON,
+      allowNull: true,
     }
   },{
     timestamps:false
