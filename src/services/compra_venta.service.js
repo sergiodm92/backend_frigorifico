@@ -12,7 +12,7 @@ const getAllVentas = async () => {
             e.dataValues.detalle.map(a=>{
                 if(a.total_media=="total")e.dataValues.cant++
                 if(a.total_media!=="total")e.dataValues.cant+=0.5
-                e.dataValues.kg_total+=a.kg
+                e.dataValues.kg_total+=a.kg*1
                 e.dataValues.total+=a.kg*a.precio_kg
                 e.dataValues.margen+=a.precio_kg*a.kg-a.costo_kg*a.kg
                 })
